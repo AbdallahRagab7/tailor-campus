@@ -1,7 +1,7 @@
 <template>
 <main>
 <the-header></the-header>
-
+<router-view></router-view>
 </main>
 </template>
 
@@ -41,8 +41,14 @@ html {
 body {
   margin: 0;
 }
-ul {
+li {
   list-style: none;
 }
+
+a:link {
+  text-decoration: none;
+
+}
+
 
 </style>
