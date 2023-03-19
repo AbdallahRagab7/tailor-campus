@@ -1,26 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<main>
+<the-header></the-header>
+
+</main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TheHeader from './components/layout/TheHeader.vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+components : {
+  TheHeader
+}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap");
+:root {
+  --theme-heading-font: 'Gilroy', sans-serif;
+  --theme-secondary-font:'Jost', sans-serif;
+  --theme-primary-color: #F14D5D;
+  --theme-secondary-color: #015ABD;
+  --theme-heading-color: #14133b;
+  --theme-text-color: #77838F;
+  --theme-white-color: #fff;
+  --theme-border-color: #ddd;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+
 </style>
