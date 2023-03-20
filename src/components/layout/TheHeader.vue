@@ -66,6 +66,8 @@
 </template>
 
 <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Oleo+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap");
 .header-topbar {
   background-color: #031f42;
   /* padding: 0.0rem; */
@@ -89,10 +91,11 @@
 
 .logo a {
   color: black;
-  font-family: "Gilroy";
-  font-size: 1.4rem;
-  font-weight: bold;
+  /* font-family: "Gilroy"; */
+  font-size: 1.3rem;
+  /* font-weight: bold; */
   margin: 0;
+  font-family: "Raleway"
 }
 
 .logo a:hover {
@@ -107,7 +110,8 @@ padding: .5rem;
   padding: 25px;
 
   /* margin: 0; */
-  background-color: grey;
+  /* background-color: grey; */
+  background-color: #fff;
   box-sizing: border-box;
 }
 
