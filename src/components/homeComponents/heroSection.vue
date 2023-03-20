@@ -81,7 +81,7 @@ h1 {
 }
 
 .find-course-btn {
-  margin-right: 3rem;
+  margin-right: 1rem;
   /* justify-content: space-between; */
   background: var(--theme-primary-color);
   color: #fff;

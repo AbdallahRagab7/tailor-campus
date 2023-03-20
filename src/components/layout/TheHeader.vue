@@ -55,8 +55,8 @@
         </div>
 
         <div class="auth">
-          <router-link to="/home" class="login">Login</router-link>
-          <router-link to="/home" class="signup">Sign up</router-link>
+          <router-link to="/login" class="login">Login</router-link>
+          <router-link to="/register" class="signup">Sign up</router-link>
         </div>
       </div>
       <!--  end of menus-->
@@ -121,6 +121,8 @@ padding: .5rem;
   font-family: var(--theme-heading-font);
   color: #222;
   margin: 0 1.25rem;
+  transition: all 0.6s ease;
+
 }
 
 .menus {
