@@ -12,10 +12,15 @@ import BaseBadge from './components/ui/BaseBadge.vue';
 import BaseSpinner from './components/ui/BaseSpinner.vue';
 import BaseDialog from './components/ui/BaseDialog.vue';
 
+import VueTelInput from 'vue-tel-input';
+import 'vue-tel-input/dist/vue-tel-input.css';
 
+// Vue.use(VueTelInput);
 
 const app = createApp(App);
 app.use(router);
+app.use(VueTelInput)
+// app.use(VueTelInput, [globalOptions = {}]
 
 // app.use(store);
 app.component('base-card', BaseCard);
@@ -23,5 +28,6 @@ app.component('base-button', BaseButton);
 app.component('base-badge', BaseBadge);
 app.component('base-spinner', BaseSpinner);
 app.component('base-dialog', BaseDialog);
+// app.component('vue-tel-input' , VueTelInput)
 
 app.mount('#app')

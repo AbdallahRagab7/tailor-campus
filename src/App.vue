@@ -2,6 +2,9 @@
 <main>
 <the-header></the-header>
 <router-view></router-view>
+  <!-- <vue-tel-input v-model="phone"></vue-tel-input> -->'
+  <!-- <vue-tel-input></vue-tel-input> -->
+  <!-- <input type="text"> -->
 </main>
 </template>
 

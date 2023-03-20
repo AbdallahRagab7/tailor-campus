@@ -53,13 +53,14 @@ h1 {
 .basecard {
   padding: 3.5rem;
   max-width: 30rem;
+
 }
 .form-ctrl {
   margin-bottom: 1.5rem;
 }
 
 .form-ctrl label {
-  font-family: "Jost";
+  font-family: var(--theme-secondary-font);
   color: #696969;
   font-size: 13px;
   font-weight: 600;
