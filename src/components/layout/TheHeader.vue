@@ -5,7 +5,7 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-xl-8 col-lg-8 col-sm-6">
             <div class="header-contact text-center text-sm-start text-lg-start">
-              <a href="#" class="">1010 Moon ave, New York, NY US</a>
+              <a href="#" class=""> 1ST Elseyouf Alexandria</a>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="header-navbar">
+    <div class="header-navbar ">
       <div class="menus">
         <div class="logo">
           <router-link to="/home">Tailor Campus</router-link>
@@ -49,7 +49,7 @@
         <div class="primary-menu-items">
           <router-link to="/home" class="primary-menu">Home</router-link>
           <router-link to="/home" class="primary-menu">About</router-link>
-          <router-link to="/home" class="primary-menu">Courses</router-link>
+          <router-link to="/courses" class="primary-menu">Courses</router-link>
           <router-link to="/home" class="primary-menu">Blog</router-link>
           <router-link to="/home" class="primary-menu">Contact</router-link>
         </div>
@@ -117,7 +117,7 @@ padding: .5rem;
 
 .primary-menu {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: var(--theme-heading-font);
   color: #222;
   margin: 0 1.25rem;
@@ -175,4 +175,8 @@ padding: .5rem;
 .login:hover {
   color: var(--theme-primary-color);
 }
+
+/* .router-link-active {
+  color: blue;
+} */
 </style>
