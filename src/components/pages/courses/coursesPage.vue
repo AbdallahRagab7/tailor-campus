@@ -12,20 +12,22 @@
     </form>
   </div>
 
-  <section class="courses">
-    <course-card
-      v-for="course in courses"
-      :key="course.courseId"
-      :createdBy="course.createdBy"
-      :courseTitle="course.courseTitle"
-      :coursePrice="course.coursePrice"
-      :studentsNo="course.studentsNo"
-      :duration="course.duration"
-      :lessons="course.lessons"
-      :rating="course.rating"
-      :reviews="course.reviews"
-    ></course-card>
-  </section>
+  <div class="courses-containerr">
+    <section class="courses">
+      <course-card
+        v-for="course in courses"
+        :key="course.courseId"
+        :createdBy="course.createdBy"
+        :courseTitle="course.courseTitle"
+        :coursePrice="course.coursePrice"
+        :studentsNo="course.studentsNo"
+        :duration="course.duration"
+        :lessons="course.lessons"
+        :rating="course.rating"
+        :reviews="course.reviews"
+      ></course-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -162,9 +164,8 @@ export default {
 .courses {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  width: 90%;  /* 90% width of container to center it  */
+  margin: 0 auto;
   row-gap: 8rem;
 }
-
-
 </style>
