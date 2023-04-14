@@ -1,4 +1,15 @@
 <template>
+  <div class="page-header">
+
+    <div class="title-block">
+      <h1>Courses Layout 3</h1>
+      <!-- <ul>
+        <router-link to="/home">Home </router-link>
+        <li class="activ"> / Courses</li>
+      </ul> -->
+    </div>
+
+  </div>
   <section class="courses">
     <div class="course-card">
       <div class="course-header">
@@ -11,7 +22,7 @@
         <span class="course-price">
           <i class="fa-solid fa-dollar-sign"></i> 450</span
         >
-  <!-- <div class="rating">
+        <!-- <div class="rating">
           <i class="fa fa-star checked"></i>
           <i class="fa fa-star checked"></i>
           <i class="fa fa-star checked"></i>
@@ -33,8 +44,7 @@
         >
       </div>
       <div class="enroll">
-
-          <div class="rating">
+        <div class="rating">
           <i class="fa fa-star checked"></i>
           <i class="fa fa-star checked"></i>
           <i class="fa fa-star checked"></i>
@@ -45,14 +55,47 @@
         <button class="enroll-btn">
           Enroll Now <i class="fa fa-long-arrow-right"></i>
         </button>
-
-      
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+
+.page-header {
+    padding: 100px 0px;
+    background: #F4F5F8;
+    position: relative;
+    background: url("../../../assets/coursescover.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.page-header::after {
+    position: absolute;
+    content: "";
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 31, 66, 0.9);
+    z-index: -1;
+}
+
+.page-header img {
+  width: 100%;
+  object-fit: cover;
+}
+.title-block {
+    text-align: center;
+}
+
+.title-block ul {
+    display: flex;
+    justify-content: center;
+}
+
 .course-card {
   margin: 80px auto;
   width: 26rem;
@@ -164,19 +207,18 @@
   border-color: var(--theme-primary-color);
 }
 .rating {
-    width: 200px;
-    /* position: absolute; */
-    /* top: .5rem; */
-    /* top: -2.5rem; */
-    font-weight: bold;
-    position: relative;
-    top: .5rem;
+  width: 200px;
+  /* position: absolute; */
+  /* top: .5rem; */
+  /* top: -2.5rem; */
+  font-weight: bold;
+  position: relative;
+  top: 0.5rem;
 }
 .checked {
-    color: orange;
+  color: orange;
 }
-.review-no{
-    color: rgb(27, 26, 26);
+.review-no {
+  color: rgb(27, 26, 26);
 }
-
 </style>
