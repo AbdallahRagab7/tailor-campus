@@ -1,15 +1,17 @@
 <template>
   <div class="page-header">
-
-    <div class="title-block">
-      <h1>Courses Layout 3</h1>
-      <!-- <ul>
-        <router-link to="/home">Home </router-link>
-        <li class="activ"> / Courses</li>
-      </ul> -->
-    </div>
-
+    <img src="../../../assets/coursescover.jpg" alt="" />
   </div>
+
+ 
+    <div class="topbar-search">
+      <form method="get" action="#">
+        <input type="text"  placeholder="Search our courses" class="search-bar"  />
+         <button type="submit" class="search-btn"><i class="fa fa-search magnify"></i></button>
+      </form>
+    </div>
+ 
+
   <section class="courses">
     <div class="course-card">
       <div class="course-header">
@@ -22,14 +24,6 @@
         <span class="course-price">
           <i class="fa-solid fa-dollar-sign"></i> 450</span
         >
-        <!-- <div class="rating">
-          <i class="fa fa-star checked"></i>
-          <i class="fa fa-star checked"></i>
-          <i class="fa fa-star checked"></i>
-          <i class="fa fa-star checked"></i>
-          <i class="fa fa-star "></i> 
-           <span class="review-no"> 4 (74 reviews)</span>
-        </div> -->
         <p class="instructor">Created By : <a href="#"> Abdallah Ragab</a></p>
         <h3 class="course-title">Web Development : Front End</h3>
       </div>
@@ -61,40 +55,42 @@
 </template>
 
 <style scoped>
-
 .page-header {
-    padding: 100px 0px;
-    background: #F4F5F8;
-    position: relative;
-    background: url("../../../assets/coursescover.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
+  width: 100%;
+  margin-bottom: 10rem;
 }
-
-.page-header::after {
-    position: absolute;
-    content: "";
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background: rgba(3, 31, 66, 0.9);
-    z-index: -1;
-}
-
 .page-header img {
   width: 100%;
   object-fit: cover;
-}
-.title-block {
-    text-align: center;
+  height: 20rem;
 }
 
-.title-block ul {
+.topbar-search {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    width: 90%;
 }
+.search-bar {
+    height: 50px;
+    width: 325px;
+    border-radius: 30px;
+    padding-left: 20px;
+    background: #eef5f9;
+    border: 2px solid #F5F5F5;
+}
+.search-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -40px;
+}
+.fa-magnifying-glass {
+  width: 20px;
+  height: 19px;
+  color: grey;
+}
+
+
 
 .course-card {
   margin: 80px auto;
