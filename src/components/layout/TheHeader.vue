@@ -176,7 +176,7 @@ padding: .5rem;
   color: var(--theme-primary-color);
 }
 
-/* .router-link-active {
-  color: blue;
-} */
+.router-link-active {
+  color: rgb(54, 54, 167);
+}
 </style>
