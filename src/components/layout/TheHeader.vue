@@ -117,7 +117,7 @@ padding: .5rem;
 
 .primary-menu {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: var(--theme-heading-font);
   color: #222;
   margin: 0 1.25rem;

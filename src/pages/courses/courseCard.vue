@@ -61,7 +61,7 @@ export default {
 <style scoped>
 .course-card {
   /* margin: 80px auto; */
-  width: 26rem;
+  width: 24rem;
   border: 2px solid #e6e7ec;
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
@@ -139,7 +139,7 @@ export default {
   margin-bottom: 1.8rem;
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -156,14 +156,14 @@ export default {
   background: transparent;
   color: var(--theme-primary-color);
   border-color: var(--theme-primary-color);
-  border-radius: 35px;
-  padding: 8px 18px;
+  border-radius: 15px;
+  padding: .3rem .35rem;
   font-weight: 600;
   transition: all 0.6s ease;
   border: 2px solid;
   font-size: 1rem;
   margin-top: 1rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .enroll-btn:hover {
@@ -172,10 +172,11 @@ export default {
   border-color: var(--theme-primary-color);
 }
 .rating {
-  width: 200px;
+  width: 12.5rem;
   font-weight: bold;
   position: relative;
   top: 0.5rem;
+  font-size: .9rem;
 }
 .checked {
   color: orange;

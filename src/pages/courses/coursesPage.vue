@@ -164,7 +164,7 @@ export default {
 .courses {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;  /* 90% width of container to center it  */
+  width: 95%;  /* 90% width of container to center it  */
   margin: 0 auto;
   row-gap: 8rem;
 }
