@@ -3,6 +3,7 @@ import homePage from './pages/home/homePage.vue'
 import LoginPage from './pages/auth/LoginPage.vue'
 import RegisterPage from './pages/auth/RegisterPage.vue'
 import coursesPage from './pages/courses/coursesPage.vue'
+import coursePage from './pages/course/CoursePage.vue'
 
 
 const router = createRouter({
@@ -11,7 +12,8 @@ const router = createRouter({
         {path: '/home' ,component:homePage , alias: '/' } ,
         {path: '/login' , component:LoginPage},
         {path: '/register' , component:RegisterPage} ,
-        {path:'/courses' , component:coursesPage}
+        {path:'/courses' , component:coursesPage} ,
+        { name: 'course', path: '/course/:courseId', component:coursePage },
         
     ]
 

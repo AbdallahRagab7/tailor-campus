@@ -102,22 +102,17 @@
   color: black;
 }
 
-/* .auth .btn {
-padding: .5rem;
-} */
 
 .header-navbar {
   padding: 25px;
-
-  /* margin: 0; */
-  /* background-color: grey; */
   background-color: #fff;
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 6px 15px 0px;
 }
 
 .primary-menu {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.091rem;
   font-family: var(--theme-heading-font);
   color: #222;
   margin: 0 1.25rem;

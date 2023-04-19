@@ -1,6 +1,7 @@
 <template>
   <div class="page-header">
     <img src="../../assets/coursescover3.jpg" alt="" />
+    <p>Tailor Campus</p>
   </div>
 
   <div class="topbar-search">
@@ -132,6 +133,14 @@ export default {
   object-fit: cover;
   height: 20rem;
 }
+.page-header p {
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  bottom: 3rem;
+  color: white;
+  font-size: 1.2rem;
+}
 
 .topbar-search {
   display: flex;
@@ -164,7 +173,7 @@ export default {
 .courses {
   display: flex;
   flex-wrap: wrap;
-  width: 95%;  /* 90% width of container to center it  */
+  width: 95%;  /* 95% width of container to center it  */
   margin: 0 auto;
   row-gap: 8rem;
 }
