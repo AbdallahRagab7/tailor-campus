@@ -54,6 +54,7 @@ export default {
   transition: all 0.4s ease 0s;
   margin-bottom: 40px;
   border-bottom: 2px solid #ddd;
+ max-width: 756px;
 }
 .btn {
   background: transparent;
