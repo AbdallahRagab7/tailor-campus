@@ -67,7 +67,7 @@ export default {
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
   transition: all 0.4s ease;
-  margin: .2rem 1rem;
+  margin: .2rem 1.2rem;
   
 }
 .course-card:hover {

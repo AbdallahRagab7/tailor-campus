@@ -173,29 +173,32 @@ export default {
   color: grey;
 }
 .courses-container {
-  
+  margin: 0 auto;
+  width: 94%;
+
 }
 
-/* .courses {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 93%;
-  row-gap: 8rem;
-  margin : 0 auto ;
-} */
-
-
-/* .courses > :last-child {
-  margin-right: auto;
-} */
 .courses {
+  display: flex;
+  flex-wrap: wrap;
+   row-gap: 8rem;
+   justify-content: center;
+   justify-content: space-between;
+}
+
+/* 
+.courses > :last-child {
+  margin-right: auto;
+  align-self: start;
+}   */
+
+
+/* .courses {
   display: grid;
    grid-template-columns: 0fr 0fr 0fr;
    row-gap: 7rem;
-   /* width: 100%; */
    justify-content: center;
    margin: 0 auto;
   
-}
+} */
 </style>
