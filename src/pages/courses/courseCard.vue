@@ -62,6 +62,7 @@ export default {
 .course-card {
   /* margin: 80px auto; */
   width: 24rem;
+  /* width: 23rem; */
   border: 2px solid #e6e7ec;
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
@@ -82,6 +83,7 @@ export default {
 }
 .course-thumb {
   width: 350px;
+  /* width: 325px; */
   border-radius: 8px;
   margin: 0 auto;
   overflow: hidden; /* to make img take same border-radius */
@@ -139,7 +141,7 @@ export default {
   margin-bottom: 1.8rem;
   font-family: "Roboto";
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   transition: all 0.3s ease-in-out;
 }
 

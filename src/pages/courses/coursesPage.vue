@@ -13,7 +13,7 @@
     </form>
   </div>
 
-  <div class="courses-containerr">
+  <div class="courses-container">
     <section class="courses">
       <course-card
         v-for="course in courses"
@@ -43,7 +43,7 @@ export default {
         {
           courseId: "c1",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : Front End",
+          courseTitle: "Vue - The Complete Guide (incl. Router & Composition API)",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -52,9 +52,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c2",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : BackEnd",
+          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -63,9 +63,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c3",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Data Analysis",
+          courseTitle: "The Complete 2022 Flutter & Dart Development",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -74,9 +74,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c4",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : Front End",
+          courseTitle: "The Web Developer Bootcamp 2023",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -85,9 +85,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c5",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : Front End",
+          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -96,9 +96,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c6",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : Front End",
+          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -107,9 +107,9 @@ export default {
           reviews: 74,
         },
         {
-          courseId: "c1",
+          courseId: "c7",
           createdBy: "Abdallah Ragab",
-          courseTitle: "Web Development : Front End",
+          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
           studentsNo: 74,
           duration: "6.5h",
@@ -117,6 +117,8 @@ export default {
           rating: 3,
           reviews: 74,
         },
+         
+        
       ],
     };
   },
@@ -170,11 +172,30 @@ export default {
   height: 19px;
   color: grey;
 }
-.courses {
+.courses-container {
+  
+}
+
+/* .courses {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  width: 95%;  /* 95% width of container to center it  */
-  margin: 0 auto;
+  width: 93%;
   row-gap: 8rem;
+  margin : 0 auto ;
+} */
+
+
+/* .courses > :last-child {
+  margin-right: auto;
+} */
+.courses {
+  display: grid;
+   grid-template-columns: 0fr 0fr 0fr;
+   row-gap: 7rem;
+   /* width: 100%; */
+   justify-content: center;
+   margin: 0 auto;
+  
 }
 </style>
