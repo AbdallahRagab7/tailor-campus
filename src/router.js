@@ -13,7 +13,7 @@ const router = createRouter({
         {path: '/login' , component:LoginPage},
         {path: '/register' , component:RegisterPage} ,
         {path:'/courses' , component:coursesPage} ,
-        { name: 'course', path: '/course/:courseId', component:coursePage },
+        { name: 'course', path: '/course/:courseId', component:coursePage , props:true },
         
     ]
 

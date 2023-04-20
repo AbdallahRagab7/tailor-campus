@@ -183,11 +183,11 @@ export default {
   flex-wrap: wrap;
    row-gap: 8rem;
    justify-content: center;
-   justify-content: space-between;
+   /* justify-content: space-between; */
 }
 
-/* 
-.courses > :last-child {
+
+/* .courses > :last-child {
   margin-right: auto;
   align-self: start;
 }   */

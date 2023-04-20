@@ -50,6 +50,9 @@ a:link {
   text-decoration: none;
 
 }
+ul {
+  padding-left: 0;
+}
 
 
 </style>
