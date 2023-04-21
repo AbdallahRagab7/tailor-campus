@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import heroSection from './heroSection.vue'
+import heroSection from '../../components/homeComponents/heroSection.vue'
 export default {
     components: {
         heroSection

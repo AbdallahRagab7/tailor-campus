@@ -11,9 +11,9 @@
   </section>
 </template>
 <script>
-import NavTab from "./NavTab.vue";
-import courseHeader from "./courseHeader.vue";
-import courseSidebar from "./courseSidebar.vue";
+import NavTab from "../../components/courseComponents/navTabComponents/NavTab.vue";
+import courseHeader from "../../components/courseComponents/courseHeader.vue";
+import courseSidebar from "../../components/courseComponents/courseSidebar.vue";
 
 export default {
   components: {
@@ -37,3 +37,4 @@ export default {
 }
 
 </style>
+../../components/courseComponent/navTabComponents/NavTab.vue

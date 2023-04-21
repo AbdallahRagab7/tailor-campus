@@ -16,10 +16,10 @@
   </keep-alive>
 </template>
 <script>
-import Overview from "./navTabComponents/Overview.vue";
-import Instructor from "./navTabComponents/Instructor.vue";
-import Curriculam from "./navTabComponents/Curriculam.vue";
-import Reviews from "./navTabComponents/Reviews.vue";
+import Overview from "./Overview.vue";
+import Instructor from "./Instructor.vue";
+import Curriculam from "./Curriculam.vue";
+import Reviews from "./Reviews.vue";
 export default {
   components: { Overview, Instructor, Curriculam, Reviews },
   data() {

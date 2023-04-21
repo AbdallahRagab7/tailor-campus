@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import courseCard from "./courseCard.vue";
+import courseCard from "../../components/coursesStoreComponents/courseCard.vue";
 export default {
   components: {
     courseCard,
