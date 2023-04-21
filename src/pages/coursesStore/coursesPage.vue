@@ -175,6 +175,7 @@ export default {
 .courses-container {
   margin: 0 auto;
   width: 94%;
+  margin-bottom: 5rem;
 
 }
 

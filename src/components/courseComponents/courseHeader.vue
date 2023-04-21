@@ -2,20 +2,17 @@
     <section>
          <div class="course-header">
       <h2 class="course-title">
-        Mastering Design With Elementor And Elementor Pro
+       Vue - The Complete Guide (incl. Router & Composition API)
       </h2>
       <p class="summary">
-        Grursus mal suada faci lisis Lorem ipsum dolarorit more ametion
-        consectetur elit. Vesti at bulum nec odio. Dacere agemusque constantius
-        concessis elit videmusne quia stoici constructio dissimillimas audiunt
-        homerus commendationes
+       Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!
       </p>
 
       <div class="course-header-meta">
         <ul class="list-info">
           <li>
             <div class="course-author">
-              <img src="../../assets/course-autor.png" alt="#" />Madge Alvarez
+              <img src="../../assets/course-autor.png" alt="#" />Abdallah Ragab
             </div>
           </li>
 
