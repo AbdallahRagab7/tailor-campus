@@ -26,6 +26,7 @@
         :lessons="course.lessons"
         :rating="course.rating"
         :reviews="course.reviews"
+        :courseId="course.courseId"
       ></course-card>
     </section>
   </div>

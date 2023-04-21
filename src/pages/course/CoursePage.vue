@@ -37,4 +37,3 @@ export default {
 }
 
 </style>
-../../components/courseComponent/navTabComponents/NavTab.vue

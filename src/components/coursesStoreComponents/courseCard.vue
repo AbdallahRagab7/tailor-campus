@@ -36,15 +36,20 @@
         <i class="fa fa-star"></i>
         <span>{{ rating }} ({{ reviews }} reviews)</span>
       </div>
-      <button class="enroll-btn">
+      
+      <!-- <button class="enroll-btn">
         Enroll Now <i class="fa fa-long-arrow-right"></i>
-      </button>
+      </button> -->
+      
+      <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link>
+
+      
     </div>
   </div>
 </template>
 
 <script>
-export default {
+export default { 
   props: [
     "createdBy",
     "courseTitle",
@@ -52,8 +57,13 @@ export default {
     "studentsNo",
     "duration",
     "lessons",
-    "rating","reviews"
+    "rating","reviews" ,"courseId"
   ],
+  computed : {
+    courseLink (){
+      return {name: 'course' , params : {courseId :this.courseId }}
+    }
+  }
 
 };
 </script>
@@ -158,14 +168,13 @@ export default {
   background: transparent;
   color: var(--theme-primary-color);
   border-color: var(--theme-primary-color);
-  border-radius: 15px;
-  padding: .3rem .35rem;
+  border-radius: 10px;
+  padding: 8px 13px;
   font-weight: 600;
   transition: all 0.6s ease;
   border: 2px solid;
   font-size: 1rem;
   margin-top: 1rem;
-  /* text-align: center; */
 }
 
 .enroll-btn:hover {
