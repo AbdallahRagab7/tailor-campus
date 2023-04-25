@@ -1,17 +1,19 @@
 <template>
-    <section>
-         <div class="course-header">
+  <section>
+    <div class="course-header">
       <h2 class="course-title">
-       {{courseHeader.courseTitle}}
+        {{ courseHeader.courseTitle }}
       </h2>
       <p class="summary">
- {{courseHeader.summary}}      </p>
+        {{ courseHeader.courseSummary }}
+      </p>
 
       <div class="course-header-meta">
         <ul class="list-info">
           <li>
             <div class="course-author">
-              <img src="../../assets/course-autor.png" alt="#" /> {{courseHeader.Ins}}
+              <img src="../../assets/course-autor.png" alt="#" />
+              {{ courseHeader.Ins }}
             </div>
           </li>
 
@@ -22,33 +24,40 @@
               <i class="fa fa-star checked"></i>
               <i class="fa fa-star checked"></i>
               <i class="fa fa-star"></i>
-              <span> {{courseHeader.rating}} ( {{courseHeader.reviews}} reviews)</span>
+              <span>
+                {{ courseHeader.rating }} (
+                {{ courseHeader.reviews }} reviews)</span
+              >
             </div>
           </li>
-          <li><i class="fa fa-user me-2"></i>{{courseHeader.enrolledStudents}} enrolled students</li>
+          <li>
+            <i class="fa fa-user me-2"></i
+            >{{ courseHeader.enrolledStudents }} enrolled students
+          </li>
         </ul>
       </div>
     </div>
-    </section>
+  </section>
 </template>
 
 <script>
 export default {
-  data (){
+  data() {
     return {
-      courseHeader : {
-        courseTitle : ' Vue - The Complete Guide (incl. Router & Composition API)',
-        summary : 'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!',
-        Instructor : "Abdallah Ragab"  ,
-        reviews : 74 ,
-        rating : 4 ,
-        enrolledStudents :11,
-        instructorImage : '3awz Link img el instructor'
-
-      }
-    }
-  }
-}
+      courseHeader: {
+        courseTitle:
+          " Vue - The Complete Guide (incl. Router & Composition API)",
+        courseSummary:
+          "Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!",
+        Instructor: "Abdallah Ragab",
+        reviews: 74,
+        rating: 4,
+        enrolledStudents: 11,
+        instructorImage: "3awz Link img el instructor",
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -57,7 +66,7 @@ export default {
   background: #f8f8f8;
   padding: 1.7rem 1.3rem;
   color: var(--theme-text-color);
-  border-radius: 3%;  
+  border-radius: 3%;
   margin-bottom: 2rem;
 }
 .course-title {
@@ -96,5 +105,4 @@ export default {
 .checked {
   color: orange;
 }
-
 </style>

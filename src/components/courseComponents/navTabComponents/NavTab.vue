@@ -3,8 +3,8 @@
     <button @click="setActivePage('Overview')" :class="Overview">
       Overview
     </button>
-    <button @click="setActivePage('Curriculam')" :class="Curriculam">
-      Curriculam
+    <button @click="setActivePage('courseContent')" :class="courseContent">
+      Course Content
     </button>
     <button @click="setActivePage('Instructor')" :class="Instructor">
       Instructor
@@ -18,10 +18,10 @@
 <script>
 import Overview from "./Overview.vue";
 import Instructor from "./Instructor.vue";
-import Curriculam from "./Curriculam.vue";
+import courseContent from "./courseContent.vue";
 // import Reviews from "./Reviews.vue";
 export default {
-  components: { Overview, Instructor, Curriculam,  },
+  components: { Overview, Instructor, courseContent,  },
   data() {
     return {
       selectedTab: "Overview",
@@ -39,8 +39,8 @@ export default {
     Instructor() {
       return this.selectedTab === "Instructor" ? "btn active" : "btn";
     },
-    Curriculam() {
-      return this.selectedTab === "Curriculam" ? "btn active" : "btn";
+    courseContent() {
+      return this.selectedTab === "courseContent" ? "btn active" : "btn";
     },
     Reviews() {
       return this.selectedTab === "Reviews" ? "btn active" : "btn";
