@@ -1,19 +1,18 @@
 <template>
   <section class="curriculam">
     <div class="sections">
-      <!-- section-lessons v-for -->
-      <div v-for="module in modules" :key="module.sectionName" class="module">
+      <div v-for="(module , index) in modules" :key="module.sectionName" class="module">
         <div class="section-name">
-          <h5>{{ module.sectionName }}</h5>
-          <button class="chervon-btn" @click="toggleShowContent">
-            <span v-if="!showContent"
+          <h5>Section {{ (index +1 ) + ': ' + module.sectionName   }}</h5>
+          <button class="chervon-btn" @click="toggleShowLessons(index)">
+            <span v-if="!module.showLessons"
               ><i class="fa-solid fa-chevron-down"></i
             ></span>
             <span v-else><i class="fa-solid fa-chevron-up"></i></span>
           </button>
         </div>
 
-        <ul class="lessons" v-if="showContent">
+        <ul class="lessons" v-if="module.showLessons">
           <li class="lesson" v-for="lesson in module.lessons" :key="lesson">
             <a href="#" class="lesson-link">
               <i class="fa-regular fa-circle-play"></i>
@@ -28,7 +27,6 @@
     </div>
   </section>
 
-  <!-- v-for="duration in module.lessonsDurations" :key="duration"> {{duration}} -->
 </template>
 
 <script>
@@ -38,36 +36,40 @@ export default {
       showContent: false,
 
       modules: [ /*array of objects each object represnet one section */ 
-
       /*section 1 */
         { 
-          sectionName: "1.Introducion to Front End",
+          sectionName: "Getting Started",
 
-        //   showLessons : false ,
+          showLessons : false ,
           
           lessons: [ /*array of objects each object represent one lesson*/
             {
               lessonName:
-                " Basic Undertstanding of html ",
+                " What is Vue.js ? ",
               lessonsDuration: "4mins",
             },
             {
               lessonName:
-                " Basic UnderStanding of Css ",
+                " Different way of using Vue ",
               lessonsDuration: "6mins",
             },
             {
               lessonName:
-                " BasicUnderStanding of JavaScript ",
+                " Exploring Vue Alternatives ",
               lessonsDuration: "8mins",
+            },
+            {
+              lessonName:
+                " Building A first App with vue ",
+              lessonsDuration: "6mins",
             },
           ],
         },
         /*Section 2 */
         { 
-          sectionName: "2.Introduction to vue js",
+          sectionName: "Basic & Core Concepts -DOM Interaction with Vue",
 
-        //   showLessons : false ,
+          showLessons : false ,
 
           lessons: [ /*array of objects each object represent one lesson*/
             {
@@ -88,11 +90,11 @@ export default {
           ],
         },
 
-        /*section*/
+        /*section 3*/
         { 
-          sectionName: "3.Introducion to Components",
+          sectionName: "Introducion to Components",
 
-        //   showLessons : false ,
+          showLessons : false ,
 
           lessons: [ /*array of objects each object represent one lesson*/
             {
@@ -112,6 +114,60 @@ export default {
             },
           ],
         },
+        
+        /*section 4*/
+        { 
+          sectionName: "Components Communication",
+
+          showLessons : false ,
+
+          lessons: [ /*array of objects each object represent one lesson*/
+            {
+              lessonName:
+                " . Introducing Props (Parent => Child Communication) ",
+              lessonsDuration: "3mins",
+            },
+            {
+              lessonName:
+                " Validating Props ",
+              lessonsDuration: "10mins",
+            },
+            {
+              lessonName:
+                "  Emitting Custom Events ",
+              lessonsDuration: "8mins",
+            },
+          ],
+        },
+        /*section 5*/
+        { 
+          sectionName: "Sending Http Request",
+
+          showLessons : false ,
+
+          lessons: [ /*array of objects each object represent one lesson*/
+            {
+              lessonName:
+                " How to send Http Requests",
+              lessonsDuration: "5mins",
+            },
+            {
+              lessonName:
+                " Sending GET Request ",
+              lessonsDuration: "7mins",
+            },
+            {
+              lessonName:
+                "  Sending POST Request ",
+              lessonsDuration: "9mins",
+            },
+            {
+              lessonName:
+                "  Loading Data ",
+              lessonsDuration: "4mins",
+            },
+          ],
+        },
 
 
       ],
@@ -119,9 +175,9 @@ export default {
   },
 
   methods: {
-    toggleShowContent() {
-      this.showContent = !this.showContent;
-    },
+    toggleShowLessons (index) {
+        this.modules[index].showLessons = !this.modules[index].showLessons;
+    }
   },
 };
 </script>
@@ -136,7 +192,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(245 245 245);
-  padding: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .section-name {
@@ -144,12 +201,13 @@ export default {
 }
 
 .section-name h5 {
-  font-family: sans-serif;
-  color: rgb(43, 38, 38);
-  font-weight: 600;
+  font-family :'Nunito Sans', sans-serif;
+  color: rgb(53, 50, 50);
+  /* color: rgb(0, 0, 0); */
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 1.1rem;
   line-height: 1.5;
+  font-weight: 700;
 }
 
 .chervon-btn {

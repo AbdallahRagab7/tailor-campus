@@ -66,6 +66,7 @@
   box-shadow: 0 30px 50px 0 rgba(51, 51, 51, 0.08);
   padding: 30px 35px 30px;
   border: 1px solid rgba(1, 90, 189, 0.1);
+  max-height: 900px;
 }
 
 .course-thumb {
