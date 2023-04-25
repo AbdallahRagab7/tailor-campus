@@ -13,7 +13,7 @@
       <p class="instructor">
         Created By : <a href="#"> {{ createdBy }}</a>
       </p>
-      <h3 class="course-title">{{ courseTitle }}</h3>
+      <h3 class="course-title">  <router-link :to="courseLink">{{ courseTitle }} </router-link></h3>
     </div>
 
     <div class="course-meta">
@@ -37,11 +37,11 @@
         <span>{{ rating }} ({{ reviews }} reviews)</span>
       </div>
       
-      <!-- <button class="enroll-btn">
-        Enroll Now <i class="fa fa-long-arrow-right"></i>
-      </button> -->
+  
       
       <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link>
+
+    
 
       
     </div>
@@ -143,9 +143,10 @@ export default {
   font-family: var(--theme-secondary-font);
   color: var(--theme-text-color);
   font-size: 1rem;
+  margin-top: .9rem;
 }
 
-.course-title {
+.course-title a {
   color: rgb(20, 19, 59);
   cursor: pointer;
   margin-bottom: 1.8rem;
@@ -155,7 +156,7 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-.course-title:hover {
+.course-title a:hover {
   color: var(--theme-primary-color);
 }
 .enroll {

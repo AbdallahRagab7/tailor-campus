@@ -31,6 +31,7 @@ components : {
   --theme-border-color: #ddd;
 }
 
+
 * {
   box-sizing: border-box;
   margin: 0;
