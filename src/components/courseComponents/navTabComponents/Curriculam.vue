@@ -2,9 +2,9 @@
   <section class="curriculam">
     <div class="sections">
       <!-- section-lessons v-for -->
-      <div class="module">
+      <div v-for="module in modules" :key="module.sectionName" class="module">
         <div class="section-name">
-          <h5>1. Introduction to vuejs</h5>
+          <h5>{{ module.sectionName }}</h5>
           <button class="chervon-btn" @click="toggleShowContent">
             <span v-if="!showContent"
               ><i class="fa-solid fa-chevron-down"></i
@@ -14,38 +14,12 @@
         </div>
 
         <ul class="lessons" v-if="showContent">
-          <li class="lesson">
+          <li class="lesson" v-for="lesson in module.lessons" :key="lesson">
             <a href="#" class="lesson-link">
               <i class="fa-regular fa-circle-play"></i>
-              <span class="lesson-name"
-                >1. Basic understanding of data management concepts</span
-              >
+              <span class="lesson-name">{{ lesson.lessonName }}</span>
               <div class="lesson-meta">
-                <span class="lesson-duration"> 10 mins </span>
-              </div>
-            </a>
-          </li>
-
-          <li class="lesson">
-            <a href="#" class="lesson-link">
-              <i class="fa-regular fa-circle-play"></i>
-              <span class="lesson-name"
-                >2. Basic understanding of data management concepts</span
-              >
-              <div class="lesson-meta">
-                <span class="lesson-duration"> 10 mins </span>
-              </div>
-            </a>
-          </li>
-
-          <li class="lesson">
-            <a href="#" class="lesson-link">
-              <i class="fa-regular fa-circle-play"></i>
-              <span class="lesson-name"
-                >3. Basic understanding of data management concepts</span
-              >
-              <div class="lesson-meta">
-                <span class="lesson-duration"> 10 mins </span>
+                <span class="lesson-duration">{{lesson.lessonsDuration}} </span>
               </div>
             </a>
           </li>
@@ -53,6 +27,8 @@
       </div>
     </div>
   </section>
+
+  <!-- v-for="duration in module.lessonsDurations" :key="duration"> {{duration}} -->
 </template>
 
 <script>
@@ -61,34 +37,83 @@ export default {
     return {
       showContent: false,
 
-      modules: [
-        {
-          sectionName: "Introduction to front end",
-          lessons: [
-            "Basic Undertstanding of html",
-            "Basic UnderStanding of Css",
-            "BasicUnderStanding of JavaScript",
+      modules: [ /*array of objects each object represnet one section */ 
+
+      /*section 1 */
+        { 
+          sectionName: "1.Introducion to Front End",
+
+        //   showLessons : false ,
+          
+          lessons: [ /*array of objects each object represent one lesson*/
+            {
+              lessonName:
+                " Basic Undertstanding of html ",
+              lessonsDuration: "4mins",
+            },
+            {
+              lessonName:
+                " Basic UnderStanding of Css ",
+              lessonsDuration: "6mins",
+            },
+            {
+              lessonName:
+                " BasicUnderStanding of JavaScript ",
+              lessonsDuration: "8mins",
+            },
+          ],
+        },
+        /*Section 2 */
+        { 
+          sectionName: "2.Introduction to vue js",
+
+        //   showLessons : false ,
+
+          lessons: [ /*array of objects each object represent one lesson*/
+            {
+              lessonName:
+                " Interpolation and Data Binding ",
+              lessonsDuration: "3mins",
+            },
+            {
+              lessonName:
+                "Binding Attributes with the v-bind Directive ",
+              lessonsDuration: "9mins",
+            },
+            {
+              lessonName:
+                " Working with Data inside of a Vue App ",
+              lessonsDuration: "10mins",
+            },
           ],
         },
 
-        {
-          sectionName: "Introduction to vue js",
-          lessons: [
-            "Interpolation and Data Binding ",
-            "Binding Attributes with the v-bind Directive",
-            "Working with Data inside of a Vue App",
-          ],
-        },
-        {
-          sectionName: "Introducing Components",
-          lessons: [
-            " The Why: Building Complex User Interfaces With Components ",
-            " Outputting Raw HTML Content with v-html",
-            "Creating a basic Vue App",
+        /*section*/
+        { 
+          sectionName: "3.Introducion to Components",
+
+        //   showLessons : false ,
+
+          lessons: [ /*array of objects each object represent one lesson*/
+            {
+              lessonName:
+                " Basic Undertstanding of component ",
+              lessonsDuration: "5mins",
+            },
+            {
+              lessonName:
+                " Creating A basic Vue App ",
+              lessonsDuration: "7mins",
+            },
+            {
+              lessonName:
+                "  Outputting Raw HTML Content With V-Html ",
+              lessonsDuration: "12mins",
+            },
           ],
         },
 
-        
+
       ],
     };
   },
