@@ -6,24 +6,41 @@
 
     <div class="instructor-content">
       <h4 class="instructor-name">
-        <router-link to="/course/c1">Al Ahly</router-link>
+        <router-link to="/course/c1">{{instructorDetails.instructorName}}</router-link>
       </h4>
 
       <p class="about">
-            Al Ahly SC is best Club in the world ,Club of the century 
-            Al Ahly SC is best Club in the world ,Club of the century 
+           {{instructorDetails.aboutInstructor}}
       </p>
 
       <div class="intructor-social-links">
         <span>Follow Me: </span>
-        <a href="#"> <i class="fab fa-facebook-f"></i></a>
-        <a href="#"> <i class="fab fa-twitter"></i></a>
-        <a href="#"> <i class="fab fa-linkedin-in"></i></a>
-        <a href="#"> <i class="fab fa-youtube"></i></a>
+        <a :href="instructorDetails.facebookLink"> <i class="fab fa-facebook-f"></i></a>
+        <!-- <a href="#"> <i class="fab fa-twitter"></i></a> -->
+        <a :href="instructorDetails.linkedinLink"> <i class="fab fa-linkedin-in"></i></a>
+        <a :href="instructorDetails.youtubeLink"> <i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      instructorDetails : {
+        instructorName : 'Al Ahly' , 
+        aboutInstructor : 'Al Ahly SC is best Club in the world ,Club of the century  Al Ahly SC is best Club in the world ,Club of the century ',
+        instructorImage : '3awz link img el instructor',
+        facebookLink : '#' ,
+        linkedinLink : '#' ,
+        youtubeLink : '#'
+
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .instructor-box {

@@ -51,6 +51,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage : '3awz link elcourse image'
         },
         {
           courseId: "c2",
@@ -62,6 +63,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage : '3awz link elcourse image'
         },
         {
           courseId: "c3",
@@ -73,6 +75,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage : '3awz link elcourse image'
         },
         {
           courseId: "c4",
@@ -84,6 +87,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage : '3awz link elcourse image'
         },
         {
           courseId: "c5",
@@ -95,6 +99,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage : '3awz link elcourse image'
         },
         {
           courseId: "c6",

@@ -13,7 +13,9 @@
       <p class="instructor">
         Created By : <a href="#"> {{ createdBy }}</a>
       </p>
-      <h3 class="course-title">  <router-link :to="courseLink">{{ courseTitle }} </router-link></h3>
+      <h3 class="course-title">
+        <router-link :to="courseLink">{{ courseTitle }} </router-link>
+      </h3>
     </div>
 
     <div class="course-meta">
@@ -36,20 +38,14 @@
         <i class="fa fa-star"></i>
         <span>{{ rating }} ({{ reviews }} reviews)</span>
       </div>
-      
-  
-      
+
       <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link>
-
-    
-
-      
     </div>
   </div>
 </template>
 
 <script>
-export default { 
+export default {
   props: [
     "createdBy",
     "courseTitle",
@@ -57,14 +53,15 @@ export default {
     "studentsNo",
     "duration",
     "lessons",
-    "rating","reviews" ,"courseId"
+    "rating",
+    "reviews",
+    "courseId",
   ],
-  computed : {
-    courseLink (){
-      return {name: 'course' , params : {courseId :this.courseId }}
-    }
-  }
-
+  computed: {
+    courseLink() {
+      return { name: "course", params: { courseId: this.courseId } };
+    },
+  },
 };
 </script>
 
@@ -77,8 +74,7 @@ export default {
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
   transition: all 0.4s ease;
-  margin: .2rem 1.2rem;
-  
+  margin: 0.2rem 1.2rem;
 }
 .course-card:hover {
   border-color: transparent;
@@ -143,7 +139,7 @@ export default {
   font-family: var(--theme-secondary-font);
   color: var(--theme-text-color);
   font-size: 1rem;
-  margin-top: .9rem;
+  margin-top: 0.9rem;
 }
 
 .course-title a {
@@ -188,7 +184,7 @@ export default {
   font-weight: bold;
   position: relative;
   top: 0.5rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .checked {
   color: orange;

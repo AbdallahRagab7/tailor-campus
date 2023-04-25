@@ -1,9 +1,13 @@
 <template>
   <section class="curriculam">
     <div class="sections">
-      <div v-for="(module , index) in modules" :key="module.sectionName" class="module">
+      <div
+        v-for="(module, index) in modules"
+        :key="module.sectionName"
+        class="module"
+      >
         <div class="section-name">
-          <h5>Section {{ (index +1 ) + ': ' + module.sectionName   }}</h5>
+          <h5>Section {{ (index + 1) + ": " + module.sectionName }}</h5>
           <button class="chervon-btn" @click="toggleShowLessons(index)">
             <span v-if="!module.showLessons"
               ><i class="fa-solid fa-chevron-down"></i
@@ -18,7 +22,9 @@
               <i class="fa-regular fa-circle-play"></i>
               <span class="lesson-name">{{ lesson.lessonName }}</span>
               <div class="lesson-meta">
-                <span class="lesson-duration">{{lesson.lessonsDuration}} </span>
+                <span class="lesson-duration"
+                  >{{ lesson.lessonsDuration }}
+                </span>
               </div>
             </a>
           </li>
@@ -26,158 +32,143 @@
       </div>
     </div>
   </section>
-
 </template>
 
 <script>
 export default {
   data() {
     return {
-      showContent: false,
-
-      modules: [ /*array of objects each object represnet one section */ 
-      /*section 1 */
-        { 
+      modules: [
+        /*array of objects each object represnet one section */
+        /*section 1 */
+        {
           sectionName: "Getting Started",
 
-          showLessons : false ,
-          
-          lessons: [ /*array of objects each object represent one lesson*/
+          showLessons: false,
+
+          lessons: [
+            /*array of objects each object represent one lesson*/
             {
-              lessonName:
-                " What is Vue.js ? ",
+              lessonName: " What is Vue.js ? ",
               lessonsDuration: "4mins",
             },
             {
-              lessonName:
-                " Different way of using Vue ",
+              lessonName: " Different way of using Vue ",
               lessonsDuration: "6mins",
             },
             {
-              lessonName:
-                " Exploring Vue Alternatives ",
+              lessonName: " Exploring Vue Alternatives ",
               lessonsDuration: "8mins",
             },
             {
-              lessonName:
-                " Building A first App with vue ",
+              lessonName: " Building A first App with vue ",
               lessonsDuration: "6mins",
             },
           ],
         },
         /*Section 2 */
-        { 
+        {
           sectionName: "Basic & Core Concepts -DOM Interaction with Vue",
 
-          showLessons : false ,
+          showLessons: false,
 
-          lessons: [ /*array of objects each object represent one lesson*/
+          lessons: [
+            /*array of objects each object represent one lesson*/
             {
-              lessonName:
-                " Interpolation and Data Binding ",
+              lessonName: " Interpolation and Data Binding ",
               lessonsDuration: "3mins",
             },
             {
-              lessonName:
-                "Binding Attributes with the v-bind Directive ",
+              lessonName: "Binding Attributes with the v-bind Directive ",
               lessonsDuration: "9mins",
             },
             {
-              lessonName:
-                " Working with Data inside of a Vue App ",
+              lessonName: " Working with Data inside of a Vue App ",
               lessonsDuration: "10mins",
             },
           ],
         },
 
         /*section 3*/
-        { 
+        {
           sectionName: "Introducion to Components",
 
-          showLessons : false ,
+          showLessons: false,
 
-          lessons: [ /*array of objects each object represent one lesson*/
+          lessons: [
+            /*array of objects each object represent one lesson*/
             {
-              lessonName:
-                " Basic Undertstanding of component ",
+              lessonName: " Basic Undertstanding of component ",
               lessonsDuration: "5mins",
             },
             {
-              lessonName:
-                " Creating A basic Vue App ",
+              lessonName: " Creating A basic Vue App ",
               lessonsDuration: "7mins",
             },
             {
-              lessonName:
-                "  Outputting Raw HTML Content With V-Html ",
+              lessonName: "  Outputting Raw HTML Content With V-Html ",
               lessonsDuration: "12mins",
             },
           ],
         },
-        
+
         /*section 4*/
-        { 
+        {
           sectionName: "Components Communication",
 
-          showLessons : false ,
+          showLessons: false,
 
-          lessons: [ /*array of objects each object represent one lesson*/
+          lessons: [
+            /*array of objects each object represent one lesson*/
             {
               lessonName:
                 " . Introducing Props (Parent => Child Communication) ",
               lessonsDuration: "3mins",
             },
             {
-              lessonName:
-                " Validating Props ",
+              lessonName: " Validating Props ",
               lessonsDuration: "10mins",
             },
             {
-              lessonName:
-                "  Emitting Custom Events ",
+              lessonName: "  Emitting Custom Events ",
               lessonsDuration: "8mins",
             },
           ],
         },
         /*section 5*/
-        { 
+        {
           sectionName: "Sending Http Request",
 
-          showLessons : false ,
+          showLessons: false,
 
-          lessons: [ /*array of objects each object represent one lesson*/
+          lessons: [
+            /*array of objects each object represent one lesson*/
             {
-              lessonName:
-                " How to send Http Requests",
+              lessonName: " How to send Http Requests",
               lessonsDuration: "5mins",
             },
             {
-              lessonName:
-                " Sending GET Request ",
+              lessonName: " Sending GET Request ",
               lessonsDuration: "7mins",
             },
             {
-              lessonName:
-                "  Sending POST Request ",
+              lessonName: "  Sending POST Request ",
               lessonsDuration: "9mins",
             },
             {
-              lessonName:
-                "  Loading Data ",
+              lessonName: "  Loading Data ",
               lessonsDuration: "4mins",
             },
           ],
         },
-
-
       ],
     };
   },
 
   methods: {
-    toggleShowLessons (index) {
-        this.modules[index].showLessons = !this.modules[index].showLessons;
-    }
+    toggleShowLessons(index) {
+      this.modules[index].showLessons = !this.modules[index].showLessons;
+    },
   },
 };
 </script>
@@ -201,7 +192,7 @@ export default {
 }
 
 .section-name h5 {
-  font-family :'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   color: rgb(53, 50, 50);
   /* color: rgb(0, 0, 0); */
   text-transform: capitalize;
@@ -225,7 +216,7 @@ export default {
   width: 100%;
   line-height: 1.5;
   transition: all 0.4s ease 0s;
-  padding: 10px 40px;
+  padding: .625rem 2.5rem;
   color: #7a7a7a;
   text-transform: capitalize;
   margin-bottom: 1rem;
@@ -241,7 +232,7 @@ export default {
 .lesson-meta {
   display: table-cell;
   /* white-space: nowrap; */
-  padding: 10px 0;
+  padding: 0.625rem 0;
   text-align: right;
 }
 

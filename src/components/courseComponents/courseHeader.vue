@@ -2,17 +2,16 @@
     <section>
          <div class="course-header">
       <h2 class="course-title">
-       Vue - The Complete Guide (incl. Router & Composition API)
+       {{courseHeader.courseTitle}}
       </h2>
       <p class="summary">
-       Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!
-      </p>
+ {{courseHeader.summary}}      </p>
 
       <div class="course-header-meta">
         <ul class="list-info">
           <li>
             <div class="course-author">
-              <img src="../../assets/course-autor.png" alt="#" />Abdallah Ragab
+              <img src="../../assets/course-autor.png" alt="#" /> {{courseHeader.Ins}}
             </div>
           </li>
 
@@ -23,15 +22,34 @@
               <i class="fa fa-star checked"></i>
               <i class="fa fa-star checked"></i>
               <i class="fa fa-star"></i>
-              <span>4 (74 reviews)</span>
+              <span> {{courseHeader.rating}} ( {{courseHeader.reviews}} reviews)</span>
             </div>
           </li>
-          <li><i class="fa fa-user me-2"></i>11 enrolled students</li>
+          <li><i class="fa fa-user me-2"></i>{{courseHeader.enrolledStudents}} enrolled students</li>
         </ul>
       </div>
     </div>
     </section>
 </template>
+
+<script>
+export default {
+  data (){
+    return {
+      courseHeader : {
+        courseTitle : ' Vue - The Complete Guide (incl. Router & Composition API)',
+        summary : 'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!',
+        Instructor : "Abdallah Ragab"  ,
+        reviews : 74 ,
+        rating : 4 ,
+        enrolledStudents :11,
+        instructorImage : '3awz Link img el instructor'
+
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .course-header {

@@ -9,7 +9,7 @@
     <button @click="setActivePage('Instructor')" :class="Instructor">
       Instructor
     </button>
-    <button @click="setActivePage('Reviews')" :class="Reviews">Reviews</button>
+    <!-- <button @click="setActivePage('Reviews')" :class="Reviews">Reviews</button> -->
   </div>
   <keep-alive>
     <component :is="selectedTab"></component>
@@ -19,9 +19,9 @@
 import Overview from "./Overview.vue";
 import Instructor from "./Instructor.vue";
 import Curriculam from "./Curriculam.vue";
-import Reviews from "./Reviews.vue";
+// import Reviews from "./Reviews.vue";
 export default {
-  components: { Overview, Instructor, Curriculam, Reviews },
+  components: { Overview, Instructor, Curriculam,  },
   data() {
     return {
       selectedTab: "Overview",
