@@ -50,7 +50,7 @@
           <router-link to="/home" class="primary-menu">Home</router-link>
           <router-link to="/home" class="primary-menu">About</router-link>
           <router-link to="/courses" class="primary-menu">Courses</router-link>
-          <router-link to="/home" class="primary-menu">Blog</router-link>
+          <router-link to="/instructors" class="primary-menu">Instructors</router-link>
           <router-link to="/home" class="primary-menu">Contact</router-link>
         </div>
 
