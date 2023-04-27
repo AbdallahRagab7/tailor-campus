@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import homePage from './pages/home/homePage.vue'
 import LoginPage from './pages/auth/LoginPage.vue'
 import RegisterPage from './pages/auth/RegisterPage.vue'
-import coursesPage from './pages/coursesStore/coursesPage.vue'
-import coursePage from './pages/course/CoursePage.vue'
+import coursesPage from './pages/courses/coursesPage.vue'
+import coursePage from './pages/courseDetails/CoursePage.vue'
 import instructorsPage from './pages/instructors/instructorsPage.vue'
 import instructorDeatils from './pages/instructorDetails/instructorPage.vue'
 
