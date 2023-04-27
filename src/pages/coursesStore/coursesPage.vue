@@ -148,6 +148,8 @@ export default {
   bottom: 3rem;
   color: white;
   font-size: 1.2rem;
+  font-family: Verdana;
+  opacity: .7;
 }
 
 .topbar-search {

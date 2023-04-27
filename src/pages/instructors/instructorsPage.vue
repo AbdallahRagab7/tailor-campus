@@ -1,12 +1,12 @@
 <template>
   <div class="page-header">
-    <img src="../../assets/coursescover3.jpg" alt="" />
+    <img src="../../assets/instructorscover3.jpg" alt="" />
     <p>Tailor Campus</p>
   </div>
 
   <div class="topbar-search">
     <form method="get" action="#">
-      <input type="text" placeholder="Search our courses" class="search-bar" />
+      <input type="text" placeholder="Search our instructors" class="search-bar" />
       <button type="submit" class="search-btn">
         <i class="fa fa-search magnify"></i>
       </button>
@@ -113,6 +113,42 @@ export default {
           instructorImage : '3awz link elcourse image'
         },
         
+        {
+          instructorId: "i7",
+          instructorName: "Maximilian Schwarzmüller",
+          specialization: "Web developer",
+          facebookLink: '#',
+          linkedinLink: '#',
+          youtubeLink: '#',
+          studentsNo: 74,
+          coursesNo : 30 ,
+          instructorImage : '3awz link elcourse image'
+        },
+        
+        {
+          instructorId: "i8",
+          instructorName: "Maximilian Schwarzmüller",
+          specialization: "Web developer",
+          facebookLink: '#',
+          linkedinLink: '#',
+          youtubeLink: '#',
+          studentsNo: 74,
+          coursesNo : 30 ,
+          instructorImage : '3awz link elcourse image'
+        },
+        
+        {
+          instructorId: "i9",
+          instructorName: "Maximilian Schwarzmüller",
+          specialization: "Web developer",
+          facebookLink: '#',
+          linkedinLink: '#',
+          youtubeLink: '#',
+          studentsNo: 74,
+          coursesNo : 30 ,
+          instructorImage : '3awz link elcourse image'
+        },
+        
         
       ],
     };
@@ -137,6 +173,8 @@ export default {
   bottom: 3rem;
   color: white;
   font-size: 1.2rem;
+  font-family: Verdana;
+  opacity: .7;
 }
 
 .topbar-search {
