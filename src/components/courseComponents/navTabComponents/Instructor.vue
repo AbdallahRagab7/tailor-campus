@@ -16,7 +16,6 @@
       <div class="intructor-social-links">
         <span>Follow Me: </span>
         <a :href="instructorDetails.facebookLink"> <i class="fab fa-facebook-f"></i></a>
-        <!-- <a href="#"> <i class="fab fa-twitter"></i></a> -->
         <a :href="instructorDetails.linkedinLink"> <i class="fab fa-linkedin-in"></i></a>
         <a :href="instructorDetails.youtubeLink"> <i class="fab fa-youtube"></i></a>
       </div>
