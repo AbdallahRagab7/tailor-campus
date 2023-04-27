@@ -1,9 +1,9 @@
 <template>
   <div class="instructor-card">
     <div class="instructor-header">
-      <!-- <div class="instructor-thumb"> -->
+      <router-link :to="instructorLink">
       <img src="../../assets/instructor.jpg" alt="instructor-img" />
-      <!-- </div> -->
+      </router-link>
     </div>
 
     <div class="instructor-content">
@@ -14,7 +14,7 @@
       </span>
 
       <h3 class="instructor-title">
-        <router-link to="/instructors">{{ instructorName }} </router-link>
+        <router-link :to="instructorLink">{{ instructorName }} </router-link>
       </h3>
       <p class="specialization">
         {{ specialization }}
@@ -46,8 +46,8 @@ export default {
     // "instructorImage",
   ],
   computed: {
-    courseLink() {
-      return { name: "course", params: { courseId: this.courseId } };
+    instructorLink() {
+      return { name: "instructor", params: { instructorId: this.instructorId } };
     },
   },
 };
@@ -70,7 +70,7 @@ export default {
 }
 .instructor-header {
   margin-top: -60px;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   border-radius: 10px;
   overflow: hidden;
   height: 190px;

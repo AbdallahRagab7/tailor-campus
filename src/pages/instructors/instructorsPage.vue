@@ -13,8 +13,8 @@
     </form>
   </div>
 
-  <div class="courses-container">
-    <section class="courses">
+  <div class="instructors-container">
+    <section class="instructors">
       <instructor-card
       v-for="instructor in instructors" 
       :key="instructor.instructorId"
@@ -205,14 +205,14 @@ export default {
   height: 19px;
   color: grey;
 }
-.courses-container {
+.instructors-container {
   margin: 0 auto;
   width: 94%;
   margin-bottom: 5rem;
 
 }
 
-.courses {
+.instructors {
   display: flex;
   flex-wrap: wrap;
    row-gap: 8rem;

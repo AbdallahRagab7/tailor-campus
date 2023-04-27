@@ -5,6 +5,7 @@ import RegisterPage from './pages/auth/RegisterPage.vue'
 import coursesPage from './pages/coursesStore/coursesPage.vue'
 import coursePage from './pages/course/CoursePage.vue'
 import instructorsPage from './pages/instructors/instructorsPage.vue'
+import instructorDeatils from './pages/instructorDetails/instructorPage.vue'
 
 
 const router = createRouter({
@@ -16,6 +17,7 @@ const router = createRouter({
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
         { name: 'course', path: '/course/:courseId', component:coursePage , props:true },
+        {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils}
         
     ]
 
