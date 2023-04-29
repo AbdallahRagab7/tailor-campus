@@ -15,7 +15,7 @@
           </p>
 
           <div class="hero-btn">
-            <router-link to="/home" class="find-course-btn"
+            <router-link to="/courses" class="find-course-btn"
               >Find Courses</router-link
             >
             <router-link to="/home" class="get-started-btn"

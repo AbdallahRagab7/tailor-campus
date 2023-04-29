@@ -10,8 +10,7 @@
           <h5>Section {{ (index + 1) + ": " + module.sectionName }}</h5>
           <button class="chervon-btn" @click="toggleShowLessons(index)">
             <span v-if="!module.showLessons"
-              ><i class="fa-solid fa-chevron-down"></i
-            ></span>
+              ><i class="fa-solid fa-chevron-down"></i></span>
             <span v-else><i class="fa-solid fa-chevron-up"></i></span>
           </button>
         </div>
