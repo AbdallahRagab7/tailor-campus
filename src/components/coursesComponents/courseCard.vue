@@ -59,7 +59,8 @@ export default {
   ],
   computed: {
     courseLink() {
-      return { name: "course", params: { courseId: this.courseId } };
+      // return { name: "course", params: { courseId: this.courseId } };
+      return "/home"
     },
   },
 };

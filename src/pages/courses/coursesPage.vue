@@ -15,7 +15,7 @@
 
   <div class="courses-container">
     <section class="courses">
-      <course-card
+      <course-card 
         v-for="course in courses"
         :key="course.courseId"
         :createdBy="course.createdBy"
@@ -194,6 +194,7 @@ export default {
    justify-content: center;
    /* justify-content: space-between; */
 }
+
 
 
 /* .courses > :last-child {
