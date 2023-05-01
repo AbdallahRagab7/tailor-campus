@@ -15,7 +15,7 @@
 
   <div class="courses-container">
     <section class="courses">
-      <course-card 
+      <course-card  class="course-card"
         v-for="course in courses"
         :key="course.courseId"
         :createdBy="course.createdBy"
@@ -27,6 +27,7 @@
         :rating="course.rating"
         :reviews="course.reviews"
         :courseId="course.courseId"
+        :instructorId="course.instructorId"
       ></course-card>
     </section>
   </div>
@@ -43,7 +44,8 @@ export default {
       courses: [
         {
           courseId: "c1",
-          createdBy: "Abdallah Ragab",
+          instructorId: "i1",
+          createdBy: "Maximilian Schwarzmüller",
           courseTitle: "Vue - The Complete Guide (incl. Router & Composition API)",
           coursePrice: 120,
           studentsNo: 74,
@@ -55,6 +57,7 @@ export default {
         },
         {
           courseId: "c2",
+          instructorId: "i2",
           createdBy: "Abdallah Ragab",
           courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 120,
@@ -67,6 +70,7 @@ export default {
         },
         {
           courseId: "c3",
+          instructorId: "i3",
           createdBy: "Abdallah Ragab",
           courseTitle: "The Complete 2022 Flutter & Dart Development",
           coursePrice: 120,
@@ -79,6 +83,7 @@ export default {
         },
         {
           courseId: "c4",
+          instructorId: "i4",
           createdBy: "Abdallah Ragab",
           courseTitle: "The Web Developer Bootcamp 2023",
           coursePrice: 450,
@@ -91,6 +96,7 @@ export default {
         },
         {
           courseId: "c5",
+          instructorId: "i5",
           createdBy: "Abdallah Ragab",
           courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
@@ -103,6 +109,7 @@ export default {
         },
         {
           courseId: "c6",
+          instructorId: "i6",
           createdBy: "Abdallah Ragab",
           courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
@@ -114,6 +121,7 @@ export default {
         },
         {
           courseId: "c7",
+          instructorId: "i7",
           createdBy: "Abdallah Ragab",
           courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
@@ -195,6 +203,9 @@ export default {
    /* justify-content: space-between; */
 }
 
+.course-card {
+  margin: 0.2rem 1.2rem;
+}
 
 
 /* .courses > :last-child {
@@ -203,12 +214,12 @@ export default {
 }   */
 
 
-/* .courses {
+ /* .courses {
   display: grid;
    grid-template-columns: 0fr 0fr 0fr;
    row-gap: 7rem;
    justify-content: center;
    margin: 0 auto;
   
-} */
+}  */
 </style>

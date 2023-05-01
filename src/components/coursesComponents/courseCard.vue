@@ -11,7 +11,7 @@
         <i class="fa-solid fa-dollar-sign"></i> {{ coursePrice }}</span
       >
       <p class="instructor">
-        Created By : <a href="#"> {{ createdBy }}</a>
+        Created By : <router-link :to="instructorLink"> {{ createdBy }}</router-link>
       </p>
       <h3 class="course-title">
         <router-link :to="courseLink">{{ courseTitle }} </router-link>
@@ -56,26 +56,27 @@ export default {
     "rating",
     "reviews",
     "courseId",
+    "instructorId"
   ],
   computed: {
     courseLink() {
-      // return { name: "course", params: { courseId: this.courseId } };
-      return "/home"
+      return { name: "course", params: { courseId: this.courseId } };
     },
+    instructorLink (){
+      return {name : "instructor" , params : {instructorId: this.instructorId} }
+    }
   },
 };
 </script>
 
 <style scoped>
 .course-card {
-  /* margin: 80px auto; */
   width: 24rem;
-  /* width: 23rem; */
   border: 2px solid #e6e7ec;
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
   transition: all 0.4s ease;
-  margin: 0.2rem 1.2rem;
+  /* margin: 0.2rem 1.2rem; */
 }
 .course-card:hover {
   border-color: transparent;
@@ -124,7 +125,8 @@ export default {
 .instructor {
   font-family: var(--theme-secondary-font);
   color: var(--theme-text-color);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
 }
 .instructor a {
   font-family: "Jost";
@@ -145,8 +147,6 @@ export default {
 
 .course-title a {
   color: rgb(20, 19, 59);
-  cursor: pointer;
-  margin-bottom: 1.8rem;
   font-family: "Roboto";
   font-weight: 700;
   font-size: 1.35rem;
