@@ -133,4 +133,6 @@ export default {
   margin: 0.2rem 2rem 0.2rem 0;
   /* width: 24rem; */
 }
+
+
 </style>
