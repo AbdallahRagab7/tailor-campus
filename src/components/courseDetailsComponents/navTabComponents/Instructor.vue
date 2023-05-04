@@ -1,7 +1,9 @@
 <template>
   <div class="instructor-box">
     <div class="instructor-photo">
+       <router-link :to="instructorLink">
       <img src="../../../assets/instructor.jpg" alt="instructor-img" />
+      </router-link>
     </div>
 
     <div class="instructor-content">

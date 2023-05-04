@@ -6,6 +6,7 @@ import coursesPage from './pages/courses/coursesPage.vue'
 import coursePage from './pages/courseDetails/CoursePage.vue'
 import instructorsPage from './pages/instructors/instructorsPage.vue'
 import instructorDeatils from './pages/instructorDetails/instructorPage.vue'
+import cartPage from './pages/cart/cartPage.vue'
 
 
 const router = createRouter({
@@ -17,7 +18,8 @@ const router = createRouter({
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
         { name: 'course', path: '/course/:courseId', component:coursePage , props:true },
-        {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils}
+        {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils},
+        {name: 'cart' , path: '/cart', component:cartPage}
         
     ]
 

@@ -55,6 +55,7 @@
         </div>
 
         <div class="auth">
+          <router-link to="/cart" class="cart"><i class="fa-solid fa-cart-shopping cart-icon"></i></router-link>
           <router-link to="/login" class="login">Login</router-link>
           <router-link to="/register" class="signup">Sign up</router-link>
         </div>
@@ -134,6 +135,7 @@
 .auth {
   display: flex;
   /* justify-content: space-between; */
+  align-items: center;
 }
 .auth a {
   margin: 0 1rem;
@@ -173,5 +175,9 @@
 
 .router-link-active {
   color: rgb(54, 54, 167);
+}
+
+.fa-cart-shopping {
+  height:1.1rem;
 }
 </style>
