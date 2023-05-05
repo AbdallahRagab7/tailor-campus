@@ -11,7 +11,7 @@
             </h3>
             <p class="instructor mb-2">Created By: {{createdBy}}</p>
           </div>
-
+    
           <div class="rating-trash">
             <div class="rating">
               <i class="fa fa-star checked"></i>
@@ -23,6 +23,7 @@
             </div>
 
             <div class="trash">
+              <!-- <button class="trash-btn" @click="removeCard(courseId)"> -->
               <button class="trash-btn">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
@@ -64,6 +65,11 @@ export default {
     "courseId",
     "instructorId"
   ],
+  //   methods : {
+  //   removeCard (courseId) {
+  //       this.cards = this.cards.filter((card)=>card.courseId !==courseId)
+  //   }
+  // }
 }
 </script>
 
@@ -139,6 +145,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 411px;
 }
 .fa-trash-can {
   color: rgb(60, 100, 161);
