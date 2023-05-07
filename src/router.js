@@ -7,6 +7,7 @@ import coursePage from './pages/courseDetails/CoursePage.vue'
 import instructorsPage from './pages/instructors/instructorsPage.vue'
 import instructorDeatils from './pages/instructorDetails/instructorPage.vue'
 import cartPage from './pages/cart/cartPage.vue'
+import createCourse from './pages/createCourse/createCourse.vue'
 
 
 const router = createRouter({
@@ -17,9 +18,10 @@ const router = createRouter({
         {path: '/register' , component:RegisterPage} ,
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
-        { name: 'course', path: '/course/:courseId', component:coursePage , props:true },
+        {name: 'course', path: '/course/:courseId', component:coursePage , props:true },
         {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils},
-        {name: 'cart' , path: '/cart', component:cartPage}
+        {name: 'cart' , path: '/cart', component:cartPage},
+        {name: 'createCourse' , path: '/createCourse', component:createCourse}
         
     ]
 

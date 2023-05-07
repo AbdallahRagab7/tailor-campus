@@ -20,6 +20,13 @@ components : {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap");
+
+/* @import './assets/styles/blog.css'; */
+/* @import url('./assets/styles/blog.css');
+@import url('./assets/styles/responsive.css');
+@import url('./assets/styles/style.css');
+@import url('./assets/styles/woocomerce.css'); */
+
 :root {
   --theme-heading-font: 'Gilroy', sans-serif;
   --theme-secondary-font:'Jost', sans-serif;
