@@ -23,7 +23,7 @@ const router = createRouter({
         {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils},
         {name: 'cart' , path: '/cart', component:cartPage},
         {name: 'createCourse' , path: '/createCourse', component:createCourse},
-        {name: 'viewCourse' , path :'/viewCourse', component:viewCourse}
+        {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse}
         
     ]
 

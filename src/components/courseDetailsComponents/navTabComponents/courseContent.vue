@@ -6,21 +6,21 @@
 
     <div class="sections">
       <div
-        v-for="(module, index) in modules"
-        :key="module.sectionName"
-        class="module"
+        v-for="(section, index) in sections"
+        :key="section.sectionName"
+        class="section"
       >
         <div class="section-name">
-          <h5>Section {{ (index + 1) + ": " + module.sectionName }}</h5>
+          <h5>Section {{ (index + 1) + ": " + section.sectionName }}</h5>
           <button class="chervon-btn" @click="toggleShowLessons(index)">
-            <span v-if="!module.showLessons"
+            <span v-if="!section.showLessons"
               ><i class="fa-solid fa-chevron-down"></i></span>
             <span v-else><i class="fa-solid fa-chevron-up"></i></span>
           </button>
         </div>
 
-        <ul class="lessons" v-if="module.showLessons">
-          <li class="lesson" v-for="lesson in module.lessons" :key="lesson">
+        <ul class="lessons" v-if="section.showLessons">
+          <li class="lesson" v-for="lesson in section.lessons" :key="lesson" @click="setCurrentVideo(lesson.lessonId)">
             <a href="#" class="lesson-link">
               <i class="fa-regular fa-circle-play"></i>
               <span class="lesson-name">{{ lesson.lessonName }}</span>
@@ -34,14 +34,17 @@
         </ul>
       </div>
     </div>
+
   </section>
 </template>
 
 <script>
 export default {
+  emits : ['set-currentvideo'] ,
   data() {
     return {
-      modules: [
+      currentvideo : '' ,
+      sections: [
         /*array of objects each object represnet one section */
         /*section 1 */
         {
@@ -53,18 +56,22 @@ export default {
             /*array of objects each object represent one lesson*/
             {
               lessonName: " What is Vue.js ? ",
+              lessonId : 'l1',
               lessonsDuration: "4mins",
             },
             {
               lessonName: " Different way of using Vue ",
+              lessonId : 'l2',
               lessonsDuration: "6mins",
             },
             {
               lessonName: " Exploring Vue Alternatives ",
+              lessonId : 'l3',
               lessonsDuration: "8mins",
             },
             {
               lessonName: " Building A first App with vue ",
+              lessonId : 'l4',
               lessonsDuration: "6mins",
             },
           ],
@@ -79,14 +86,17 @@ export default {
             /*array of objects each object represent one lesson*/
             {
               lessonName: " Interpolation and Data Binding ",
+              lessonId : 'l5',
               lessonsDuration: "3mins",
             },
             {
               lessonName: "Binding Attributes with the v-bind Directive ",
+              lessonId : 'l6',
               lessonsDuration: "9mins",
             },
             {
               lessonName: " Working with Data inside of a Vue App ",
+              lessonId : 'l7',
               lessonsDuration: "10mins",
             },
           ],
@@ -102,14 +112,17 @@ export default {
             /*array of objects each object represent one lesson*/
             {
               lessonName: " Basic Undertstanding of component ",
+              lessonId : 'l8',
               lessonsDuration: "5mins",
             },
             {
               lessonName: " Creating A basic Vue App ",
+              lessonId : 'l9',
               lessonsDuration: "7mins",
             },
             {
               lessonName: "  Outputting Raw HTML Content With V-Html ",
+              lessonId : 'l10',
               lessonsDuration: "12mins",
             },
           ],
@@ -126,14 +139,17 @@ export default {
             {
               lessonName:
                 " . Introducing Props (Parent => Child Communication) ",
+              lessonId : 'l11',
               lessonsDuration: "3mins",
             },
             {
               lessonName: " Validating Props ",
+              lessonId : 'l12',
               lessonsDuration: "10mins",
             },
             {
               lessonName: "  Emitting Custom Events ",
+              lessonId : 'l13',
               lessonsDuration: "8mins",
             },
           ],
@@ -148,18 +164,22 @@ export default {
             /*array of objects each object represent one lesson*/
             {
               lessonName: " How to send Http Requests",
+              lessonId : 'l14',
               lessonsDuration: "5mins",
             },
             {
               lessonName: " Sending GET Request ",
+              lessonId : 'l15',
               lessonsDuration: "7mins",
             },
             {
               lessonName: "  Sending POST Request ",
+              lessonId : 'l16',
               lessonsDuration: "9mins",
             },
             {
               lessonName: "  Loading Data ",
+              lessonId : 'l17',
               lessonsDuration: "4mins",
             },
           ],
@@ -170,8 +190,15 @@ export default {
 
   methods: {
     toggleShowLessons(index) {
-      this.modules[index].showLessons = !this.modules[index].showLessons;
-    },
+      this.sections[index].showLessons = !this.sections[index].showLessons;
+    }, 
+
+  
+// to toggle videos by lesson id , to pass lessonId to viewCourse component
+    setCurrentVideo(lessonId) {
+      this.currentvideo = lessonId;
+      this.$emit('set-currentvideo' , this.currentvideo)
+    }
   },
 };
 </script>
