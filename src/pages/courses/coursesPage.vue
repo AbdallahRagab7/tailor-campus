@@ -97,7 +97,7 @@ export default {
         {
           courseId: "c5",
           instructorId: "i5",
-          createdBy: "Abdallah Ragab",
+          createdBy: "Anbdallah Ragab",
           courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
           coursePrice: 450,
           studentsNo: 74,

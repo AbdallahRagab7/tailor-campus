@@ -1,5 +1,9 @@
 <template>
   <section class="curriculam">
+    <div class="content-header">
+      <slot ></slot>
+    </div>
+
     <div class="sections">
       <div
         v-for="(module, index) in modules"
@@ -251,5 +255,8 @@ export default {
 .lesson-duration:hover {
   color: var(--theme-primary-color);
   background: #f4ebe7;
+}
+.content-header {
+  font-size: 20px;
 }
 </style>
