@@ -46,11 +46,11 @@
       </li>
     </ul>
     <!-- </div> -->
-    <div class="buy-btn">
-      <button class="enroll-course-btn">
-        <i class="fa-solid fa-cart-shopping"></i> Enroll Course
-      </button>
-    </div>
+
+
+      <!-- <div class="buy-btn"> -->
+      <router-link to="/course/c1/i1" class="enroll-course-btn"><i class="fa-solid fa-cart-shopping"></i> Enroll Course</router-link>
+      <!-- </div> -->
 
     <div class="course-material">
       <h4>Material Includes</h4>
@@ -165,8 +165,13 @@ export default {
   justify-content: space-between;
 }
 
+.buy-btn {
+  width: 100%;
+}
+
 .enroll-course-btn {
   width: 100%;
+  /* width: 3rem; */
   border-color: var(--theme-secondary-color);
   color: #fff;
   background: var(--theme-secondary-color);
@@ -177,6 +182,7 @@ export default {
   font-size: 1rem;
   border: 2px solid transparent;
   transition: all 0.6s ease;
+  text-align: center;
 }
 
 .enroll-course-btn:hover {
