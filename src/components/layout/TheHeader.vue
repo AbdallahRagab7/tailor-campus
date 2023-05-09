@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="header-navbar ">
+    <div class="header-navbar">
       <div class="menus">
         <div class="logo">
           <router-link to="/home">Tailor Campus</router-link>
@@ -50,15 +50,29 @@
           <router-link to="/home" class="primary-menu">Home</router-link>
           <router-link to="/home" class="primary-menu">About</router-link>
           <router-link to="/courses" class="primary-menu">Courses</router-link>
-          <router-link to="/instructors" class="primary-menu">Instructors</router-link>
-          <router-link to="/home" class="primary-menu">Contact</router-link>
+          <router-link to="/instructors" class="primary-menu"
+            >Instructors</router-link
+          >
+          <!-- <router-link to="/home" class="primary-menu">Contact</router-link> -->
         </div>
 
+        <div class="loggedIn">
+          <router-link to="/myLearning">My Learning</router-link>
+          <router-link to="/cart" class="cart"
+            ><i class="fa-solid fa-cart-shopping cart-icon"></i
+          ></router-link>
+          <router-link to="/cart" class="wishlist"
+            ><i class="fa-regular fa-heart"></i
+          ></router-link>
+
+          <router-link to="/cart">UserName</router-link>
+        </div>
+<!-- 
         <div class="auth">
-          <router-link to="/cart" class="cart"><i class="fa-solid fa-cart-shopping cart-icon"></i></router-link>
           <router-link to="/login" class="login">Login</router-link>
           <router-link to="/register" class="signup">Sign up</router-link>
-        </div>
+        </div> -->
+
       </div>
       <!--  end of menus-->
     </div>
@@ -67,7 +81,6 @@
 </template>
 
 <style>
-
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Oleo+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap");
 .header-topbar {
   background-color: #031f42;
@@ -96,13 +109,12 @@
   font-size: 1.3rem;
   /* font-weight: bold; */
   margin: 0;
-  font-family: "Raleway"
+  font-family: "Raleway";
 }
 
 .logo a:hover {
   color: black;
 }
-
 
 .header-navbar {
   padding: 25px;
@@ -118,7 +130,6 @@
   color: #222;
   margin: 0 1.25rem;
   transition: all 0.6s ease;
-
 }
 
 .menus {
@@ -178,6 +189,32 @@
 }
 
 .fa-cart-shopping {
-  height:1.1rem;
+  height: 1.1rem;
+}
+.loggedIn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 300px;
+}
+.loggedIn .fa-heart,
+.fa-cart-shopping {
+  /* width: 30px; */
+  color: black;
+  height: 20px;
+}
+
+.loggedIn .fa-heart:hover,
+.fa-cart-shopping:hover {
+  color: #031f42;
+  /* transition: all 0.6s ease; */
+}
+
+.loggedIn a {
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: var(--theme-heading-font);
+  color: #3d3030;
+  transition: all 0.6s ease;
 }
 </style>
