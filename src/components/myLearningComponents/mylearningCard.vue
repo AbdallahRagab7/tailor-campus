@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <router-link :to="courseLink" @click="printCourseId">
+    <router-link :to="courseLink" >
       <div class="course-header mb-2">
         <img src="../../assets/vuejs2.png" alt="course-image" />
       </div>
@@ -9,7 +9,7 @@
         <h3 class="course-title">
           {{courseName}}
         </h3>
-        <p class="instructor">{{instructorName}}</p>
+        <p class="instructor">Created by: {{instructorName}}</p>
       </div>
     </router-link>
   </div>

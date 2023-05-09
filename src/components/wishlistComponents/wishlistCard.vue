@@ -22,6 +22,13 @@
               <span class="rating-numbers">{{rating}} ({{reviews }}reviews)</span>
             </div>
 
+             <div class="price">
+              <span class="course-price">
+                <i class="fa-solid fa-dollar-sign"></i>{{coursePrice}}
+                <i class="fa-solid fa-tag mx-1"></i
+              ></span>
+            </div>
+
             <div class="trash">
               <!-- <button class="trash-btn" @click="removeCard(courseId)"> -->
               <button class="trash-btn">
@@ -47,7 +54,6 @@
             </div>
           </div> -->
           
-
         </div>
       </div>
 

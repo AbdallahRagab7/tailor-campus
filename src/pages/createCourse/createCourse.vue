@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="submitForm">
+<section class="form-wrapper">
+<form @submit.prevent="submitForm">
 <h2 class="mb-4">Upload Course</h2>
     <div class="form-group">
         <label for="title">Title</label>
@@ -9,7 +10,7 @@
       <label>Course Name:</label>
     <input type="text" v-model="courseName">
     
-    <label>Course Price in Dollar:</label>
+    <label>Course Price in USD:</label>
     <input type="number" v-model="coursePrice" class="my-3">
     
     <label>What will you learn:</label>
@@ -66,6 +67,8 @@
     <button type="button" @click="addSection" class="me-5">+ Add Section</button>
     <!-- <button type="submit" class="ml-5">Upload Course</button> -->
   </form>
+</section>
+  
 </template>
 
 <script>
