@@ -1,10 +1,10 @@
 <template>
   <section class="cart my-3">
-    <h1 class="title mb-4">Shopping Cart</h1>
-    <h3 class="courses-no">{{cards.length}} Courses in Cart</h3>
+    <h1 class="title mb-4">Wishlist</h1>
+    <h3 class="courses-no">{{cards.length}} Courses in Wishlist</h3>
     <div class="shopping-total-price">
       <div class="shopping-section">
-        <added-card
+        <wishlist-card
           v-for="course in cards"
           :key="course.courseId"
           :createdBy="course.createdBy"
@@ -17,25 +17,16 @@
           :reviews="course.reviews"
           :courseId="course.courseId"
           :instructorId="course.instructorId"
-        ></added-card>
+        ></wishlist-card>
       </div>
 
-      <div class="total-price">
-        <h2>Total:</h2>
-        <h3>
-          <span class="course-price">
-            <i class="fa-solid fa-dollar-sign"></i>360</span
-          >
-        </h3>
-        <button class="checkout-btn">Checkout</button>
-      </div>
     </div>
   </section>
 </template>
 <script>
-import addedCard from "../../components/cartComponents/addedCard.vue";
+import wishlistCard from "../../components/wishlistComponents/wishlistCard.vue";
 export default {
-  components: { addedCard },
+  components: { wishlistCard },
   data() {
     return {
       cards: [
@@ -66,19 +57,19 @@ export default {
           reviews: 84,
           courseImage: "3awz link elcourse image",
         },
-        {
-          courseId: "c3",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "8.5h",
-          lessons: 34,
-          rating: 3,
-          reviews: 84,
-          courseImage: "3awz link elcourse image",
-        },
+        // {
+        //   courseId: "c3",
+        //   instructorId: "i2",
+        //   createdBy: "Abdallah Ragab",
+        //   courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+        //   coursePrice: 120,
+        //   studentsNo: 74,
+        //   duration: "8.5h",
+        //   lessons: 34,
+        //   rating: 3,
+        //   reviews: 84,
+        //   courseImage: "3awz link elcourse image",
+        // },
       ],
     };
   },
@@ -102,17 +93,7 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-.total-price {
-    width: 10rem;
-    margin-left: 5rem;
-    height: 10rem;
-    border-bottom: 2px solid rgb(209, 215, 220);
-}
-.total-price h2 {
-    color: #6a6f73;
-    font-weight: 700;
-    font-size: 1.5rem;
-}
+
 .course-price {
     font-weight: 700;
     font-size: 2rem;

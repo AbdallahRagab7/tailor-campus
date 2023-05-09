@@ -2,7 +2,7 @@
   <section class="page-wrapper">
     <div class="lecture-video">
       <video controls>
-        <source :src="'/'+ currentlesson + '.mp4'" type="video/mp4" />
+        <source :src="'/' + currentlesson + '.mp4'" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -10,18 +10,10 @@
     </div>
 
     <div class="course-content">
-      <course-content class="content"
-        ><h2 class="content-header">Course Content</h2></course-content
-      > 
-    <course-content class="content" @set-currentvideo="toggleLessonId"></course-content> 
-     </div>
-
-    <div class="course-content">
-
+      <course-content class="content" @set-currentvideo="toggleLessonId">
+        <h2 class="content-header">Course Content</h2>
+      </course-content>
     </div>
-
-
-
 
   </section>
 </template>
@@ -35,23 +27,19 @@ export default {
     navTabtwo,
     courseContent,
   },
-    // emits : ['set-currentvideo'] ,
+  emits : ['set-currentvideo'] ,
   data() {
     return {
-        currentlesson : '',
-        
-    //   courseDetails: {
-    //     courseId: "c1",
-    //     instructorId: "i1",
-    //   },
+      currentlesson: "",
+
     };
   },
-  methods : {
-    toggleLessonId(currentvideo){
-        this.currentlesson = currentvideo;
-        console.log(this.currentlesson)
-    }
-  }
+  methods: {
+    toggleLessonId(currentvideo) { // currentvideo is lessonid passed from courseContent component by $emits
+      this.currentlesson = currentvideo;
+      console.log(this.currentlesson);
+    },
+  },
 };
 </script>
 

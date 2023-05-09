@@ -61,7 +61,7 @@
           <router-link to="/cart" class="cart"
             ><i class="fa-solid fa-cart-shopping cart-icon"></i
           ></router-link>
-          <router-link to="/cart" class="wishlist"
+          <router-link to="/wishlist" class="wishlist"
             ><i class="fa-regular fa-heart"></i
           ></router-link>
 
