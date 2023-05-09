@@ -68,7 +68,7 @@ export default {
 }
 .lecture-video {
   width: 750px;
-  height: max-content;
+  height: max-content; /* to make elements in this div fit the height */
 }
 
 .lecture-video video {
