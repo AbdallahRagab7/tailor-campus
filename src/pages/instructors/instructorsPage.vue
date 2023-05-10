@@ -5,35 +5,44 @@
   </div>
 
   <div class="topbar-search">
+    <div class="instructor-register">
+      <router-link to="/registerinstructor" class="register-btn mx-5">Register as instructor</router-link>
+    </div>
+
     <form method="get" action="#">
-      <input type="text" placeholder="Search our instructors" class="search-bar" />
+      <input
+        type="text"
+        placeholder="Search our instructors"
+        class="search-bar"
+      />
       <button type="submit" class="search-btn">
         <i class="fa fa-search magnify"></i>
       </button>
     </form>
+
   </div>
 
   <div class="instructors-container">
     <section class="instructors">
       <instructor-card
-      v-for="instructor in instructors" 
-      :key="instructor.instructorId"
-      :instructorId="instructor.instructorId"
-      :instructorName="instructor.instructorName"
-      :specialization="instructor.specialization"
-      :facebookLink="instructor.facebookLink"
-      :linkedinLink="instructor.linkedLink"
-      :youtubeLink="instructor.youtubeLink"
-      :studentsNo="instructor.studentsNo"
-      :coursesNo="instructor.coursesNo"
-      :instructorImage ="instructor.instructorImage"
+        v-for="instructor in instructors"
+        :key="instructor.instructorId"
+        :instructorId="instructor.instructorId"
+        :instructorName="instructor.instructorName"
+        :specialization="instructor.specialization"
+        :facebookLink="instructor.facebookLink"
+        :linkedinLink="instructor.linkedLink"
+        :youtubeLink="instructor.youtubeLink"
+        :studentsNo="instructor.studentsNo"
+        :coursesNo="instructor.coursesNo"
+        :instructorImage="instructor.instructorImage"
       ></instructor-card>
     </section>
   </div>
 </template>
 
 <script>
-import instructorCard from "../../components/instructorsComponents/instructorCard.vue"
+import instructorCard from "../../components/instructorsComponents/instructorCard.vue";
 export default {
   components: {
     instructorCard,
@@ -45,111 +54,109 @@ export default {
           instructorId: "i1",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 7474,
-          coursesNo : 22 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 22,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i2",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i3",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i4",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i5",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i6",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i7",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i8",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
+
         {
           instructorId: "i9",
           instructorName: "Maximilian Schwarzmüller",
           specialization: "Web developer",
-          facebookLink: '#',
-          linkedinLink: '#',
-          youtubeLink: '#',
+          facebookLink: "#",
+          linkedinLink: "#",
+          youtubeLink: "#",
           studentsNo: 74,
-          coursesNo : 30 ,
-          instructorImage : '3awz link elcourse image'
+          coursesNo: 30,
+          instructorImage: "3awz link elcourse image",
         },
-        
-        
       ],
     };
   },
@@ -174,12 +181,13 @@ export default {
   color: white;
   font-size: 1.2rem;
   font-family: Verdana;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .topbar-search {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin-bottom: 7rem;
 }
@@ -190,6 +198,24 @@ export default {
   padding-left: 1.25rem;
   background: #eef5f9;
   border: 2px solid #f5f5f5;
+}
+.register-btn {
+  width: 70%;
+  border-color: var(--theme-secondary-color);
+  color: #fff;
+  background: var(--theme-secondary-color);
+  font-weight: 600;
+  position: relative;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.6s ease;
+  border-radius: 6px;
+}
+
+.register-btn:hover {
+  background: var(--theme-primary-color);
+    border-color: var(--theme-primary-color);
 }
 /* .search-bar::placeholder {
     color: red;
@@ -209,23 +235,20 @@ export default {
   margin: 0 auto;
   width: 94%;
   margin-bottom: 5rem;
-
 }
 
 .instructors {
   display: flex;
   flex-wrap: wrap;
-   row-gap: 8rem;
-   justify-content: center;
-   /* justify-content: space-between; */
+  row-gap: 8rem;
+  justify-content: center;
+  /* justify-content: space-between; */
 }
-
 
 /* .courses > :last-child {
   margin-right: auto;
   align-self: start;
 }   */
-
 
 /* .courses {
   display: grid;

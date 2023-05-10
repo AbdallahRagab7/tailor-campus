@@ -11,6 +11,8 @@ import wishlistPage from './pages/wishlist/wishlistPage.vue'
 import createCourse from './pages/createCourse/createCourse.vue'
 import viewCourse from './pages/viewCourse/viewCourse.vue'
 import myLearning from './pages/myLearning/mylearningPage.vue'
+import registerInstructor from './pages/registerInstructor/registerInstructor.vue'
+
 
 
 const router = createRouter({
@@ -27,7 +29,8 @@ const router = createRouter({
         {name: 'wishlist' , path: '/wishlist', component:wishlistPage},
         {name: 'createCourse' , path: '/createCourse', component:createCourse},
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
-        {name: 'myLearning' , path :'/myLearning', component:myLearning}
+        {name: 'myLearning' , path :'/myLearning', component:myLearning},
+        {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
         
     ]
 
