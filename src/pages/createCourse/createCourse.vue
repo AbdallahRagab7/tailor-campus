@@ -14,7 +14,7 @@
     <input type="number" v-model="coursePrice" class="my-3">
     
     <label>What will you learn:</label>
-    <div v-for="(item, index) in learnItems" :key="index">
+    <div v-for="(item, index) in learnItems" :key="index" class="learn">
       <input type="text" v-model="items">
       <button type="button" @click="removeLearnItem(index)">-</button>
     </div>
@@ -22,12 +22,17 @@
     
 
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Course Description</label>
         <textarea id="description" v-model="description" required rows="6"></textarea>
       </div>
 
       <div class="form-group">
-        <label for="duration">Duration</label>
+        <label for="prerequisites">Prerequisites</label>
+        <textarea id="prerequisite" v-model="prerequisites" required rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="duration"> Course Duration</label>
         <input type="number" id="duration" v-model="duration" required>
       </div>
 
@@ -50,22 +55,25 @@
           <option value="design">Design</option>
         </select>
       </div>
+
       <!-- end of first form  -->
       <h3 class="my-5">Upload Your Content</h3>
-    <div v-for="(section, sectionIndex) in sections" :key="sectionIndex">
-      <label>Section {{ sectionIndex + 1 }}:</label>
-      <input type="text" v-model="section.name">
+    <div v-for="(section, sectionIndex) in sections" :key="sectionIndex" class="my-5">
+      <label class="section-label">Section {{ sectionIndex + 1 }}:</label>
+      <input type="text" v-model="section.name" placeholder="Section Name">
       <div v-for="(lecture, lectureIndex) in section.lectures" :key="lectureIndex">
         <label>Lecture {{ sectionIndex + 1 }}.{{ lectureIndex + 1 }}:</label>
-        <input type="text" v-model="lecture.name">
+        <input type="text" v-model="lecture.name" placeholder="Lecture Name">
         <input type="file" @change="handleFileChange(sectionIndex, lectureIndex)">
         <button type="button" @click="removeLecture(sectionIndex, lectureIndex)">Remove Lecture</button>
       </div>
       <button type="button" @click="addLecture(sectionIndex)" class="me-5">+ Add Lecture</button>
-      <button type="button" @click="removeSection(sectionIndex)">Remove Section</button>
+      <button type="button" @click="removeSection(sectionIndex)" class="remove-sec-btn">Remove Section</button>
     </div>
     <button type="button" @click="addSection" class="me-5">+ Add Section</button>
     <!-- <button type="submit" class="ml-5">Upload Course</button> -->
+
+    <button class="submit-btn">Submit</button>
   </form>
 </section>
   
@@ -222,13 +230,15 @@ button {
   border-radius: 5px;
   border: none;
   background-color: #4CAF50;
+  background-color: #375386;
   color: white;
   cursor: pointer;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 button:hover {
-  background-color: #3e8e41;
+  background-color: #27215e;
 }
 
 input[type="submit"] {
@@ -242,5 +252,54 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #3e8e41;
+}
+
+
+
+.learn {
+  display: flex;
+}
+
+/* .submit-btn {
+  display: block;
+  margin: 0 auto;
+  width: 10rem;
+  background-color: rgb(112, 34, 136);
+
+} */
+
+
+
+
+
+.submit-btn {
+  display: block;
+  margin: 1rem auto;
+  width: 12rem;
+  border-color: var(--theme-secondary-color);
+  color: #fff;
+  background: var(--theme-secondary-color);
+  font-weight: 600;
+  position: relative;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.6s ease;
+  border-radius: 6px;
+}
+
+.submit-btn:hover {
+  background: var(--theme-primary-color);
+    border-color: var(--theme-primary-color);
+}
+
+.section-label {
+  font-weight: 700;
+  color: rgb(92, 71, 117);
+}
+
+
+.remove-sec-btn {
+  background-color: rgb(91, 10, 116);
 }
 </style>

@@ -4,14 +4,32 @@
     <p>Tailor Campus</p>
   </div>
 
-  <div class="topbar-search">
+  <!-- <div class="topbar-search">
     <form method="get" action="#">
       <input type="text" placeholder="Search our courses" class="search-bar" />
       <button type="submit" class="search-btn">
         <i class="fa fa-search magnify"></i>
       </button>
     </form>
+  </div> -->
+   <div class="topbar-search">
+    <div class="instructor-register">
+      <router-link to="/createCourse" class="register-btn mx-5">Create Course</router-link>
+    </div>
+
+    <form method="get" action="#">
+      <input
+        type="text"
+        placeholder="Search our instructors"
+        class="search-bar"
+      />
+      <button type="submit" class="search-btn">
+        <i class="fa fa-search magnify"></i>
+      </button>
+    </form>
+
   </div>
+
 
   <div class="courses-container">
     <section class="courses">
@@ -162,7 +180,8 @@ export default {
 
 .topbar-search {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin-bottom: 7rem;
 }
@@ -205,6 +224,24 @@ export default {
 
 .course-card {
   margin: 0.2rem 1.2rem;
+}
+.register-btn {
+  width: 70%;
+  border-color: var(--theme-secondary-color);
+  color: #fff;
+  background: var(--theme-secondary-color);
+  font-weight: 600;
+  position: relative;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.6s ease;
+  border-radius: 6px;
+}
+
+.register-btn:hover {
+  background: var(--theme-primary-color);
+    border-color: var(--theme-primary-color);
 }
 
 
