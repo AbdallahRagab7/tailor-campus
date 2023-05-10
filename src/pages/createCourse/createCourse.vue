@@ -65,12 +65,12 @@
         <label>Lecture {{ sectionIndex + 1 }}.{{ lectureIndex + 1 }}:</label>
         <input type="text" v-model="lecture.name" placeholder="Lecture Name">
         <input type="file" @change="handleFileChange(sectionIndex, lectureIndex)">
-        <button type="button" @click="removeLecture(sectionIndex, lectureIndex)">Remove Lecture</button>
+        <button type="button" @click="removeLecture(sectionIndex, lectureIndex)" class="remove-btn">Remove Lecture</button>
       </div>
-      <button type="button" @click="addLecture(sectionIndex)" class="me-5">+ Add Lecture</button>
-      <button type="button" @click="removeSection(sectionIndex)" class="remove-sec-btn">Remove Section</button>
+      <button type="button" @click="addLecture(sectionIndex)" class="me-5 add-btn">+ Add Lecture</button>
+      <button type="button" @click="removeSection(sectionIndex)" class="remove-btn">Remove Section</button>
     </div>
-    <button type="button" @click="addSection" class="me-5">+ Add Section</button>
+    <button type="button" @click="addSection" class="me-5 add-btn">+ Add Section</button>
     <!-- <button type="submit" class="ml-5">Upload Course</button> -->
 
     <button class="submit-btn">Submit</button>
@@ -298,8 +298,17 @@ input[type="submit"]:hover {
   color: rgb(92, 71, 117);
 }
 
-
-.remove-sec-btn {
-  background-color: rgb(91, 10, 116);
+.remove-btn {
+  background-color: rgb(44, 5, 77);
 }
+.remove-btn:hover {
+  background-color: rgb(116, 22, 194);
+}
+.add-btn {
+  background-color: rgb(22, 92, 139);
+}
+.add-btn:hover {
+  background-color:rgb(98, 79, 141) ;
+}
+
 </style>
