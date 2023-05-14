@@ -12,6 +12,7 @@
       </button>
     </form>
   </div> -->
+
    <div class="topbar-search">
     <div class="instructor-register">
       <router-link to="/createCourse" class="register-btn mx-5">Create Course</router-link>

@@ -17,7 +17,7 @@ import registerInstructor from './pages/registerInstructor/registerInstructor.vu
 
 const router = createRouter({
     history: createWebHistory(),
-    routes : [
+    routes : [  
         {path: '/home' ,component:homePage , alias: '/' } ,
         {path: '/login' , component:LoginPage},
         {path: '/register' , component:RegisterPage} ,
