@@ -12,7 +12,11 @@ import TheFooter from './components/layout/TheFooter.vue'
 export default {
 components : {
   TheHeader , TheFooter
-}
+},
+
+created() {
+    this.$store.dispatch('autoLogin');
+  },
 }
 </script>
 

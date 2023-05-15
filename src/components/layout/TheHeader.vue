@@ -56,7 +56,7 @@
           <!-- <router-link to="/home" class="primary-menu">Contact</router-link> -->
         </div>
 
-        <!-- <div class="loggedIn">
+        <div class="loggedIn" v-if="isLoggedIn">
           <router-link to="/myLearning">My Learning</router-link>
           <router-link to="/cart" class="cart"
             ><i class="fa-solid fa-cart-shopping cart-icon"></i
@@ -65,10 +65,11 @@
             ><i class="fa-regular fa-heart"></i
           ></router-link>
 
-          <router-link to="/cart">UserName</router-link>
-        </div> -->
+          <!-- <router-link to="/cart">UserName</router-link> -->
+          <button @click="logout">Logout</button>
+        </div>
 
-        <div class="auth">
+        <div class="auth" v-if="!isLoggedIn">
           <router-link to="/login" class="login">Login</router-link>
           <router-link to="/register" class="signup">Sign up</router-link>
         </div>
@@ -79,6 +80,23 @@
     <!--  end of-->
   </section>
 </template>
+
+<script>
+export default {
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.replace('/home')
+
+    }
+  }
+}
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Oleo+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap");

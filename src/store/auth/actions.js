@@ -26,12 +26,43 @@ export default {
     console.log(responseData); //to see what in responseData in success case
     localStorage.setItem("token", responseData.idToken);
     localStorage.setItem("userId", responseData.localId);
-    // localStorage.setItem("tokenExpiration", expirationDate);
+    localStorage.setItem("tokenExpiration", responseData.expiresIn);
 
     context.commit("setUser", {
       token: responseData.idToken,
       userId: responseData.localId,
       tokenExpiration: responseData.expiresIn,
     });
+  },
+
+  logout(context) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("tokenExpiration");
+
+    context.commit("setUser", {
+      token: null,
+      userId: null,
+      tokenExpiration: null,
+    });
+  },
+
+  autoLogin(context) {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const tokenExpiration = localStorage.getItem("tokenExpiration");
+
+    // y3ny current time 3da el future expires time
+    // if (expiresIn < 0) {
+    //   return;
+    // }
+
+    if (token && userId) {
+      context.commit('setUser', {
+        token: token,
+        userId: userId,
+        tokenExpiration: tokenExpiration
+      });
+    }
   },
 };
