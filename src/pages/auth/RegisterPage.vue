@@ -2,9 +2,9 @@
   <section class="page-wrapper">
     <base-card class="basecard">
       <h1>Register</h1>
-      <form class="form" @submit.prevent="number">
+      <form class="form" @submit.prevent="submitForm">
         <div class="grid-box">
-          <div class="form-ctrl">
+          <!-- <div class="form-ctrl">
             <label for="first-name">First Name</label>
             <input type="text" id="first-name" placeholder="First Name" />
           </div>
@@ -17,28 +17,39 @@
           <div class="form-ctrl">
             <label for="username">User Name</label>
             <input type="text" id="username" placeholder="UserName" />
-          </div>
+          </div>  -->
 
           <div class="form-ctrl">
             <label for="email"> Email Address</label>
-            <input type="email" id="email" placeholder="Your Email" />
+            <input
+              type="email"
+              id="email"
+              placeholder="Your Email"
+              v-model="email"
+            />
           </div>
 
           <div class="form-ctrl">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" />
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              v-model="password"
+            />
           </div>
 
-          <div class="form-ctrl">
+          <!-- <div class="form-ctrl">
             <label for="re-enter-password">Re-Enter Password"</label>
             <input
               type="password"
               id="re-enter-password"
               placeholder="Re-Enter Password"
             />
-          </div>
+          </div> -->
         </div>
-        <div>
+
+        <!-- <div>
           <label for="birthday" class="birth">Birthday:</label>
           <input
             type="date"
@@ -47,11 +58,11 @@
             min="1997-01-01"
             max="2030-12-31"
           />
-        </div>
+        </div> -->
 
-        <div>
+        <!-- <div>
           <vue-tel-input v-model="phone" class="telephone"></vue-tel-input>
-        </div>
+        </div> -->
 
         <div class="form-ctrl">
           <div>
@@ -67,9 +78,8 @@
           </p>
         </div>
 
-        <div>
-          <button type="submit" class="login-btn">Sign Up</button>
-        </div>
+        <!-- <input class="login-btn" type="submit" value="Sign up" /> -->
+        <button class="login-btn">Sign Up</button>
       </form>
     </base-card>
   </section>
@@ -79,14 +89,43 @@
 export default {
   data() {
     return {
-      phone: null,
-      birth: null,
+      // phone: null,
+      // birth: null,
+      email: "",
+      password: "",
+      formIsValid: true,
     };
   },
   methods: {
-    number() {
-      console.log(this.phone);
-      console.log(this.birth);
+    //  submitForm : async  ()=> {
+    async submitForm() {
+      this.formIsValid = true;
+      if (
+        this.email === "" ||
+        !this.email.includes("@") ||
+        this.password.length < 6
+      ) {
+        this.formIsValid = false;
+      
+      }
+
+      this.isLoading = true;
+
+      try {
+        await this.$store.dispatch("signup", {
+          email: this.email,
+          password: this.password,
+        });
+        console.log('teststs')
+        this.$router.replace("/home");
+
+        // redirect : name of query paramtaer (msh sabta)
+      } catch (err) {
+        this.error = err.message || "Failed to authenticate, try later.";
+      } 
+      console.log(this.error)
+
+      this.isLoading = false;
     },
   },
 };
@@ -184,7 +223,6 @@ input[type="checkbox"] {
   padding: 0.3rem;
   /* background: #f5f5f5; */
   margin-bottom: 1rem;
-  
 }
 input[type="date"] {
   margin-bottom: 1rem;

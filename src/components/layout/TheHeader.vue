@@ -56,7 +56,7 @@
           <!-- <router-link to="/home" class="primary-menu">Contact</router-link> -->
         </div>
 
-        <div class="loggedIn">
+        <!-- <div class="loggedIn">
           <router-link to="/myLearning">My Learning</router-link>
           <router-link to="/cart" class="cart"
             ><i class="fa-solid fa-cart-shopping cart-icon"></i
@@ -66,12 +66,12 @@
           ></router-link>
 
           <router-link to="/cart">UserName</router-link>
-        </div>
-<!-- 
+        </div> -->
+
         <div class="auth">
           <router-link to="/login" class="login">Login</router-link>
           <router-link to="/register" class="signup">Sign up</router-link>
-        </div> -->
+        </div>
 
       </div>
       <!--  end of menus-->
