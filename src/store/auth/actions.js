@@ -1,55 +1,57 @@
 export default {
   async signup(context, payload) {
-    //send a request to create a new user
-    const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPwO_yiQkE2v2jWTRaK1cSi_03IiQ5rzs",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: payload.email,
-          password: payload.password,
-          returnSecureToken: true,
-        }),
-      }
-    );
+    const response = await fetch("http://localhost:4000/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email: payload.email,
+        password: payload.password,
+        gender: payload.gender,
+        name: payload.name,
+        Mobile_Number_One: payload.Mobile_Number_One,
+        DOB: payload.DOB,
+        // returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     const responseData = await response.json();
 
     if (!response.ok) {
-      console.log(responseData); //to see what in responseData in fail case
+      console.log(responseData.massage);
       const error = new Error(
         responseData.message || "Failed to authenticate. Check your login data."
       );
       throw error;
     }
 
-    console.log(responseData); //to see what in responseData in success case
-    localStorage.setItem("token", responseData.idToken);
-    localStorage.setItem("userId", responseData.localId);
-    localStorage.setItem("tokenExpiration", responseData.expiresIn);
+    console.log(responseData);
+
+    localStorage.setItem("token", responseData.token);
+    localStorage.setItem("userId", responseData.userID);
 
     context.commit("setUser", {
-      token: responseData.idToken,
-      userId: responseData.localId,
-      tokenExpiration: responseData.expiresIn,
+      token: responseData.token,
+      userId: responseData.userID,
+      role: responseData.role,
     });
   },
 
-  //testlogin@gmail.com
-  // 123456789
   async login(context, payload) {
     //send a request to create a new user
-    const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBPwO_yiQkE2v2jWTRaK1cSi_03IiQ5rzs",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: payload.email,
-          password: payload.password,
-          returnSecureToken: true,
-        }),
-      }
-    );
+    const response = await fetch("http://localhost:4000/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: payload.email,
+        password: payload.password,
+        returnSecureToken: true,
+      }),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     const responseData = await response.json();
 
@@ -60,16 +62,16 @@ export default {
       );
       throw error;
     }
+    this.$router.replace("/home");
 
     console.log(responseData); //to see what in responseData in success case
-    localStorage.setItem("token", responseData.idToken);
-    localStorage.setItem("userId", responseData.localId);
-    localStorage.setItem("tokenExpiration", responseData.expiresIn);
+    localStorage.setItem("token", responseData.token);
+    localStorage.setItem("userId", responseData.userID);
 
     context.commit("setUser", {
-      token: responseData.idToken,
-      userId: responseData.localId,
-      tokenExpiration: responseData.expiresIn,
+      token: responseData.token,
+      userId: responseData.userID,
+      role: responseData.role,
     });
   },
 
@@ -85,16 +87,10 @@ export default {
     });
   },
 
-  
   autoLogin(context) {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
     const tokenExpiration = localStorage.getItem("tokenExpiration");
-
-    // y3ny current time 3da el future expires time
-    // if (expiresIn < 0) {
-    //   return;
-    // }
 
     if (token && userId) {
       context.commit("setUser", {

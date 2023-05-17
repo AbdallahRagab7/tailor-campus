@@ -10,5 +10,8 @@ export default {
      // to change string to boolean
       // if there is token = true ,, else false
     },
+    role (state) {
+      return state.role
+    }
 
   };

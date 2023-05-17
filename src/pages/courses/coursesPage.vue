@@ -173,7 +173,7 @@ export default {
         async getCourses() {
             try {
 
-                const response = await fetch("http://localhost:40000/courses");
+                const response = await fetch("http://localhost:4000/courses");
                 console.log(response);
                 const responseData = await response.json();
                 if(!response.ok){

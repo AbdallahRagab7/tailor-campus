@@ -3,6 +3,11 @@ import App from "./App.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 import "bootstrap/dist/css/bootstrap.css";
+// import VueJwtDecode from '@vue-jwt-decode';
+
+
+
+
 // import './assets/styles/blog.css'
 // import './assets/styles/responsive.css'
 // import './assets/styles/style.css'
@@ -30,6 +35,9 @@ const app = createApp( App );
 app.use( router );
 app.use( VueTelInput );
 app.use( store );
+// app.use(VueJwtDecode)
+
+
 // app.use(VueTelInput, [globalOptions = {}]
 
 // app.use(store);

@@ -160,6 +160,31 @@ export default {
       ],
     };
   },
+  methods: {
+     
+        async getInstructors() {
+            try {
+
+                const response = await fetch("http://localhost:4000/allinstructors");
+                console.log(response);
+                console.log('StatsText in response is :' + response.statusText)
+                const responseData = await response.json();
+                if(!response.ok){
+                const error = new error (responseData.message ||"Failed to Fetch" )
+                throw error;
+            }
+            console.log(responseData);
+                
+            }
+            catch(error ){
+                this.error= error.message || 'something wrong'
+            }
+        },
+
+    },
+    created() {
+        this.getInstructors();
+    },
 };
 </script>
 

@@ -48,7 +48,7 @@
 
         <div class="primary-menu-items">
           <router-link to="/home" class="primary-menu">Home</router-link>
-          <router-link to="/home" class="primary-menu">About</router-link>
+          <!-- <router-link to="/home" class="primary-menu">About</router-link> -->
           <router-link to="/courses" class="primary-menu">Courses</router-link>
           <router-link to="/instructors" class="primary-menu"
             >Instructors</router-link

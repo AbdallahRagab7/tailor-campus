@@ -19,9 +19,9 @@
           <label for="remember">Remember Me</label>
           </div>
 
-          <div>
+          <!-- <div>
             <router-link to="/register" class="forgot-pw">Forgot password?</router-link>
-          </div>
+          </div> -->
         </div>
 
         <div>
@@ -32,9 +32,9 @@
         </div>
 
         <!-- <div> -->
-          <p class="error" v-if="error">Please enter vailid password !</p>
+          <p class="error" v-if="error">Please Enter Vailid Password !</p>
 
-          <button  class="login-btn">Login</button>
+          <button  class="login-btn" type="submit">Login</button>
         <!-- </div> -->
       </form>
     </base-card>
@@ -71,8 +71,8 @@ export default {
           email: this.email,
           password: this.password,
         });
-        console.log('test')
-        this.$router.replace("/home");
+        // console.log('test')
+        // this.$router.replace("/home");
 
       } catch (err) {
         this.error = err.message || "Failed to authenticate, try later.";

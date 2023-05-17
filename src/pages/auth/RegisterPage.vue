@@ -4,20 +4,16 @@
       <h1>Register</h1>
       <form class="form" @submit.prevent="submitForm">
         <div class="grid-box">
-          <!-- <div class="form-ctrl">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" placeholder="First Name" />
+          <div class="form-ctrl">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="first-name"
+              placeholder="First Name"
+              v-model="name"
+            />
           </div>
 
-          <div class="form-ctrl">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" placeholder="Last Name" />
-          </div>
-
-          <div class="form-ctrl">
-            <label for="username">User Name</label>
-            <input type="text" id="username" placeholder="UserName" />
-          </div>  -->
 
           <div class="form-ctrl">
             <label for="email"> Email Address</label>
@@ -38,31 +34,33 @@
               v-model="password"
             />
           </div>
+          
+          <div class="form-ctrl" id="gender">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" v-model="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
 
-          <!-- <div class="form-ctrl">
-            <label for="re-enter-password">Re-Enter Password"</label>
-            <input
-              type="password"
-              id="re-enter-password"
-              placeholder="Re-Enter Password"
-            />
-          </div> -->
+
         </div>
 
-        <!-- <div>
+        <div>
           <label for="birthday" class="birth">Birthday:</label>
           <input
             type="date"
-            v-model="birth"
+            v-model="DOB"
             id="birthday"
             min="1997-01-01"
             max="2030-12-31"
+          
           />
-        </div> -->
+        </div>
 
-        <!-- <div>
-          <vue-tel-input v-model="phone" class="telephone"></vue-tel-input>
-        </div> -->
+        <div>
+          <vue-tel-input v-model="Mobile_Number_One" class="telephone"></vue-tel-input>
+        </div>
 
         <div class="form-ctrl">
           <div>
@@ -80,7 +78,6 @@
 
         <!-- <input class="login-btn" type="submit" value="Sign up" /> -->
         <div>
-
           <button class="login-btn" type="submit">Sign Up</button>
         </div>
       </form>
@@ -96,6 +93,10 @@ export default {
       // birth: null,
       email: "",
       password: "",
+      name: "",
+      gender: "",
+      Mobile_Number_One: '',
+      DOB : '',
       formIsValid: true,
     };
   },
@@ -118,15 +119,20 @@ export default {
         await this.$store.dispatch("signup", {
           email: this.email,
           password: this.password,
+          gender: this.gender,
+          name: this.name,
+          Mobile_Number_One : this.Mobile_Number_One,
+          DOB : this.DOB,
+
         });
-        console.log('test')
+        // console.log("test");
         this.$router.replace("/home");
 
         // redirect : name of query paramtaer (msh sabta)
       } catch (err) {
         this.error = err.message || "Failed to authenticate, try later.";
-      } 
-      console.log(this.error)
+      }
+      console.log(this.error);
 
       this.isLoading = false;
     },
@@ -163,7 +169,7 @@ h1 {
   text-transform: uppercase;
 }
 input,
-input[type="date"] {
+input[type="date"] , select{
   background: #f5f5f5;
   width: 100%;
   display: block;
@@ -232,4 +238,5 @@ input[type="date"] {
   /* font-family: ; */
   color: rgb(68, 65, 65);
 }
+
 </style>
