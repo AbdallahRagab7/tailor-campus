@@ -32,6 +32,8 @@
         </div>
 
         <!-- <div> -->
+          <p class="error" v-if="error">Please enter vailid password !</p>
+
           <button  class="login-btn">Login</button>
         <!-- </div> -->
       </form>
@@ -47,6 +49,7 @@ export default {
       email: "",
       password: "",
       formIsValid: true,
+      error : null,
     };
   },
   methods: {
@@ -84,6 +87,10 @@ export default {
 </script>
 
 <style scoped>
+.error {
+  color: red;
+  text-align: center;
+}
 h1 {
   text-align: center;
   color: black;
