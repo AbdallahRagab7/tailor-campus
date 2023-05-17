@@ -1,16 +1,16 @@
 <template>
   <section class="page-wrapper">
     <base-card class="basecard">
-      <form class="form">
+      <form class="form"  @submit.prevent="submitForm">
         <h1>Login</h1>
         <div class="form-ctrl">
           <label for="email" class="test">Username Or Email Address</label>
-          <input type="email" id="email" placeholder="Username or Email" />
+          <input type="email" id="email" placeholder="Username or Email" v-model="email"/>
         </div>
 
         <div class="form-ctrl">
           <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Password" />
+          <input type="password" id="password" placeholder="Password" v-model="password"/>
         </div>
 
         <div class="form-ctrl remember-forgot"> <!-- will be flex space between -->
@@ -31,13 +31,57 @@
           </p>
         </div>
 
-        <div>
-          <button type="submit" class="login-btn">Login</button>
-        </div>
+        <!-- <div> -->
+          <button  class="login-btn">Login</button>
+        <!-- </div> -->
       </form>
     </base-card>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+
+      email: "",
+      password: "",
+      formIsValid: true,
+    };
+  },
+  methods: {
+    async submitForm() {
+      this.formIsValid = true;
+      if (
+        this.email === "" ||
+        !this.email.includes("@") ||
+        this.password.length < 6
+      ) {
+        this.formIsValid = false;
+      
+      }
+
+      this.isLoading = true;
+
+      try {
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+        console.log('test')
+        this.$router.replace("/home");
+
+      } catch (err) {
+        this.error = err.message || "Failed to authenticate, try later.";
+      } 
+      console.log(this.error)
+
+      this.isLoading = false;
+    },
+  },
+
+}
+</script>
 
 <style scoped>
 h1 {

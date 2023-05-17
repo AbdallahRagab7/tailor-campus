@@ -160,15 +160,37 @@ export default {
         };
     },
     methods: {
-        async getCourse() {
-            const response = await fetch("http://localhost:4000/courses");
-            console.log(response);
-            const responseData = await response.json();
+        // async getCourses() {
+        //     const response = await fetch("http://localhost:4000/courses");
+        //     console.log(response);
+        //     const responseData = await response.json();
+        //     if(!response.ok){
+        //         const error = new error (responseData.message ||"Failed to Fetch" )
+        //         throw error;
+        //     }
+        //     console.log(responseData);
+        // },
+        async getCourses() {
+            try {
+
+                const response = await fetch("http://localhost:40000/courses");
+                console.log(response);
+                const responseData = await response.json();
+                if(!response.ok){
+                const error = new error (responseData.message ||"Failed to Fetch" )
+                throw error;
+            }
             console.log(responseData);
+                
+            }
+            catch(error ){
+                this.error= error.message || 'something wrong'
+            }
         },
+
     },
     created() {
-        this.getCourse();
+        this.getCourses();
     },
 };
 </script>

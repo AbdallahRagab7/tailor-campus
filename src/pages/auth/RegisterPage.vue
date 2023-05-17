@@ -79,7 +79,10 @@
         </div>
 
         <!-- <input class="login-btn" type="submit" value="Sign up" /> -->
-        <button class="login-btn">Sign Up</button>
+        <div>
+
+          <button class="login-btn" type="submit">Sign Up</button>
+        </div>
       </form>
     </base-card>
   </section>
@@ -106,7 +109,7 @@ export default {
         this.password.length < 6
       ) {
         this.formIsValid = false;
-      
+        // return;
       }
 
       this.isLoading = true;
@@ -116,7 +119,7 @@ export default {
           email: this.email,
           password: this.password,
         });
-        console.log('teststs')
+        console.log('test')
         this.$router.replace("/home");
 
         // redirect : name of query paramtaer (msh sabta)
