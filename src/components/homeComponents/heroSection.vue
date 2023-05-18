@@ -38,7 +38,7 @@
   z-index: 1;
   background: #2f2d51;
   /* padding-bottom: 13.75rem; */
-  padding-bottom: 8rem
+ /* padding-bottom: 8rem*/
 }
 .hero {
   display: flex;

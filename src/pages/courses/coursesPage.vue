@@ -4,14 +4,6 @@
         <p>Tailor Campus</p>
     </div>
 
-    <!-- <div class="topbar-search">
-    <form method="get" action="#">
-      <input type="text" placeholder="Search our courses" class="search-bar" />
-      <button type="submit" class="search-btn">
-        <i class="fa fa-search magnify"></i>
-      </button>
-    </form>
-  </div> -->
 
     <div class="topbar-search">
         <div class="instructor-register">
@@ -68,10 +60,10 @@ export default {
                     createdBy: "Maximilian Schwarzmüller",
                     courseTitle:
                         "Vue - The Complete Guide (incl. Router & Composition API)",
-                    coursePrice: 120,
-                    studentsNo: 74,
-                    duration: "6.5h",
-                    lessons: 30,
+                    coursePrice: 60,
+                    studentsNo: 741,
+                    duration: "10h",
+                    lessons: 25,
                     rating: 3,
                     reviews: 74,
                     courseImage: "3awz link elcourse image",
@@ -82,10 +74,10 @@ export default {
                     createdBy: "Abdallah Ragab",
                     courseTitle:
                         "100 Days Of Code - 2023 Web Development Bootcamp",
-                    coursePrice: 120,
-                    studentsNo: 74,
-                    duration: "6.5h",
-                    lessons: 30,
+                    coursePrice: 100,
+                    studentsNo: 819,
+                    duration: "13.5h",
+                    lessons: 15,
                     rating: 3,
                     reviews: 74,
                     courseImage: "3awz link elcourse image",
@@ -95,12 +87,12 @@ export default {
                     instructorId: "i3",
                     createdBy: "Abdallah Ragab",
                     courseTitle: "The Complete 2022 Flutter & Dart Development",
-                    coursePrice: 120,
+                    coursePrice: 99,
                     studentsNo: 74,
-                    duration: "6.5h",
+                    duration: "24h",
                     lessons: 30,
                     rating: 3,
-                    reviews: 74,
+                    reviews: 744,
                     courseImage: "3awz link elcourse image",
                 },
                 {
@@ -108,9 +100,9 @@ export default {
                     instructorId: "i4",
                     createdBy: "Abdallah Ragab",
                     courseTitle: "The Web Developer Bootcamp 2023",
-                    coursePrice: 450,
-                    studentsNo: 74,
-                    duration: "6.5h",
+                    coursePrice: 50,
+                    studentsNo: 743,
+                    duration: "20h",
                     lessons: 30,
                     rating: 3,
                     reviews: 74,
@@ -119,13 +111,13 @@ export default {
                 {
                     courseId: "c5",
                     instructorId: "i5",
-                    createdBy: "Anbdallah Ragab",
+                    createdBy: "Abdallah Ragab",
                     courseTitle:
                         "100 Days Of Code - 2023 Web Development Bootcamp",
                     coursePrice: 450,
-                    studentsNo: 74,
+                    studentsNo: 424,
                     duration: "6.5h",
-                    lessons: 30,
+                    lessons: 27,
                     rating: 3,
                     reviews: 74,
                     courseImage: "3awz link elcourse image",
@@ -136,12 +128,12 @@ export default {
                     createdBy: "Abdallah Ragab",
                     courseTitle:
                         "100 Days Of Code - 2023 Web Development Bootcamp",
-                    coursePrice: 450,
+                    coursePrice: 70,
                     studentsNo: 74,
                     duration: "6.5h",
-                    lessons: 30,
+                    lessons: 23,
                     rating: 3,
-                    reviews: 74,
+                    reviews: 49,
                 },
                 {
                     courseId: "c7",
@@ -149,8 +141,8 @@ export default {
                     createdBy: "Abdallah Ragab",
                     courseTitle:
                         "100 Days Of Code - 2023 Web Development Bootcamp",
-                    coursePrice: 450,
-                    studentsNo: 74,
+                    coursePrice: 30,
+                    studentsNo: 712,
                     duration: "6.5h",
                     lessons: 30,
                     rating: 3,

@@ -17,7 +17,6 @@ export default {
 
     const responseData = await response.json();
 
-    // if (!response.ok)
     if (responseData.token === "unauthurized token") {
       console.log(responseData.massage);
       console.log("unauthor token");
@@ -28,7 +27,12 @@ export default {
     }
 
     console.log(responseData);
-    // console.log(response.ok)
+
+    if (!response.ok) {
+      // console.log(response.ok)
+      const error = new Error(responseData.message || "Failed in request.");
+      throw error;
+    }
 
     if (responseData.token != "unauthurized token") {
       localStorage.setItem("token", responseData.token);
@@ -63,11 +67,10 @@ export default {
 
     if (!response.ok) {
       // console.log(response.ok)
-      const error = new Error(
-        responseData.message || "Failed to authenticate. Check your login data."
-      );
+      const error = new Error(responseData.message || "Failed in request.");
       throw error;
     }
+
     if (responseData.massage === "password not correct") {
       // console.log(response.ok)
       const error = new Error(responseData.message || "Password not correct.");
