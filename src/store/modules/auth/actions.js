@@ -9,7 +9,6 @@ export default {
         name: payload.name,
         Mobile_Number_One: payload.Mobile_Number_One,
         DOB: payload.DOB,
-        // returnSecureToken: true,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -18,24 +17,30 @@ export default {
 
     const responseData = await response.json();
 
-    if (!response.ok) {
+    // if (!response.ok)
+    if (responseData.token === "unauthurized token") {
       console.log(responseData.massage);
+      console.log("unauthor token");
       const error = new Error(
-        responseData.message || "Failed to authenticate. Check your login data."
+        responseData.massage || "Failed to authenticate. Check your login data."
       );
       throw error;
     }
 
     console.log(responseData);
+    // console.log(response.ok)
 
-    localStorage.setItem("token", responseData.token);
-    localStorage.setItem("userId", responseData.userID);
+    if (responseData.token != "unauthurized token") {
+      localStorage.setItem("token", responseData.token);
+      localStorage.setItem("userId", responseData.userID);
+      localStorage.setItem("role", responseData.role);
 
-    context.commit("setUser", {
-      token: responseData.token,
-      userId: responseData.userID,
-      role: responseData.role,
-    });
+      context.commit("setUser", {
+        token: responseData.token,
+        userId: responseData.userID,
+        role: responseData.role,
+      });
+    }
   },
 
   async login(context, payload) {
@@ -54,25 +59,32 @@ export default {
     });
 
     const responseData = await response.json();
+    console.log(responseData);
 
     if (!response.ok) {
-      console.log(responseData); //to see what in responseData in fail case
+      // console.log(response.ok)
       const error = new Error(
         responseData.message || "Failed to authenticate. Check your login data."
       );
       throw error;
     }
-    this.$router.replace("/home");
+    if (responseData.massage === "password not correct") {
+      // console.log(response.ok)
+      const error = new Error(responseData.message || "Password not correct.");
+      throw error;
+    }
 
-    console.log(responseData); //to see what in responseData in success case
-    localStorage.setItem("token", responseData.token);
-    localStorage.setItem("userId", responseData.userID);
+    if (responseData.token != "unauthurized token") {
+      localStorage.setItem("token", responseData.token);
+      localStorage.setItem("userId", responseData.userID);
+      localStorage.setItem("role", responseData.role);
 
-    context.commit("setUser", {
-      token: responseData.token,
-      userId: responseData.userID,
-      role: responseData.role,
-    });
+      context.commit("setUser", {
+        token: responseData.token,
+        userId: responseData.userID,
+        role: responseData.role,
+      });
+    }
   },
 
   logout(context) {

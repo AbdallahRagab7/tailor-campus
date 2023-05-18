@@ -1,22 +1,33 @@
 <template>
   <section class="page-wrapper">
     <base-card class="basecard">
-      <form class="form"  @submit.prevent="submitForm">
+      <form class="form" @submit.prevent="submitForm">
         <h1>Login</h1>
         <div class="form-ctrl">
           <label for="email" class="test">Username Or Email Address</label>
-          <input type="email" id="email" placeholder="Username or Email" v-model="email"/>
+          <input
+            type="email"
+            id="email"
+            placeholder="Username or Email"
+            v-model="email"
+          />
         </div>
 
         <div class="form-ctrl">
           <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Password" v-model="password"/>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            v-model="password"
+          />
         </div>
 
-        <div class="form-ctrl remember-forgot"> <!-- will be flex space between -->
-          <div  > 
-          <input type="checkbox" id="remember" name="remember" />
-          <label for="remember">Remember Me</label>
+        <div class="form-ctrl remember-forgot">
+          <!-- will be flex space between -->
+          <div>
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember">Remember Me</label>
           </div>
 
           <!-- <div>
@@ -31,11 +42,9 @@
           </p>
         </div>
 
-        <!-- <div> -->
-          <p class="error" v-if="error">Please Enter Vailid Password !</p>
+        <p class="error" v-if="error">Please Enter Vailid Password !</p>
 
-          <button  class="login-btn" type="submit">Login</button>
-        <!-- </div> -->
+        <button class="login-btn" type="submit">Login</button>
       </form>
     </base-card>
   </section>
@@ -45,11 +54,10 @@
 export default {
   data() {
     return {
-
       email: "",
       password: "",
       formIsValid: true,
-      error : null,
+      error: null,
     };
   },
   methods: {
@@ -61,29 +69,23 @@ export default {
         this.password.length < 6
       ) {
         this.formIsValid = false;
-      
       }
-
-      this.isLoading = true;
 
       try {
         await this.$store.dispatch("login", {
           email: this.email,
           password: this.password,
         });
-        // console.log('test')
-        // this.$router.replace("/home");
 
+        this.$router.replace("/home");
+        
       } catch (err) {
         this.error = err.message || "Failed to authenticate, try later.";
-      } 
-      console.log(this.error)
-
-      this.isLoading = false;
+      }
+      console.log(this.error);
     },
   },
-
-}
+};
 </script>
 
 <style scoped>
@@ -104,7 +106,6 @@ h1 {
 .basecard {
   padding: 3.5rem;
   max-width: 30rem;
-
 }
 .form-ctrl {
   margin-bottom: 1.5rem;
@@ -139,17 +140,16 @@ input {
   left: 0.5rem;
 }
 
-.remember-forgot{
+.remember-forgot {
   display: flex;
   justify-content: space-between;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   display: inline-block;
   width: auto;
   margin-right: 1rem;
 }
-
 
 .register {
   color: var(--theme-text-color);
@@ -158,32 +158,31 @@ input[type='checkbox'] {
 }
 
 .forgot-pw {
- color: var(--theme-primary-color);
+  color: var(--theme-primary-color);
 }
 
 .forgot-pw:hover {
-color: #333;
-transition: all 0.3s ease-in-out;
+  color: #333;
+  transition: all 0.3s ease-in-out;
 }
 
-.register{
+.register {
   text-align: center;
 }
 
 .login-btn {
-    color: #fff;
-   background: var(--theme-secondary-color);
-   font-weight: 600;
-    padding: 0.6rem 1.4rem;
-    cursor: pointer;
-    border: 0;
-    border-color: #43454b;
-    border-radius: 4px;
-    width: 100%;
+  color: #fff;
+  background: var(--theme-secondary-color);
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  border: 0;
+  border-color: #43454b;
+  border-radius: 4px;
+  width: 100%;
 }
 .login-btn:hover {
   background: var(--theme-primary-color);
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
-
 </style>

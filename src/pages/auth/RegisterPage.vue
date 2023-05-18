@@ -14,7 +14,6 @@
             />
           </div>
 
-
           <div class="form-ctrl">
             <label for="email"> Email Address</label>
             <input
@@ -34,7 +33,7 @@
               v-model="password"
             />
           </div>
-          
+
           <div class="form-ctrl" id="gender">
             <label for="gender">Gender:</label>
             <select id="gender" name="gender" v-model="gender">
@@ -42,8 +41,6 @@
               <option value="female">Female</option>
             </select>
           </div>
-
-
         </div>
 
         <div>
@@ -54,12 +51,14 @@
             id="birthday"
             min="1997-01-01"
             max="2030-12-31"
-          
           />
         </div>
 
         <div>
-          <vue-tel-input v-model="Mobile_Number_One" class="telephone"></vue-tel-input>
+          <vue-tel-input
+            v-model="Mobile_Number_One"
+            class="telephone"
+          ></vue-tel-input>
         </div>
 
         <div class="form-ctrl">
@@ -77,9 +76,9 @@
         </div>
 
         <!-- <input class="login-btn" type="submit" value="Sign up" /> -->
-        <div>
-          <button class="login-btn" type="submit">Sign Up</button>
-        </div>
+        <p class="error" v-if="error">Email is already exist!</p>
+
+        <button class="signup-btn" type="submit">Sign Up</button>
       </form>
     </base-card>
   </section>
@@ -95,9 +94,10 @@ export default {
       password: "",
       name: "",
       gender: "",
-      Mobile_Number_One: '',
-      DOB : '',
+      Mobile_Number_One: "",
+      DOB: "",
       formIsValid: true,
+      error: null,
     };
   },
   methods: {
@@ -113,28 +113,22 @@ export default {
         // return;
       }
 
-      this.isLoading = true;
-
       try {
         await this.$store.dispatch("signup", {
           email: this.email,
           password: this.password,
           gender: this.gender,
           name: this.name,
-          Mobile_Number_One : this.Mobile_Number_One,
-          DOB : this.DOB,
-
+          Mobile_Number_One: this.Mobile_Number_One,
+          DOB: this.DOB,
         });
-        // console.log("test");
-        this.$router.replace("/home");
 
-        // redirect : name of query paramtaer (msh sabta)
+        this.$router.replace("/home");
       } catch (err) {
         this.error = err.message || "Failed to authenticate, try later.";
       }
       console.log(this.error);
 
-      this.isLoading = false;
     },
   },
 };
@@ -169,7 +163,8 @@ h1 {
   text-transform: uppercase;
 }
 input,
-input[type="date"] , select{
+input[type="date"],
+select {
   background: #f5f5f5;
   width: 100%;
   display: block;
@@ -206,7 +201,7 @@ input[type="checkbox"] {
   text-align: center;
 }
 
-.login-btn {
+.signup-btn {
   color: #fff;
   background: var(--theme-secondary-color);
   font-weight: 600;
@@ -239,4 +234,8 @@ input[type="date"] {
   color: rgb(68, 65, 65);
 }
 
+.error {
+  color: red;
+  text-align: center;
+}
 </style>

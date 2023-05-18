@@ -7,8 +7,5 @@ export default {
           state.role = payload.role;
         },
 
-        // setAutoLogout(state) {
-        //   state.didAutoLogout = true;
-      
-        // }
+
 }
