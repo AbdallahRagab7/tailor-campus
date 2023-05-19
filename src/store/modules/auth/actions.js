@@ -96,25 +96,27 @@ export default {
   logout(context) {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
-    localStorage.removeItem("tokenExpiration");
+    localStorage.removeItem("role");
+
+    // localStorage.clear()
 
     context.commit("setUser", {
       token: null,
       userId: null,
-      tokenExpiration: null,
+      role: null,
     });
   },
 
   autoLogin(context) {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
-    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    const role = localStorage.getItem("role");
 
     if (token && userId) {
       context.commit("setUser", {
         token: token,
         userId: userId,
-        tokenExpiration: tokenExpiration,
+        role : role,
       });
     }
   },

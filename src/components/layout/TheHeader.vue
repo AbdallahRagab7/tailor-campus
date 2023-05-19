@@ -9,6 +9,7 @@
             </div>
           </div>
 
+
           <div class="col-xl-4 col-lg-4 col-sm-6">
             <div class="header-socials text-center text-lg-end">
               <ul class="list-inline align-items-center">
@@ -65,7 +66,9 @@
             >Instructors</router-link
           >
 
-          <router-link to="/admin" class="primary-menu" v-if="isAdmin">Admin</router-link>
+          <router-link to="/admin" class="primary-menu" v-if="role === 'admin'"
+            >Admin</router-link
+          >
         </div>
 
         <div class="loggedIn" v-if="isLoggedIn">
@@ -97,23 +100,19 @@ export default {
   data() {
     return {
       isDropdownVisible: false,
-      isAdmin : false ,
+      // isAdmin : localStorage.getItem("role"), 
+      // kda lw 3mlt logut el token httms7 mn localStorage , bas htfdl mt5zna fi el variable dh 
+      // msh httms7 mn el variable 8er ama a3ml
     };
   },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
-    isAdmin (){
-      const role = this.$store.getters.role
-      if (role === 'admin'){
-        this.isAdmin = true ;
-      } else {
-        this.isAdmin= false;
-      }
-      return this.isAdmin;
+    role (){
+      return this.$store.getters.role;
     }
-
+ 
   },
   methods: {
     logout() {
@@ -127,6 +126,9 @@ export default {
       this.isDropdownVisible = false;
     },
   },
+//   created (){
+//   isAdmin() 
+// }
 };
 </script>
 

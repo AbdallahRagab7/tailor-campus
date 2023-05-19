@@ -6,7 +6,10 @@
 
   <div class="topbar-search">
     <div class="instructor-register">
-      <router-link to="/registerinstructor" class="register-btn mx-5" v-if="isInstructor !== 'Individual Instructor'"
+      <router-link
+        to="/registerinstructor"
+        class="register-btn mx-5"
+        v-if="role !== 'Individual Instructor'"
         >Register as instructor</router-link
       >
     </div>
@@ -50,7 +53,7 @@ export default {
   },
   data() {
     return {
-      isInstructor : localStorage.getItem("role") ,
+      // isInstructor : localStorage.getItem("role") ,
       instructors: [
         {
           instructorId: "i1",
@@ -179,10 +182,14 @@ export default {
       }
     },
   },
-
+  computed: {
+    role() {
+      return this.$store.getters.role;
+    },
+  },
   created() {
     this.getInstructors();
-    console.log(this.isInstructor)
+    console.log(this.isInstructor);
   },
 };
 </script>

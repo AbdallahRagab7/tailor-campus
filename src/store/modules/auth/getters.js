@@ -11,7 +11,7 @@ export default {
       // if there is token = true ,, else false
     },
     role (state) {
-      return state.role
+      return state.role;
     }
 
   };
