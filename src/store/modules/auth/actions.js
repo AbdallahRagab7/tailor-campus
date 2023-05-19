@@ -16,6 +16,11 @@ export default {
     });
 
     const responseData = await response.json();
+    if (!response.ok) {
+      // console.log(response.ok)
+      const error = new Error(responseData.message || "Failed in request.");
+      throw error;
+    }
 
     if (responseData.token === "unauthurized token") {
       console.log(responseData.massage);
@@ -23,16 +28,16 @@ export default {
       const error = new Error(
         responseData.massage || "Failed to authenticate. Check your login data."
       );
-      throw error;
+      throw error; 
+      // lw 7sl error hna ,, elmethod el bt3ml dispatch ly el action dh 
+      // hysm3 error hnak fi el catch 
+      // y3ny akn el action mkmlsh 
+      // fmsh hykml el try (this.router.replace)
     }
 
     console.log(responseData);
 
-    if (!response.ok) {
-      // console.log(response.ok)
-      const error = new Error(responseData.message || "Failed in request.");
-      throw error;
-    }
+
 
     if (responseData.token != "unauthurized token") {
       localStorage.setItem("token", responseData.token);
@@ -114,5 +119,61 @@ export default {
         tokenExpiration: tokenExpiration,
       });
     }
+  },
+
+
+
+// registerinstructor
+// fields in controllers , user auth
+  async signupInstructor(context, payload) {
+    const response = await fetch("http://localhost:4000/register/instructor", {
+      method: "POST",
+      body: JSON.stringify({
+        name: payload.name,
+        Gmail_Email: payload.email,
+        password: payload.password,
+        gender: payload.gender,
+        Mobile_Number_One: payload.Mobile_Number_One,
+        aboutme : payload.aboutme ,
+        speciality : payload.specialty ,
+        image : payload.image ,
+        // DOB: payload.DOB,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const responseData = await response.json();
+    console.log(responseData)
+    if (!response.ok) {
+      // console.log(response.ok)
+      const error = new Error(responseData.massage || "Failed in request.");
+      throw error;
+    }
+
+    // if (responseData.token === "unauthurized token") {
+    //   console.log(responseData.massage);
+    //   console.log("unauthor token");
+    //   const error = new Error(
+    //     responseData.massage || "Failed to authenticate. Check your login data."
+    //   );
+    //   throw error;
+    // }
+
+
+
+
+    // if (responseData.token != "unauthurized token") {
+    //   localStorage.setItem("token", responseData.token);
+    //   localStorage.setItem("userId", responseData.userID);
+    //   localStorage.setItem("role", responseData.role);
+
+    //   context.commit("setUser", {
+    //     token: responseData.token,
+    //     userId: responseData.userID,
+    //     role: responseData.role,
+    //   });
+    // }
   },
 };

@@ -2,44 +2,47 @@
   <section class="page-wrapper">
     <base-card class="basecard">
       <h1>Register as instructor</h1>
-      <form class="form" @submit.prevent="number">
+      <form class="form" @submit.prevent="submitForm">
         <div class="grid-box">
           <div class="form-ctrl">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" placeholder="First Name" />
-          </div>
-
-          <div class="form-ctrl">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" placeholder="Last Name" />
-          </div>
-
-          <div class="form-ctrl">
-            <label for="username">User Name</label>
-            <input type="text" id="username" placeholder="UserName" />
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="first-name"
+              placeholder="Name"
+              v-model="name"
+            />
           </div>
 
           <div class="form-ctrl">
             <label for="email"> Email Address</label>
-            <input type="email" id="email" placeholder="Your Email" />
+            <input
+              type="email"
+              id="email"
+              placeholder="Your Email"
+              v-model="email"
+            />
           </div>
 
           <div class="form-ctrl">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" />
-          </div>
-
-          <div class="form-ctrl">
-            <label for="re-enter-password">Re-Enter Password"</label>
             <input
               type="password"
-              id="re-enter-password"
-              placeholder="Re-Enter Password"
+              id="password"
+              placeholder="Password"
+              v-model="password"
             />
+          </div>
+          <div class="form-ctrl" id="gender">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" v-model="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
           </div>
         </div>
         <!-- end of gridbox -->
-        <div>
+        <!-- <div>
           <label for="birthday" class="birth">Birthday:</label>
           <input
             type="date"
@@ -48,26 +51,30 @@
             min="1997-01-01"
             max="2030-12-31"
           />
-        </div>
+        </div> -->
 
         <div>
           <vue-tel-input v-model="phone" class="telephone my-4"></vue-tel-input>
         </div>
 
-      <div class="form-ctrl">
-        <label for="speciality">Speciality</label>
-        <input type="text" id="speciality" v-model="speciality">
-      </div>
-
-    <div class="form-ctrl">
-        <label for="description">About me</label>
-        <textarea id="description" v-model="aboutme" required rows="6"></textarea>
-      </div>
-
-    
         <div class="form-ctrl">
-            <label for="instructor-img">Upload your Profile Pic</label>
-            <input type="file" id="instructor-img">
+          <label for="speciality">Speciality</label>
+          <input type="text" id="speciality" v-model="speciality" />
+        </div>
+
+        <div class="form-ctrl">
+          <label for="description">About me</label>
+          <textarea
+            id="description"
+            v-model="aboutme"
+            required
+            rows="6"
+          ></textarea>
+        </div>
+
+        <div class="form-ctrl">
+          <label for="instructor-img">Upload your Profile Pic</label>
+          <input type="file" id="instructor-img" @change="onFileChange" />
         </div>
 
         <div class="form-ctrl">
@@ -84,9 +91,9 @@
           </p>
         </div>
 
-        <div>
+        
           <button type="submit" class="login-btn">Sign Up</button>
-        </div>
+      
       </form>
     </base-card>
   </section>
@@ -96,14 +103,56 @@
 export default {
   data() {
     return {
-      phone: null,
-      birth: null,
+      email: "",
+      password: "",
+      name: "",
+      gender: "",
+      phone: "",
+      // DOB: "",
+      aboutme : '',
+      speciality : '' ,
+
+      image : null,
+
+      formIsValid: true,
+      error: null,
     };
   },
   methods: {
-    number() {
-      console.log(this.phone);
-      console.log(this.birth);
+    
+    onFileChange(event) {
+      this.image = event.target.files[0];
+    },
+
+    //  submitForm : async  ()=> {
+    async submitForm() {
+      this.formIsValid = true;
+      if (
+        this.email === "" ||
+        !this.email.includes("@") ||
+        this.password.length < 6
+      ) {
+        this.formIsValid = false;
+        // return;
+      }
+
+      try {
+        await this.$store.dispatch("signupInstructor", {
+          name: this.name,
+          Gmail_Email: this.email,
+          password: this.password,
+          gender: this.gender,
+          Mobile_Number_One: this.phone,
+          aboutme : this.aboutme , 
+          speciality : this.speciality,
+          image : this.image ,
+        });
+
+        this.$router.replace("/home");
+      } catch (err) {
+        this.error = err.message || "Failed to authenticate, try later.";
+      }
+      console.log(this.error);
     },
   },
 };
@@ -126,7 +175,6 @@ h1 {
 }
 .form-ctrl {
   margin-bottom: 1.5rem;
-
 }
 
 .grid-box {
@@ -144,8 +192,10 @@ h1 {
   margin-bottom: 0.4rem;
   text-transform: uppercase;
 }
-input, textarea , 
-input[type="date"] {
+input,
+textarea,
+input[type="date"],
+select {
   background: #f5f5f5;
   width: 100%;
   display: block;
@@ -198,13 +248,10 @@ input[type="checkbox"] {
   transition: all 0.4s ease;
 }
 
-
-
 .telephone {
   padding: 0.3rem;
   /* background: #f5f5f5; */
   margin-bottom: 1rem;
-  
 }
 input[type="date"] {
   margin-bottom: 1rem;
@@ -213,6 +260,6 @@ input[type="date"] {
 }
 
 #description {
-    width: 100%;
+  width: 100%;
 }
 </style>

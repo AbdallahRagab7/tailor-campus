@@ -88,8 +88,6 @@
 export default {
   data() {
     return {
-      // phone: null,
-      // birth: null,
       email: "",
       password: "",
       name: "",
@@ -128,7 +126,6 @@ export default {
         this.error = err.message || "Failed to authenticate, try later.";
       }
       console.log(this.error);
-
     },
   },
 };

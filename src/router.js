@@ -12,6 +12,7 @@ import createCourse from './pages/createCourse/createCourse.vue'
 import viewCourse from './pages/viewCourse/viewCourse.vue'
 import myLearning from './pages/myLearning/mylearningPage.vue'
 import registerInstructor from './pages/registerInstructor/registerInstructor.vue'
+import admin from './pages/admin/admin.vue'
 
 
 
@@ -31,6 +32,7 @@ const router = createRouter({
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
+        {name: 'admin' , path :'/admin', component:admin},
         
     ]
 
