@@ -3,7 +3,7 @@
     <div class="course-header">
       <div class="course-thumb">
         <router-link :to="courseLink">
-          <img src="../../assets/vuejs2.png" alt="course-img" />
+          <img :src="getCourseImg" alt="course-img" />
         </router-link>
       </div>
     </div>
@@ -48,6 +48,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      courseimg : '../../assets/vuejs2.png'
+    }
+  },
+  
   props: [
     "createdBy",
     "courseTitle",
@@ -58,7 +64,8 @@ export default {
     "rating",
     "reviews",
     "courseId",
-    "instructorId"
+    "instructorId",
+    "courseImage"
   ],
   computed: {
     courseLink() {
@@ -66,6 +73,9 @@ export default {
     },
     instructorLink (){
       return {name : "instructor" , params : {instructorId: this.instructorId} }
+    },
+    getCourseImg (){
+      return '../../assets/vuejs2.png'
     }
   },
 };

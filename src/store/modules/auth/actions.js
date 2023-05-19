@@ -126,22 +126,24 @@ export default {
 // registerinstructor
 // fields in controllers , user auth
   async signupInstructor(context, payload) {
+    // const formData = new FormData();
+    // formData.append('image', payload.image)
+    const Data = new FormData();
+    Data.append('Name' , payload.Name)
+    Data.append('Email' , payload.Email)
+    Data.append('password' , payload.password)
+    Data.append('gender' , gender)
+    Data.append('Mobile_Number_One' , payload.Mobile_Number_One)
+    Data.append('aboutme' , payload.aboutme)
+    Data.append('speciality' , payload.speciality)
+    Data.append('image' , payload.image)
+
     const response = await fetch("http://localhost:4000/register/instructor", {
       method: "POST",
-      body: JSON.stringify({
-        name: payload.name,
-        Gmail_Email: payload.email,
-        password: payload.password,
-        gender: payload.gender,
-        Mobile_Number_One: payload.Mobile_Number_One,
-        aboutme : payload.aboutme ,
-        speciality : payload.specialty ,
-        image : payload.image ,
-        // DOB: payload.DOB,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body : Data ,
+      // headers: {
+      //   "Content-Type": "application/json", 
+      // },
     });
 
     const responseData = await response.json();

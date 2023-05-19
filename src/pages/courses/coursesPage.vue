@@ -39,6 +39,7 @@
         :reviews="course.reviews"
         :courseId="course.courseId"
         :instructorId="course.instructorId"
+        :courseImage="course.courseImage"
       ></course-card>
     </section>
   </div>
@@ -65,7 +66,7 @@ export default {
           lessons: 25,
           rating: 3,
           reviews: 74,
-          courseImage: "3awz link elcourse image",
+          courseImage: "../../assets/vuejs2.png",
         },
         {
           courseId: "c2",
@@ -78,7 +79,7 @@ export default {
           lessons: 15,
           rating: 3,
           reviews: 74,
-          courseImage: "3awz link elcourse image",
+          courseImage: "../../assets/nodejs.jpg",
         },
         {
           courseId: "c3",
@@ -91,7 +92,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 744,
-          courseImage: "3awz link elcourse image",
+          courseImage: "../../assets/vuejs2.png",
         },
         {
           courseId: "c4",
@@ -104,7 +105,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
-          courseImage: "3awz link elcourse image",
+          courseImage: "../../assets/vuejs2.png",
         },
         {
           courseId: "c5",
@@ -117,7 +118,7 @@ export default {
           lessons: 27,
           rating: 3,
           reviews: 74,
-          courseImage: "3awz link elcourse image",
+          courseImage: "../../assets/vuejs2.png",
         },
         {
           courseId: "c6",
@@ -130,6 +131,8 @@ export default {
           lessons: 23,
           rating: 3,
           reviews: 49,
+          courseImage: "../../assets/vuejs2.png",
+
         },
         {
           courseId: "c7",
@@ -142,6 +145,8 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
+          courseImage: "../../assets/vuejs2.png",
+
         },
       ],
     };

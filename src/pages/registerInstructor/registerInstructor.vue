@@ -74,7 +74,7 @@
 
         <div class="form-ctrl">
           <label for="instructor-img">Upload your Profile Pic</label>
-          <input type="file" id="instructor-img" @change="onFileChange" />
+          <input type="file" id="instructor-img" ref="imageInput" @change="handleImageUpload" />
         </div>
 
         <div class="form-ctrl">
@@ -111,8 +111,7 @@ export default {
       // DOB: "",
       aboutme : '',
       speciality : '' ,
-
-      image : null,
+      image : null ,
 
       formIsValid: true,
       error: null,
@@ -120,7 +119,7 @@ export default {
   },
   methods: {
     
-    onFileChange(event) {
+    handleImageUpload(event) {
       this.image = event.target.files[0];
     },
 
@@ -137,9 +136,12 @@ export default {
       }
 
       try {
+      //   const formData = new FormData();
+      // formData.append('image', this.image);
+
         await this.$store.dispatch("signupInstructor", {
-          name: this.name,
-          Gmail_Email: this.email,
+          Name: this.name,
+          Email: this.email,
           password: this.password,
           gender: this.gender,
           Mobile_Number_One: this.phone,
