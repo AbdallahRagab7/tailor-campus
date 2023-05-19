@@ -6,7 +6,9 @@
 
   <div class="topbar-search">
     <div class="instructor-register">
-      <router-link to="/registerinstructor" class="register-btn mx-5">Register as instructor</router-link>
+      <router-link to="/registerinstructor" class="register-btn mx-5" v-if="isInstructor !== 'Individual Instructor'"
+        >Register as instructor</router-link
+      >
     </div>
 
     <form method="get" action="#">
@@ -19,7 +21,6 @@
         <i class="fa fa-search magnify"></i>
       </button>
     </form>
-
   </div>
 
   <div class="instructors-container">
@@ -49,6 +50,7 @@ export default {
   },
   data() {
     return {
+      isInstructor : localStorage.getItem("role") ,
       instructors: [
         {
           instructorId: "i1",
@@ -161,30 +163,27 @@ export default {
     };
   },
   methods: {
-     
-        async getInstructors() {
-            try {
-
-                const response = await fetch("http://localhost:4000/allinstructors");
-                console.log(response);
-                console.log('StatsText in response is :' + response.statusText)
-                const responseData = await response.json();
-                if(!response.ok){
-                const error = new error (responseData.message ||"Failed to Fetch" )
-                throw error;
-            }
-            console.log(responseData);
-                
-            }
-            catch(error ){
-                this.error= error.message || 'something wrong'
-            }
-        },
-
+    async getInstructors() {
+      try {
+        const response = await fetch("http://localhost:4000/allinstructors");
+        console.log(response);
+        console.log("StatsText in response is :" + response.statusText);
+        const responseData = await response.json();
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
     },
-    created() {
-        this.getInstructors();
-    },
+  },
+
+  created() {
+    this.getInstructors();
+    console.log(this.isInstructor)
+  },
 };
 </script>
 
@@ -240,7 +239,7 @@ export default {
 
 .register-btn:hover {
   background: var(--theme-primary-color);
-    border-color: var(--theme-primary-color);
+  border-color: var(--theme-primary-color);
 }
 /* .search-bar::placeholder {
     color: red;

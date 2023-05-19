@@ -48,7 +48,7 @@ router.beforeEach(function(to,  _, next){
     next('/login')
     } else if (to.meta.requiresUnauth && store.getters.isAuthenticated){
     next('/home')
-    }else if (to.meta.requiresauth && store.getters.role != 'admin') {
+    }else if (to.meta.requiresauth && localStorage.getItem("role") != 'admin') {
         next('/home')
     }
     

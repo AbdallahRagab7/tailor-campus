@@ -6,7 +6,7 @@
 
   <div class="topbar-search">
     <div class="instructor-register">
-      <router-link to="/createCourse" class="register-btn mx-5"
+      <router-link to="/createCourse" class="register-btn mx-5" v-if="isInstructor === 'Individual Instructor'"
         >Create Course</router-link
       >
     </div>
@@ -53,6 +53,7 @@ export default {
   },
   data() {
     return {
+      isInstructor : localStorage.getItem("role") ,
       courses: [
         {
           courseId: "c1",
