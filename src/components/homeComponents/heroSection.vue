@@ -9,9 +9,7 @@
           <span class="subheading">Over 3000 Course Available</span>
           <h1>Upgrade your learning Skills & Upgrade your life</h1>
           <p class="lorem">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            ullam libero magni reiciendis quam ipsa blanditiis, facilis velit
-            eaque illo?
+            A comprehensive listing of available courses, organized by categories or subjects. Each course is accompanied by a description, learning objectives, and often includes user ratings and reviews.
           </p>
 
           <div class="hero-btn">

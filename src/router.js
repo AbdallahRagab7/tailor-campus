@@ -14,14 +14,19 @@ import myLearning from './pages/myLearning/mylearningPage.vue'
 import registerInstructor from './pages/registerInstructor/registerInstructor.vue'
 import admin from './pages/admin/admin.vue'
 
+import store from './store/index.js'
+
+
 
 
 const router = createRouter({
     history: createWebHistory(),
     routes : [  
         {path: '/home' ,component:homePage , alias: '/' } ,
-        {path: '/login' , component:LoginPage},
-        {path: '/register' , component:RegisterPage} ,
+
+        {path: '/login' , component:LoginPage , meta:{requiresUnauth:true}},
+        {path: '/register' , component:RegisterPage , meta:{requiresUnauth:true}} ,
+
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
         {name: 'course', path: '/course/:courseId', component:coursePage , props:true },
@@ -32,9 +37,21 @@ const router = createRouter({
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
-        {name: 'admin' , path :'/admin', component:admin},
+        {name: 'admin' , path :'/admin', component:admin },
         
     ]
 
-})
+});
+router.beforeEach(function(to,  _, next){
+    if (to.meta.requiresAuth && !store.getters.isAuthenticated){
+    // next(false)
+    next('/login')
+    } else if (to.meta.requiresUnauth && store.getters.isAuthenticated){
+    next('/home')
+    } else {
+      next()
+    }
+    })
+
+
 export default router;  

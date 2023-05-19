@@ -70,11 +70,11 @@ export default {
     const responseData = await response.json();
     console.log(responseData);
 
-    if (!response.ok) {
-      // console.log(response.ok)
-      const error = new Error(responseData.message || "Failed in request.");
-      throw error;
-    }
+    // if (!response.ok) {
+    //   // console.log(response.ok)
+    //   const error = new Error(responseData.message || "Failed in request.");
+    //   throw error;
+    // }
 
     if (responseData.massage === "password not correct") {
       // console.log(response.ok)

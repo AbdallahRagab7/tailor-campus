@@ -40,20 +40,28 @@
           <router-link to="/home">Tailor Campus</router-link>
         </div>
 
-        <div class="Categories">
-          <router-link to="/home" class="primary-menu">
-            <i class="fa fa-th me-2"></i> Categories</router-link
-          >
+        <div
+          class="Categories"
+          @mouseover="showDropdown"
+          @mouseleave="hideDropdown"
+        >
+          <p class="primary-menu"><i class="fa fa-th me-2 categories-icon"></i> Categories</p>
+          <div v-if="isDropdownVisible" class="dropdown-menu">
+            <ul>
+              <router-link to="/courses"><li>Development</li></router-link>
+              <router-link to="/courses"><li>Business</li></router-link>
+              <router-link to="/courses"><li>Design</li></router-link>
+              <router-link to="/courses"><li>IT & Software</li></router-link>
+            </ul>
+          </div>
         </div>
 
         <div class="primary-menu-items">
           <router-link to="/home" class="primary-menu">Home</router-link>
-          <!-- <router-link to="/home" class="primary-menu">About</router-link> -->
           <router-link to="/courses" class="primary-menu">Courses</router-link>
           <router-link to="/instructors" class="primary-menu"
             >Instructors</router-link
           >
-          <!-- <router-link to="/home" class="primary-menu">Contact</router-link> -->
         </div>
 
         <div class="loggedIn" v-if="isLoggedIn">
@@ -73,7 +81,6 @@
           <router-link to="/login" class="login">Login</router-link>
           <router-link to="/register" class="signup">Sign up</router-link>
         </div>
-
       </div>
       <!--  end of menus-->
     </div>
@@ -83,19 +90,29 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isDropdownVisible: false,
+    };
+  },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
-    }
+    },
   },
   methods: {
     logout() {
-      this.$store.dispatch('logout');
-      this.$router.replace('/home')
-
-    }
-  }
-}
+      this.$store.dispatch("logout");
+      this.$router.replace("/home");
+    },
+    showDropdown() {
+      this.isDropdownVisible = true;
+    },
+    hideDropdown() {
+      this.isDropdownVisible = false;
+    },
+  },
+};
 </script>
 
 <style>
@@ -234,5 +251,51 @@ export default {
   font-family: var(--theme-heading-font);
   color: #3d3030;
   transition: all 0.6s ease;
+}
+
+.Categories {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: none; /* Initially hide the dropdown menu */
+}
+.dropdown-menu li {
+  margin: 10px;
+  font-family: var(--theme-heading-font);
+  font-weight: 600;
+  color: rgb(77, 56, 56);
+}
+.Categories:hover .dropdown-menu {
+  display: block; /* Show the dropdown menu when hovering over "Categories" */
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 5px;
+}
+
+.dropdown-menu li:hover {
+  background-color: #ddd;
+}
+
+ .categories-icon {
+  color:rgb(41, 38, 38);
+  font-family: "Font Awesome 5 Pro";
+  height: 1.2rem;
+    font-weight: 900;
 }
 </style>

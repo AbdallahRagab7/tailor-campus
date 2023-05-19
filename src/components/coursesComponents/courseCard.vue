@@ -2,10 +2,12 @@
   <div class="course-card">
     <div class="course-header">
       <div class="course-thumb">
-        <img src="../../assets/vuejs2.png" alt="course-img" />
+        <router-link :to="courseLink">
+          <img src="../../assets/vuejs2.png" alt="course-img" />
+        </router-link>
       </div>
     </div>
-
+    <!-- <i class="fa-solid fa-cart-plus"></i> -->
     <div class="course-content">
       <span class="course-price">
         <i class="fa-solid fa-dollar-sign"></i> {{ coursePrice }}</span

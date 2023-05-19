@@ -42,7 +42,7 @@
           </p>
         </div>
 
-        <p class="error" v-if="error">Please Enter Vailid Password !</p>
+        <p class="error" v-if="error">Please Enter Correct Password !</p>
 
         <button class="login-btn" type="submit">Login</button>
       </form>
