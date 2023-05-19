@@ -74,7 +74,12 @@
 
         <div class="form-ctrl">
           <label for="instructor-img">Upload your Profile Pic</label>
-          <input type="file" id="instructor-img" ref="imageInput" @change="handleImageUpload" />
+          <input
+            type="file"
+            id="instructor-img"
+            ref="imageInput"
+            @change="handleImageUpload"
+          />
         </div>
 
         <div class="form-ctrl">
@@ -91,9 +96,7 @@
           </p>
         </div>
 
-        
-          <button type="submit" class="login-btn">Sign Up</button>
-      
+        <button type="submit" class="login-btn">Sign Up</button>
       </form>
     </base-card>
   </section>
@@ -109,16 +112,15 @@ export default {
       gender: "",
       phone: "",
       // DOB: "",
-      aboutme : '',
-      speciality : '' ,
-      image : null ,
+      aboutme: "",
+      speciality: "",
+      image: null,
 
       formIsValid: true,
       error: null,
     };
   },
   methods: {
-    
     handleImageUpload(event) {
       this.image = event.target.files[0];
     },
@@ -136,18 +138,15 @@ export default {
       }
 
       try {
-      //   const formData = new FormData();
-      // formData.append('image', this.image);
-
         await this.$store.dispatch("signupInstructor", {
           Name: this.name,
           Email: this.email,
           password: this.password,
           gender: this.gender,
           Mobile_Number_One: this.phone,
-          aboutme : this.aboutme , 
-          speciality : this.speciality,
-          image : this.image ,
+          aboutme: this.aboutme,
+          speciality: this.speciality,
+          image: this.image,
         });
 
         this.$router.replace("/home");

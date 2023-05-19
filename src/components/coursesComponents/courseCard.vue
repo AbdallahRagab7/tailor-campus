@@ -3,7 +3,8 @@
     <div class="course-header">
       <div class="course-thumb">
         <router-link :to="courseLink">
-          <img :src="getCourseImg" alt="course-img" />
+          <img :src="require(`../../assets/${image}.jpg`)" alt="course-img" />  
+          <!-- <img :src="require(`${courseimg}`)" alt="course-img" />   -->
         </router-link>
       </div>
     </div>
@@ -50,7 +51,11 @@
 export default {
   data() {
     return {
-      courseimg : '../../assets/vuejs2.png'
+      // courseimg : '../../assets/nodejs.jpg'
+      // courseimg : 'vuejs2.png'
+      image :'course3', 
+      courseimg : '../../assets/vuejs2.png' 
+      
     }
   },
   

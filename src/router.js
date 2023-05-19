@@ -37,7 +37,7 @@ const router = createRouter({
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
-        {name: 'admin' , path :'/admin', component:admin },
+        {name: 'admin' , path :'/admin', component:admin , meta:{requiresauth:true}},
         
     ]
 
@@ -48,7 +48,11 @@ router.beforeEach(function(to,  _, next){
     next('/login')
     } else if (to.meta.requiresUnauth && store.getters.isAuthenticated){
     next('/home')
-    } else {
+    }else if (to.meta.requiresauth && store.getters.role != 'admin') {
+        next('/home')
+    }
+    
+    else {
       next()
     }
     })

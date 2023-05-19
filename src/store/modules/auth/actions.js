@@ -28,16 +28,14 @@ export default {
       const error = new Error(
         responseData.massage || "Failed to authenticate. Check your login data."
       );
-      throw error; 
-      // lw 7sl error hna ,, elmethod el bt3ml dispatch ly el action dh 
-      // hysm3 error hnak fi el catch 
-      // y3ny akn el action mkmlsh 
+      throw error;
+      // lw 7sl error hna ,, elmethod el bt3ml dispatch ly el action dh
+      // hysm3 error hnak fi el catch
+      // y3ny akn el action mkmlsh
       // fmsh hykml el try (this.router.replace)
     }
 
     console.log(responseData);
-
-
 
     if (responseData.token != "unauthurized token") {
       localStorage.setItem("token", responseData.token);
@@ -121,33 +119,31 @@ export default {
     }
   },
 
-
-
-// registerinstructor
-// fields in controllers , user auth
+  // registerinstructor
+  // fields in controllers , user auth
   async signupInstructor(context, payload) {
     // const formData = new FormData();
     // formData.append('image', payload.image)
     const Data = new FormData();
-    Data.append('Name' , payload.Name)
-    Data.append('Email' , payload.Email)
-    Data.append('password' , payload.password)
-    Data.append('gender' , gender)
-    Data.append('Mobile_Number_One' , payload.Mobile_Number_One)
-    Data.append('aboutme' , payload.aboutme)
-    Data.append('speciality' , payload.speciality)
-    Data.append('image' , payload.image)
+    Data.append("Name", payload.Name);
+    Data.append("Email", payload.Email);
+    Data.append("password", payload.password);
+    Data.append("gender", gender);
+    Data.append("Mobile_Number_One", payload.Mobile_Number_One);
+    Data.append("aboutme", payload.aboutme);
+    Data.append("speciality", payload.speciality);
+    Data.append("image", payload.image);
 
     const response = await fetch("http://localhost:4000/register/instructor", {
       method: "POST",
-      body : Data ,
+      body: Data,
       // headers: {
-      //   "Content-Type": "application/json", 
+      //   "Content-Type": "application/json",
       // },
     });
 
     const responseData = await response.json();
-    console.log(responseData)
+    console.log(responseData);
     if (!response.ok) {
       // console.log(response.ok)
       const error = new Error(responseData.massage || "Failed in request.");
@@ -162,9 +158,6 @@ export default {
     //   );
     //   throw error;
     // }
-
-
-
 
     // if (responseData.token != "unauthurized token") {
     //   localStorage.setItem("token", responseData.token);

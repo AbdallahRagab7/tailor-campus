@@ -10,9 +10,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="request in instructorRequests" :key="request.id">
-          <td>{{ request.name }}</td>
-          <td>{{ request.email }}</td>
+        <tr v-for="request in requests" :key="request">
+          <td>{{ request.Name }}</td>
+          <td>{{ request.Email_Login }}</td>
           <td>
             <button @click="acceptRequest(request.id)" class="accept-button">
               Accept
@@ -24,11 +24,45 @@
         </tr>
       </tbody>
     </table>
+    <!-- end of instructors requests -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <h1 class="my-4">Tailor Campus Instructors</h1>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Instructor Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="instructor in acceptedInstructors" :key="instructor">
+          <td>{{ instructor.Name }}</td>
+          <td>{{ instructor.Email_Login }}</td>
+          <td>
+            <!-- <button @click="acceptRequest(request.id)" class="accept-button">
+              Accept
+            </button> -->
+            <button @click="removeInstructor(instructor.id)" class="deny-button">
+              Remove Instructor
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 export default {
+  //Admin@admin.com
+  //onlyAdmin123
   // ...
   data() {
     return {
@@ -37,17 +71,123 @@ export default {
         { id: 2, name: "Jane Smith", email: "jane@example.com" },
         { id: 3, name: "Bob Johnson", email: "bob@example.com" },
       ],
+      requests: [],
+      acceptedInstructors: [],
     };
   },
   methods: {
-    acceptRequest(id) {
-      // Implement logic to accept the instructor request
-      console.log(`Accepting request with ID: ${id}`);
+    async getRequests() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/Admin/PendingInstructors",
+          {
+            headers: {
+              // 'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log(response);
+        const responseData = await response.json();
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        console.log(responseData);
+        this.requests = responseData.instructor;
+        //instructor is Array of Object
+        // each object , contain array called instructors , instructors contain instructor id
+        // for (const instructor in responseData.instructor) {
+
+        // }
+        console.log(requests);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
     },
-    denyRequest(id) {
-      // Implement logic to deny the instructor request
-      console.log(`Denying request with ID: ${id}`);
+
+    async acceptRequest(id) {
+      const response = await fetch(
+        "http://localhost:4000/Admin/updateInstructor/" + id,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            Approved: true,
+          }),
+
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      window.location.reload();
     },
+
+    async denyRequest(id) {
+      const response = await fetch(
+        "http://localhost:4000/Admin/updateInstructor/" + id,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            Approved: false,
+          }),
+
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      window.location.reload();
+    },
+
+    async getInstructors() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/Admin/ApprovedInstructors",
+          {
+            headers: {
+              // 'Content-Type': 'multipart/form-data',
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log(response);
+        const responseData = await response.json();
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        console.log(responseData);
+        this.acceptedInstructors = responseData.instructor;
+
+        console.log(requests);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+    async removeInstructor(id) {
+      const response = await fetch(
+        "http://localhost:4000/Admin/deleteInstructor/" + id,
+        {
+          method: "delete",
+          // body: JSON.stringify({
+          //   Approved: false,
+          // }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      window.location.reload();
+    },
+  },
+  created() {
+    this.getRequests();
+    this.getInstructors();
   },
 };
 </script>
@@ -57,9 +197,9 @@ export default {
   text-align: center;
 }
 h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: rgb(49, 38, 38);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(49, 38, 38);
 }
 .admin-table {
   width: 90%;

@@ -45,7 +45,9 @@
           @mouseover="showDropdown"
           @mouseleave="hideDropdown"
         >
-          <p class="primary-menu"><i class="fa fa-th me-2 categories-icon"></i> Categories</p>
+          <p class="primary-menu">
+            <i class="fa fa-th me-2 categories-icon"></i> Categories
+          </p>
           <div v-if="isDropdownVisible" class="dropdown-menu">
             <ul>
               <router-link to="/courses"><li>Development</li></router-link>
@@ -62,6 +64,8 @@
           <router-link to="/instructors" class="primary-menu"
             >Instructors</router-link
           >
+
+          <router-link to="/admin" class="primary-menu" v-if="isAdmin">Admin</router-link>
         </div>
 
         <div class="loggedIn" v-if="isLoggedIn">
@@ -93,12 +97,23 @@ export default {
   data() {
     return {
       isDropdownVisible: false,
+      isAdmin : false ,
     };
   },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
+    isAdmin (){
+      const role = this.$store.getters.role
+      if (role === 'admin'){
+        this.isAdmin = true ;
+      } else {
+        this.isAdmin= false;
+      }
+      return this.isAdmin;
+    }
+
   },
   methods: {
     logout() {
@@ -292,10 +307,10 @@ export default {
   background-color: #ddd;
 }
 
- .categories-icon {
-  color:rgb(41, 38, 38);
+.categories-icon {
+  color: rgb(41, 38, 38);
   font-family: "Font Awesome 5 Pro";
   height: 1.2rem;
-    font-weight: 900;
+  font-weight: 900;
 }
 </style>
