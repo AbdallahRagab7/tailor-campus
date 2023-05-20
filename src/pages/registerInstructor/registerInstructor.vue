@@ -78,7 +78,8 @@
             type="file"
             id="instructor-img"
             ref="imageInput"
-            @change="handleImageUpload"
+            @change="handleImageUpload" 
+            required
           />
         </div>
 
@@ -149,7 +150,7 @@ export default {
           image: this.image,
         });
 
-        this.$router.replace("/home");
+        this.$router.replace("/thanks");
       } catch (err) {
         this.error = err.message || "Failed to authenticate, try later.";
       }

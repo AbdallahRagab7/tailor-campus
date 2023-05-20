@@ -76,12 +76,12 @@
           <router-link to="/cart" class="cart"
             ><i class="fa-solid fa-cart-shopping cart-icon"></i
           ></router-link>
-          <router-link to="/wishlist" class="wishlist"
+          <router-link to="/wishlist" class="wishlist mx-2"
             ><i class="fa-regular fa-heart"></i
           ></router-link>
 
           <!-- <router-link to="/cart">UserName</router-link> -->
-          <button @click="logout">Logout</button>
+          <button @click="logout" class="logout">Logout</button>
         </div>
 
         <div class="auth" v-if="!isLoggedIn">
@@ -234,6 +234,18 @@ export default {
 
 .login:hover {
   color: var(--theme-primary-color);
+}
+
+.logout {
+  border-color: var(--theme-secondary-color);
+  color: #fff;
+  background: var(--theme-secondary-color);
+  font-weight: 600;
+  padding: 3px 15px;
+  border-radius: 0.25rem;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: all 0.6s ease;
 }
 
 .router-link-active {

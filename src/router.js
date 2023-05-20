@@ -13,6 +13,7 @@ import viewCourse from './pages/viewCourse/viewCourse.vue'
 import myLearning from './pages/myLearning/mylearningPage.vue'
 import registerInstructor from './pages/registerInstructor/registerInstructor.vue'
 import admin from './pages/admin/admin.vue'
+import thanks from './pages/thanks/thanks.vue'
 
 import store from './store/index.js'
 
@@ -26,6 +27,7 @@ const router = createRouter({
 
         {path: '/login' , component:LoginPage , meta:{requiresUnauth:true}},
         {path: '/register' , component:RegisterPage , meta:{requiresUnauth:true}} ,
+        {name: 'admin' , path :'/admin', component:admin , meta:{requiresauth:true}},
 
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
@@ -37,7 +39,7 @@ const router = createRouter({
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
-        {name: 'admin' , path :'/admin', component:admin , meta:{requiresauth:true}},
+        {name: 'myLearning' , path :'/thanks', component:thanks},
         
     ]
 
