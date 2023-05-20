@@ -1,195 +1,20 @@
 <template>
   <div class="admin-page">
-    <h1 class="my-4">Requests to be an instructor</h1>
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Instructor Name</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="request in requests" :key="request">
-          <td>{{ request.Name }}</td>
-          <td>{{ request.Email_Login }}</td>
-          <td>
-            <button @click="acceptRequest(request.id)" class="accept-button">
-              Accept
-            </button>
-            <button @click="denyRequest(request.id)" class="deny-button">
-              Deny
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- end of instructors requests -->
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <h1 class="my-4">Tailor Campus Instructors</h1>
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Instructor Name</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="instructor in acceptedInstructors" :key="instructor">
-          <td>{{ instructor.Name }}</td>
-          <td>{{ instructor.Email_Login }}</td>
-          <td>
-            <!-- <button @click="acceptRequest(request.id)" class="accept-button">
-              Accept
-            </button> -->
-            <button @click="removeInstructor(instructor.id)" class="deny-button">
-              Remove Instructor
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <nav-tab class=""></nav-tab>
   </div>
 </template>
 
 <script>
+import navTab from "../../components/adminComponents/navTab.vue";
 export default {
   //Admin@admin.com
-  //onlyAdmin123
+  //onlyAdmin123mpon
   // ...
-  data() {
-    return {
-      instructorRequests: [
-        { id: 1, name: "John Doe", email: "john@example.com" },
-        { id: 2, name: "Jane Smith", email: "jane@example.com" },
-        { id: 3, name: "Bob Johnson", email: "bob@example.com" },
-      ],
-      requests: [],
-      acceptedInstructors: [],
-    };
-  },
-  methods: {
-    async getRequests() {
-      try {
-        const response = await fetch(
-          "http://localhost:4000/Admin/PendingInstructors",
-          {
-            headers: {
-              // 'Content-Type': 'multipart/form-data',
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log(response);
-        const responseData = await response.json();
-        if (!response.ok) {
-          const error = new error(responseData.message || "Failed to Fetch");
-          throw error;
-        }
-        console.log(responseData);
-        this.requests = responseData.instructor;
-        //instructor is Array of Object
-        // each object , contain array called instructors , instructors contain instructor id
-        // for (const instructor in responseData.instructor) {
-
-        // }
-        console.log(requests);
-      } catch (error) {
-        this.error = error.message || "something wrong";
-      }
-    },
-
-    async acceptRequest(id) {
-      const response = await fetch(
-        "http://localhost:4000/Admin/updateInstructor/" + id,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            Approved: true,
-          }),
-
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      window.location.reload();
-    },
-
-    async denyRequest(id) {
-      const response = await fetch(
-        "http://localhost:4000/Admin/updateInstructor/" + id,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            Approved: false,
-          }),
-
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      window.location.reload();
-    },
-
-    async getInstructors() {
-      try {
-        const response = await fetch(
-          "http://localhost:4000/Admin/ApprovedInstructors",
-          {
-            headers: {
-              // 'Content-Type': 'multipart/form-data',
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log(response);
-        const responseData = await response.json();
-        if (!response.ok) {
-          const error = new error(responseData.message || "Failed to Fetch");
-          throw error;
-        }
-        console.log(responseData);
-        this.acceptedInstructors = responseData.instructor;
-
-        console.log(requests);
-      } catch (error) {
-        this.error = error.message || "something wrong";
-      }
-    },
-    async removeInstructor(id) {
-      const response = await fetch(
-        "http://localhost:4000/Admin/deleteInstructor/" + id,
-        {
-          method: "delete",
-          // body: JSON.stringify({
-          //   Approved: false,
-          // }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      window.location.reload();
-    },
-  },
-  created() {
-    this.getRequests();
-    this.getInstructors();
-  },
-};
+  components : {
+    navTab
+  }, 
+}
+ 
 </script>
 
 <style scoped>
@@ -200,39 +25,5 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
   color: rgb(49, 38, 38);
-}
-.admin-table {
-  width: 90%;
-  border-collapse: collapse;
-  margin: 0 auto;
-}
-
-.admin-table th,
-.admin-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.admin-table th {
-  background-color: #f2f2f2;
-}
-
-.accept-button,
-.deny-button {
-  padding: 6px 12px;
-  margin-right: 6px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.accept-button {
-  background-color: #285496;
-  color: #fff;
-}
-
-.deny-button {
-  background-color: #e72214;
-  color: #fff;
 }
 </style>
