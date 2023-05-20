@@ -32,7 +32,7 @@ const router = createRouter({
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
         {name: 'course', path: '/course/:courseId', component:coursePage , props:true },
-        {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils},
+        {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils , props:true},
         {name: 'cart' , path: '/cart', component:cartPage},
         {name: 'wishlist' , path: '/wishlist', component:wishlistPage},
         {name: 'createCourse' , path: '/createCourse', component:createCourse},

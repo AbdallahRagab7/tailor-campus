@@ -1,25 +1,69 @@
 <template>
-         <div class="profile-pic-social-links">
-        <div class="pic">
-          <img src="../../assets/instructor.jpg" alt="" />
-        </div>
+  <div class="profile-pic-social-links">
+    <div class="pic">
+      <!-- <img src="../../assets/instructor.jpg" alt="" /> -->
+      <!-- <img :src="require(@/assets/img/${variable}.svg)" /> --> 
+      <!-- <img :src="" alt=""> -->
+      <img :src=" 'http://localhost:4000/'+profileImage" alt="">
 
-        <div class="social-links">
-          <a href="#" class="send-msg-btn">Send message</a>
+    </div>
 
-          <a href="#"><i class="fa-solid fa-link mx-1"></i> Website</a>
+    <div class="social-links">
+      <a href="#" class="send-msg-btn">Send message</a>
+      <!-- <a href="#" class="send-msg-btn">{{this.instructorDetails.Name}}</a> -->
 
-          <a href="#"><i class="fa-brands fa-facebook mx-1"></i> Facebook</a>
+      <a href="#"><i class="fa-solid fa-link mx-1"></i> Website</a>
 
-          <a href="#"><i class="fa-brands fa-linkedin mx-1"></i> Linkedin</a>
+      <a href="#"><i class="fa-brands fa-facebook mx-1"></i> Facebook</a>
 
-          <a href="#"><i class="fa-brands fa-youtube mx-1"></i>Youtube</a>
-        </div>
-      </div>
+      <a href="#"><i class="fa-brands fa-linkedin mx-1"></i> Linkedin</a>
+
+      <a href="#"><i class="fa-brands fa-youtube mx-1"></i>Youtube</a>
+    </div>
+  </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  data() {
+    return {
+      profileImage: null,
+    };
+  },
+  methods: {
+    async instructorInfo() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/instructorprofile/2"
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
 
+        // this.instructorDetails = responseData.instructorName[0];
+        // console.log(this.instructorDetails)
+        
+        // this.profileImage = responseData.instructorName[0].Image_Profile.split("images/");
+        this.profileImage = responseData.instructorName[0].Image_Profile.replace("images/", "");
+        // const profiletwo = profileImage.split("images")
+        console.log(this.profileImage);
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        // console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  created () {
+    this.instructorInfo()
+  }
+};
+</script>
+
+<style scoped>
 .pic {
   border-radius: 50%;
   width: 12.5rem;

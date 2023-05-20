@@ -152,6 +152,7 @@ export default {
       ],
     };
   },
+  
   methods: {
     async getCourses() {
       try {

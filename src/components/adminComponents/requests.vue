@@ -126,16 +126,23 @@ h1 {
     margin: 0 auto;
   }
   
-  .admin-table th,
+  .admin-table th {
+    font-family: sans-serif;
+    font-weight: 700;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: rgb(76, 17, 124);
+  }
   .admin-table td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-family: sans-serif;
+    font-weight: 600;
+    color:black;
   }
   
-  .admin-table th {
-    background-color: #f2f2f2;
-  }
   
   .accept-button,
   .deny-button {
@@ -148,10 +155,14 @@ h1 {
   .accept-button {
     background-color: #285496;
     color: #fff;
+    font-family: sans-serif;
+    font-weight: 700;
   }
   
   .deny-button {
     background-color: #e72214;
     color: #fff;
+    font-family: sans-serif;
+    font-weight: 700;
   }
 </style>
