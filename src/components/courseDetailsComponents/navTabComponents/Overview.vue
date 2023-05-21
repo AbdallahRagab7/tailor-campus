@@ -2,7 +2,8 @@
   <section class="course-details">
     <div class="description">
       <h4>Description</h4>
-      <p>{{ overView.description }}</p>
+      <!-- <p>{{ overView.description }}</p> -->
+      <p>{{ courseDescription }}</p>
     </div>
 
     <div class="learn">
@@ -30,8 +31,37 @@ export default {
           "Use creative effects to design stunning text styles",
         ],
       },
+      courseId : this.$route.params.courseId ,
+      courseDescription: "",
     };
   },
+
+  methods: {
+    async courseHeaderData() {
+      try {
+        const response = await fetch(
+          // "http://localhost:4000//course/" + this.courseId
+          "http://localhost:4000/course/"+ this.courseId
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
+        this.courseDescription =
+          responseData.courseHeader[0].course_description;
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        // console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  created () {
+    this.courseHeaderData()
+  }
 };
 </script>
 

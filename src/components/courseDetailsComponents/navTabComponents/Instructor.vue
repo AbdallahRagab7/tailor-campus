@@ -7,14 +7,20 @@
     </div>
 
     <div class="instructor-content">
-      <h4 class="instructor-name">
+      <!-- <h4 class="instructor-name">
         <router-link :to="instructorLink">{{
           instructorDetails.instructorName
+        }}</router-link>
+      </h4> -->
+      <h4 class="instructor-name">
+        <router-link :to="instructorLink">{{
+          instructorName
         }}</router-link>
       </h4>
 
       <p class="about">
-        {{ instructorDetails.aboutInstructor }}
+        {{ instructorDetails.aboutInstructor }} 
+    
       </p>
 
       <div class="intructor-social-links">
@@ -35,6 +41,8 @@
 
 <script>
 export default {
+
+  // inject : ['courseId'],
   data() {
     return {
       instructorDetails: {
@@ -47,17 +55,55 @@ export default {
         linkedinLink: "#",
         youtubeLink: "#",
       },
+      // use it in get request
+      courseId : this.$route.params.courseId,
+      instructorName : '' ,
+      instructorId : '', //hst5dmo aro7 ly link el instructor
+
+      courseId : this.$route.params.courseId
+
     };
+    
   },
 
   computed: {
     instructorLink() {
       return {
         name: "instructor",
-        params: { instructorId: this.instructorDetails.instructorId },
+        // params: { instructorId: this.instructorDetails.instructorId },
+        params: { instructorId: this.instructorId },
       };
     },
   },
+  methods : {
+    async courseHeaderData() {
+      try {
+        const response = await fetch(
+          // "http://localhost:4000//course/" + this.courseId
+          "http://localhost:4000/course/"+ this.courseId
+          // "http://localhost:4000/'/instructors/instructorcomponent/1"
+          //hgeb instructor id mn get request fi courseHeader el awl 
+          
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
+          this.instructorName = responseData.courseHeader[0].Instructor_name;
+          this.instructorId = responseData.courseHeader[0].instructorId;
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        // console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  created () {
+    this.courseHeaderData()
+  }
 };
 </script>
 

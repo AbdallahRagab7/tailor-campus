@@ -96,7 +96,7 @@ export default {
     async instructorInfo () {
       try {
         const response = await fetch(
-          "http://localhost:4000/instructorprofile/2" 
+          "http://localhost:4000/instructorprofile/" + this.instructorId 
         );
         // console.log(response);
         const responseData = await response.json();

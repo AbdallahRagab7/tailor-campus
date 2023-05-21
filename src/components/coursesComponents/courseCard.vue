@@ -3,8 +3,10 @@
     <div class="course-header">
       <div class="course-thumb">
         <router-link :to="courseLink">
-          <img :src="require(`../../assets/${image}.jpg`)" alt="course-img" />  
+          <!-- <img :src="require(`../../assets/${image}.jpg`)" alt="course-img" />   -->
           <!-- <img :src="require(`${courseimg}`)" alt="course-img" />   -->
+          <img :src=" 'http://localhost:4000/'+ courseImage.replace('images/', '')" alt="">
+          
         </router-link>
       </div>
     </div>
@@ -39,7 +41,8 @@
         <i class="fa fa-star checked"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
-        <span>{{ rating }} ({{ reviews }} reviews)</span>
+        <!-- <span>{{ rating }} ({{ reviews }} reviews)</span> -->
+        <span>{{ rating }} ({{ reviews }}47 reviews)</span>
       </div>
 
       <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link>
@@ -89,6 +92,7 @@ export default {
 <style scoped>
 .course-card {
   width: 24rem;
+  max-height: 430px;
   border: 2px solid #e6e7ec;
   border-radius: 4px;
   padding: 0px 2rem 1.5rem 2rem;
@@ -108,7 +112,7 @@ export default {
 }
 .course-thumb {
   width: 350px;
-  /* width: 325px; */
+  height: 197px;
   border-radius: 8px;
   margin: 0 auto;
   overflow: hidden; /* to make img take same border-radius */
@@ -116,6 +120,7 @@ export default {
 
 .course-thumb img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 

@@ -5,7 +5,7 @@
         <course-header :courseId="courseId"> </course-header>
         <nav-tab :courseId="courseId"> </nav-tab>
       </div>
-      <h1>{{ courseId }}</h1>
+      <!-- <h1>{{ courseId }}</h1> -->
       <course-sidebar :courseId="courseId"> </course-sidebar>
     </div>
   </section>
@@ -26,6 +26,13 @@ export default {
       courseId: this.$route.params.courseId,
     };
   },
+  provide : {
+    provide () {
+      return {
+        courseId : this.courseId,
+      }
+    }
+  }
 };
 </script>
 

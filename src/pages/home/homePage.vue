@@ -10,20 +10,20 @@
 
       <section class="courses">
         <course-card
-          class="course-card"
-          v-for="course in courses"
-          :key="course.courseId"
-          :createdBy="course.createdBy"
-          :courseTitle="course.courseTitle"
-          :coursePrice="course.coursePrice"
-          :studentsNo="course.studentsNo"
-          :duration="course.duration"
-          :lessons="course.lessons"
-          :rating="course.rating"
-          :reviews="course.reviews"
-          :courseId="course.courseId"
-          :instructorId="course.instructorId"
-        ></course-card>
+        v-for="course in coursesTwo"
+        :key="course.id"
+        :createdBy="course.Instructor_name"
+        :courseTitle="course.course_name"
+        :coursePrice="course.course_price"
+        :studentsNo="course.num_student_enrolled"
+        :lessons="course.num_lesson"
+        :rating="course.course_rate"
+        :courseId="course.id"
+        :instructorId="course.instructorId"
+        :courseImage="course.course_image"
+        duration="15h"
+      >
+      </course-card>
       </section>
     </div>
 
@@ -32,18 +32,15 @@
 
       <section class="instructors">
         <instructor-card
-          v-for="instructor in instructors"
-          :key="instructor.instructorId"
-          :instructorId="instructor.instructorId"
-          :instructorName="instructor.instructorName"
-          :specialization="instructor.specialization"
-          :facebookLink="instructor.facebookLink"
-          :linkedinLink="instructor.linkedLink"
-          :youtubeLink="instructor.youtubeLink"
-          :studentsNo="instructor.studentsNo"
-          :coursesNo="instructor.coursesNo"
-          :instructorImage="instructor.instructorImage"
-        ></instructor-card>
+        v-for="instructor in instructorsTwo"
+        :key="instructor.id"
+        :instructorId="instructor.id"
+        :instructorName="instructor.Name"
+        specialization="Web Developer"
+        studentsNo="744"
+        coursesNo="9"
+        :instructorImage="instructor.Image_Profile"
+      ></instructor-card>
       </section>
     </div>
   </main>
@@ -61,88 +58,55 @@ export default {
   },
   data() {
     return {
-      courses: [
-        {
-          courseId: "c1",
-          instructorId: "i1",
-          createdBy: "Maximilian Schwarzmüller",
-          courseTitle:
-            "Vue - The Complete Guide (incl. Router & Composition API)",
-          coursePrice: 60,
-          studentsNo: 741,
-          duration: "10h",
-          lessons: 25,
-          rating: 3,
-          reviews: 74,
-          courseImage: "3awz link elcourse image",
-        },
-        {
-          courseId: "c2",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 100,
-          studentsNo: 819,
-          duration: "13.5h",
-          lessons: 15,
-          rating: 3,
-          reviews: 74,
-          courseImage: "3awz link elcourse image",
-        },
-        {
-          courseId: "c3",
-          instructorId: "i3",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "The Complete 2022 Flutter & Dart Development",
-          coursePrice: 99,
-          studentsNo: 74,
-          duration: "24h",
-          lessons: 30,
-          rating: 3,
-          reviews: 744,
-          courseImage: "3awz link elcourse image",
-        },
-      ],
+      coursesTwo: [],
+      instructorsTwo : [],
 
-      instructors: [
-        {
-          instructorId: "i1",
-          instructorName: "Max Johnas ",
-          specialization: "Web developer",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 747,
-          coursesNo: 4,
-          instructorImage: "3awz link elcourse image",
-        },
-
-        {
-          instructorId: "i2",
-          instructorName: "Johnny max",
-          specialization: "Data Analyst",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 232,
-          coursesNo: 10,
-          instructorImage: "3awz link elcourse image",
-        },
-
-        {
-          instructorId: "i3",
-          instructorName: "Maximilian Schwarzmüller",
-          specialization: "Flutter Development",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 74,
-          coursesNo: 7,
-          instructorImage: "3awz link elcourse image",
-        },
-      ],
     };
   },
+  methods : {
+    async getCourses() {
+      try {
+        const response = await fetch("http://localhost:4000/courses");
+        // console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
+
+        this.coursesTwo = responseData.courses.slice(0,3);
+        console.log(this.coursesTwo);
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+    async getInstructors() {
+      try {
+        const response = await fetch("http://localhost:4000/allinstructors");
+        // console.log(response);
+        // console.log("StatsText in response is :" + response.statusText);
+        const responseData = await response.json();
+        console.log(responseData);
+        this.instructorsTwo = responseData.instructor.slice(0,3);
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  
+  created () {
+    this.getCourses();
+    this.getInstructors()
+
+  }
 };
 </script>
 

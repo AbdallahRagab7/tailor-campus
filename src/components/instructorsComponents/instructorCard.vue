@@ -2,7 +2,8 @@
   <div class="instructor-card">
     <div class="instructor-header">
       <router-link :to="instructorLink">
-      <img src="../../assets/instructor.jpg" alt="instructor-img" />
+      <!-- <img src="../../assets/instructor.jpg" alt="instructor-img" /> -->
+      <img :src=" 'http://localhost:4000/'+ instructorImage.replace('images/', '')" alt="">
       </router-link>
     </div>
 
@@ -38,11 +39,12 @@ export default {
     "instructorId",
     "instructorName",
     "specialization",
-    "facebookLink",
-    "linkedinLink",
-    "youtubeLink",
+    // "facebookLink",
+    // "linkedinLink",
+    // "youtubeLink",
     "studentsNo",
     "coursesNo",
+    "instructorImage",
     // "instructorImage",
   ],
   computed: {

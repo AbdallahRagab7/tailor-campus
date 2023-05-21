@@ -10,7 +10,7 @@
       <h2>My courses ({{courses.length}})</h2>
 
       <section class="courses">
-        <course-card
+        <!-- <course-card
           class="course-card"
           v-for="course in courses"
           :key="course.courseId"
@@ -24,7 +24,7 @@
           :reviews="course.reviews"
           :courseId="course.courseId"
           :instructorId="course.instructorId"
-        ></course-card>
+        ></course-card> -->
       </section>
     </div>
   </section>

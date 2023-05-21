@@ -28,7 +28,7 @@
 
   <div class="instructors-container">
     <section class="instructors">
-      <instructor-card
+      <!-- <instructor-card
         v-for="instructor in instructors"
         :key="instructor.instructorId"
         :instructorId="instructor.instructorId"
@@ -40,7 +40,20 @@
         :studentsNo="instructor.studentsNo"
         :coursesNo="instructor.coursesNo"
         :instructorImage="instructor.instructorImage"
+      ></instructor-card> -->
+
+      <instructor-card
+        v-for="instructor in instructorsTwo"
+        :key="instructor.id"
+        :instructorId="instructor.id"
+        :instructorName="instructor.Name"
+        specialization="Web Developer"
+        studentsNo="744"
+        coursesNo="9"
+        :instructorImage="instructor.Image_Profile"
       ></instructor-card>
+
+
     </section>
   </div>
 </template>
@@ -54,6 +67,7 @@ export default {
   data() {
     return {
       // isInstructor : localStorage.getItem("role") ,
+      instructorsTwo : [],
       instructors: [
         {
           instructorId: "i1",
@@ -127,41 +141,7 @@ export default {
           instructorImage: "3awz link elcourse image",
         },
 
-        {
-          instructorId: "i7",
-          instructorName: "Maximilian Schwarzmüller",
-          specialization: "Web developer",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 324,
-          coursesNo: 4,
-          instructorImage: "3awz link elcourse image",
-        },
-
-        {
-          instructorId: "i8",
-          instructorName: "Maximilian Schwarzmüller",
-          specialization: "Web developer",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 741,
-          coursesNo: 3,
-          instructorImage: "3awz link elcourse image",
-        },
-
-        {
-          instructorId: "i9",
-          instructorName: "Maximilian Schwarzmüller",
-          specialization: "Web developer",
-          facebookLink: "#",
-          linkedinLink: "#",
-          youtubeLink: "#",
-          studentsNo: 74,
-          coursesNo: 4,
-          instructorImage: "3awz link elcourse image",
-        },
+      
       ],
     };
   },
@@ -169,14 +149,16 @@ export default {
     async getInstructors() {
       try {
         const response = await fetch("http://localhost:4000/allinstructors");
-        console.log(response);
-        console.log("StatsText in response is :" + response.statusText);
+        // console.log(response);
+        // console.log("StatsText in response is :" + response.statusText);
         const responseData = await response.json();
+        console.log(responseData);
+        this.instructorsTwo = responseData.instructor;
+
         if (!response.ok) {
           const error = new error(responseData.message || "Failed to Fetch");
           throw error;
         }
-        console.log(responseData);
       } catch (error) {
         this.error = error.message || "something wrong";
       }

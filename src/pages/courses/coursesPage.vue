@@ -6,7 +6,10 @@
 
   <div class="topbar-search">
     <div class="instructor-register">
-      <router-link to="/createCourse" class="register-btn mx-5" v-if="role === 'Individual Instructor'"
+      <router-link
+        to="/createCourse"
+        class="register-btn mx-5"
+        v-if="role === 'Individual Instructor'"
         >Create Course</router-link
       >
     </div>
@@ -25,7 +28,7 @@
 
   <div class="courses-container">
     <section class="courses">
-      <course-card
+      <!-- <course-card
         class="course-card"
         v-for="course in courses"
         :key="course.courseId"
@@ -40,7 +43,24 @@
         :courseId="course.courseId"
         :instructorId="course.instructorId"
         :courseImage="course.courseImage"
-      ></course-card>
+      ></course-card> -->
+
+      <!-- :duration="course.duration" -->
+      <course-card
+        v-for="course in coursesTwo"
+        :key="course.id"
+        :createdBy="course.Instructor_name"
+        :courseTitle="course.course_name"
+        :coursePrice="course.course_price"
+        :studentsNo="course.num_student_enrolled"
+        :lessons="course.num_lesson"
+        :rating="course.course_rate"
+        :courseId="course.id"
+        :instructorId="course.instructorId"
+        :courseImage="course.course_image"
+        duration="15h"
+      >
+      </course-card>
     </section>
   </div>
 </template>
@@ -54,111 +74,115 @@ export default {
   data() {
     return {
       // isInstructor : localStorage.getItem("role") ,
-      courses: [
-        {
-          courseId: "c1",
-          instructorId: "i1",
-          createdBy: "Maximilian Schwarzmüller",
-          courseTitle:
-            "Vue - The Complete Guide (incl. Router & Composition API)",
-          coursePrice: 60,
-          studentsNo: 741,
-          duration: "10h",
-          lessons: 25,
-          rating: 3,
-          reviews: 74,
-          courseImage: "../../assets/vuejs2.png",
-        },
-        {
-          courseId: "c2",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 100,
-          studentsNo: 819,
-          duration: "13.5h",
-          lessons: 15,
-          rating: 3,
-          reviews: 74,
-          courseImage: "../../assets/nodejs.jpg",
-        },
-        {
-          courseId: "c3",
-          instructorId: "i3",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "The Complete 2022 Flutter & Dart Development",
-          coursePrice: 99,
-          studentsNo: 74,
-          duration: "24h",
-          lessons: 30,
-          rating: 3,
-          reviews: 744,
-          courseImage: "../../assets/vuejs2.png",
-        },
-        {
-          courseId: "c4",
-          instructorId: "i4",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "The Web Developer Bootcamp 2023",
-          coursePrice: 50,
-          studentsNo: 743,
-          duration: "20h",
-          lessons: 30,
-          rating: 3,
-          reviews: 74,
-          courseImage: "../../assets/vuejs2.png",
-        },
-        {
-          courseId: "c5",
-          instructorId: "i5",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 450,
-          studentsNo: 424,
-          duration: "6.5h",
-          lessons: 27,
-          rating: 3,
-          reviews: 74,
-          courseImage: "../../assets/vuejs2.png",
-        },
-        {
-          courseId: "c6",
-          instructorId: "i6",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 70,
-          studentsNo: 74,
-          duration: "6.5h",
-          lessons: 23,
-          rating: 3,
-          reviews: 49,
-          courseImage: "../../assets/vuejs2.png",
-
-        },
-        {
-          courseId: "c7",
-          instructorId: "i7",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 30,
-          studentsNo: 712,
-          duration: "6.5h",
-          lessons: 30,
-          rating: 3,
-          reviews: 74,
-          courseImage: "../../assets/vuejs2.png",
-
-        },
-      ],
+      coursesTwo: [],
+      // courses: [
+      //   {
+      //     courseId: "c1",
+      //     instructorId: "i1",
+      //     createdBy: "Maximilian Schwarzmüller",
+      //     courseTitle:
+      //       "Vue - The Complete Guide (incl. Router & Composition API)",
+      //     coursePrice: 60,
+      //     studentsNo: 741,
+      //     duration: "10h",
+      //     lessons: 25,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      //   {
+      //     courseId: "c2",
+      //     instructorId: "i2",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 100,
+      //     studentsNo: 819,
+      //     duration: "13.5h",
+      //     lessons: 15,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "../../assets/nodejs.jpg",
+      //   },
+      //   {
+      //     courseId: "c3",
+      //     instructorId: "i3",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "The Complete 2022 Flutter & Dart Development",
+      //     coursePrice: 99,
+      //     studentsNo: 74,
+      //     duration: "24h",
+      //     lessons: 30,
+      //     rating: 3,
+      //     reviews: 744,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      //   {
+      //     courseId: "c4",
+      //     instructorId: "i4",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "The Web Developer Bootcamp 2023",
+      //     coursePrice: 50,
+      //     studentsNo: 743,
+      //     duration: "20h",
+      //     lessons: 30,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      //   {
+      //     courseId: "c5",
+      //     instructorId: "i5",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 450,
+      //     studentsNo: 424,
+      //     duration: "6.5h",
+      //     lessons: 27,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      //   {
+      //     courseId: "c6",
+      //     instructorId: "i6",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 70,
+      //     studentsNo: 74,
+      //     duration: "6.5h",
+      //     lessons: 23,
+      //     rating: 3,
+      //     reviews: 49,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      //   {
+      //     courseId: "c7",
+      //     instructorId: "i7",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 30,
+      //     studentsNo: 712,
+      //     duration: "6.5h",
+      //     lessons: 30,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "../../assets/vuejs2.png",
+      //   },
+      // ],
     };
   },
-  
+
   methods: {
     async getCourses() {
       try {
         const response = await fetch("http://localhost:4000/courses");
-        console.log(response);
+        // console.log(response);
         const responseData = await response.json();
+        console.log(responseData);
+
+        this.coursesTwo = responseData.courses;
+        console.log(this.coursesTwo);
+
         if (!response.ok) {
           const error = new error(responseData.message || "Failed to Fetch");
           throw error;
@@ -168,9 +192,9 @@ export default {
         this.error = error.message || "something wrong";
       }
     },
-  }, 
-  computed : {
-    role (){
+  },
+  computed: {
+    role() {
       return this.$store.getters.role;
     },
   },

@@ -84,7 +84,7 @@
 
 <script>
 export default {
-  props : ['courseId'],
+  // props : ['courseId'],
   data() {
     return {
       courseHeader: {
@@ -108,7 +108,7 @@ export default {
 
       // var currentDate = new Date();
   // onsole.log(currentDate);
-      // courseId : this.$route.params.courseId 
+    courseId : this.$route.params.courseId
     };
   },
 
@@ -117,7 +117,7 @@ export default {
       try {
         const response = await fetch(
           // "http://localhost:4000//course/" + this.courseId
-          "http://localhost:4000/course/3"
+          "http://localhost:4000/course/"+this.courseId
         );
         // console.log(response);
         const responseData = await response.json();

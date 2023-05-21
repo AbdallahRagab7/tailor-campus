@@ -67,7 +67,7 @@
   <div class="course-sidebar">
     <div class="course-thumb">
       <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
-      <img :src=" 'http://localhost:4000/'+courseImage" alt="course-img" />
+      <img :src=" 'http://localhost:4000/' + courseImage" alt="course-img" />
     </div>
 
     <div class="price-header">
@@ -134,7 +134,7 @@
 
 <script>
 export default {
-  props: ["courseId"],
+  // props: ["courseId"],
   data() {
     return {
       courseSideBarCard: {
@@ -164,6 +164,8 @@ export default {
       language: "",
       updatedAt: "",
       courseRate: "",
+      
+      courseId : this.$route.params.courseId
     };
   },
   methods: {
@@ -171,7 +173,7 @@ export default {
       try {
         const response = await fetch(
           // "http://localhost:4000//course/" + this.courseId
-          "http://localhost:4000/course/3"
+          "http://localhost:4000/course/"+ this.courseId
         );
         // console.log(response);
         const responseData = await response.json();
@@ -179,11 +181,11 @@ export default {
         this.level = responseData.courseHeader[0].level;
         this.students = responseData.courseHeader[0].num_student_enrolled;
         this.lessons = responseData.courseHeader[0].num_lesson;
-        this.language = responseData.courseHeader[0].course_language;
+        this.language = responseData.courseHeader[0].course_language
         this.courseRate = responseData.courseHeader[0].course_rate;
         this.updatedAt = responseData.courseHeader[0].updatedAt;
-        this.courseImage = responseData.courseHeader[1].image.replace("images/", "");
-        console.log(coursePrice)
+        this.courseImage = responseData.courseHeader[0].course_image.replace("images/", "");
+        // console.log(coursePrice)
         console.log(responseData);
 
         if (!response.ok) {
