@@ -31,7 +31,7 @@
 
             <div class="trash">
               <!-- <button class="trash-btn" @click="removeCard(courseId)"> -->
-              <button class="trash-btn">
+              <button class="trash-btn" @click="removeFromWishlist">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
@@ -78,6 +78,21 @@ export default {
   //       this.cards = this.cards.filter((card)=>card.courseId !==courseId)
   //   }
   // }
+  methods : {
+    async removeFromWishlist(id) {
+      const response = await fetch(
+        "http://localhost:4000/Admin/deleteInstructor/" + this.courseId,
+        {
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      window.location.reload();
+    },
+  }
 }
 </script>
 

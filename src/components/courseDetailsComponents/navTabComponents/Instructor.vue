@@ -2,7 +2,9 @@
   <div class="instructor-box">
     <div class="instructor-photo">
        <router-link :to="instructorLink">
-      <img src="../../../assets/instructor.jpg" alt="instructor-img" />
+      <!-- <img src="../../../assets/instructor.jpg" alt="instructor-img" /> -->
+      <img :src=" 'http://localhost:4000/' + instructorImage" alt="instructor-img" />
+
       </router-link>
     </div>
 
@@ -59,7 +61,7 @@ export default {
       courseId : this.$route.params.courseId,
       instructorName : '' ,
       instructorId : '', //hst5dmo aro7 ly link el instructor
-
+      instructorImage : null ,
       courseId : this.$route.params.courseId
 
     };
@@ -90,6 +92,7 @@ export default {
         console.log(responseData);
           this.instructorName = responseData.courseHeader[0].Instructor_name;
           this.instructorId = responseData.courseHeader[0].instructorId;
+          this.instructorImage = responseData.courseHeader[1].image.replace("images/", "");
 
         if (!response.ok) {
           const error = new error(responseData.message || "Failed to Fetch");

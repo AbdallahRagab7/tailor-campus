@@ -39,7 +39,7 @@ const router = createRouter({
         {name: 'viewCourse' , path :'/course/:courseId/:lectureId', component:viewCourse},
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
-        {name: 'myLearning' , path :'/thanks', component:thanks},
+        {name: 'thanks' , path :'/thanks', component:thanks},
         
     ]
 

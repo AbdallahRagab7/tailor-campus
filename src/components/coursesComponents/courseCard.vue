@@ -5,8 +5,10 @@
         <router-link :to="courseLink">
           <!-- <img :src="require(`../../assets/${image}.jpg`)" alt="course-img" />   -->
           <!-- <img :src="require(`${courseimg}`)" alt="course-img" />   -->
-          <img :src=" 'http://localhost:4000/'+ courseImage.replace('images/', '')" alt="">
-          
+          <img
+            :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
+            alt=""
+          />
         </router-link>
       </div>
     </div>
@@ -16,7 +18,8 @@
         <i class="fa-solid fa-dollar-sign"></i> {{ coursePrice }}</span
       >
       <p class="instructor">
-        Created By : <router-link :to="instructorLink"> {{ createdBy }}</router-link>
+        Created By :
+        <router-link :to="instructorLink"> {{ createdBy }}</router-link>
       </p>
       <h3 class="course-title">
         <router-link :to="courseLink">{{ courseTitle }} </router-link>
@@ -45,7 +48,21 @@
         <span>{{ rating }} ({{ reviews }}47 reviews)</span>
       </div>
 
-      <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link>
+      <!-- <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link> -->
+      <div class="cart-wishlist">
+        <button class="addToCart" @click="addToCart" v-if="!isAdded">
+          <i class="fa-solid fa-cart-shopping cart-icon"></i>
+        </button>
+
+        <button class="removeFromCard" @click="removeFromCard" v-if="isAdded">
+          <i class="fa-solid fa-cart-shopping cart-icon"></i>
+        </button>
+
+
+        <button class="addToWishlist" @click="addToWishlist">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -56,12 +73,12 @@ export default {
     return {
       // courseimg : '../../assets/nodejs.jpg'
       // courseimg : 'vuejs2.png'
-      image :'course3', 
-      courseimg : '../../assets/vuejs2.png' 
-      
-    }
+      image: "course3",
+      courseimg: "../../assets/vuejs2.png",
+      isAdded : false , 
+    };
   },
-  
+
   props: [
     "createdBy",
     "courseTitle",
@@ -73,18 +90,79 @@ export default {
     "reviews",
     "courseId",
     "instructorId",
-    "courseImage"
+    "courseImage",
   ],
   computed: {
     courseLink() {
       return { name: "course", params: { courseId: this.courseId } };
     },
-    instructorLink (){
-      return {name : "instructor" , params : {instructorId: this.instructorId} }
+    instructorLink() {
+      return {
+        name: "instructor",
+        params: { instructorId: this.instructorId },
+      };
     },
-    getCourseImg (){
-      return '../../assets/vuejs2.png'
-    }
+    getCourseImg() {
+      return "../../assets/vuejs2.png";
+    },
+  },
+  methods: {
+    async addToCart() {
+      const response = await fetch("http://localhost:4000/courses/ADDtoCart/"+ this.courseId, {
+        method: "POST",
+        body: JSON.stringify({
+          
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      this.isAdded = true;
+      
+      if (!response.ok) {
+        // console.log(response.ok)
+        const error = new Error(responseData.message || "Failed in request.");
+        throw error;
+      }
+      // window.location.reload();
+
+    },
+    async removeFromCard() {
+      const response = await fetch(
+        "http://localhost:4000/cart/deletecoursefromcart/" + this.courseId,
+        {
+          method: "delete",
+          // body: JSON.stringify({
+          //   Approved: false,
+          // }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      this.isAdded = false
+      // window.location.reload();
+    },
+
+    async addToWishlist() {
+      const response = await fetch("http://localhost:4000/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (!response.ok) {
+        // console.log(response.ok)
+        const error = new Error(responseData.message || "Failed in request.");
+        throw error;
+      }
+    },
   },
 };
 </script>
@@ -148,7 +226,7 @@ export default {
   font-family: var(--theme-secondary-font);
   color: var(--theme-text-color);
   font-size: 1.1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .instructor a {
   font-family: "Jost";
@@ -214,5 +292,30 @@ export default {
 }
 .review-no {
   color: rgb(27, 26, 26);
+}
+
+.cart-wishlist {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+}
+.addToCart,
+.addToWishlist , .removeFromCard {
+  background: transparent;
+  padding: 8px 9px;
+  border: none;
+  margin-top: 10px;
+}
+.cart-icon {
+  height: 25px;
+}
+.cart-icon:hover {
+  color: rgb(66, 17, 25);
+}
+.fa-heart {
+  height: 25px;
+}
+.fa-heart:hover {
+  color: rgb(66, 17, 25);
 }
 </style>

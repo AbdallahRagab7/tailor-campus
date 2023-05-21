@@ -17,7 +17,7 @@
     <form method="get" action="#">
       <input
         type="text"
-        placeholder="Search our instructors"
+        placeholder="Search our Courses"
         class="search-bar"
       />
       <button type="submit" class="search-btn">

@@ -80,6 +80,11 @@ export default {
       throw error;
     }
 
+    if (responseData.massage === "email is wrong") {
+      const error = new Error(responseData.message || "Password not correct.");
+      throw error;
+    }
+
     if (responseData.token != "unauthurized token") {
       localStorage.setItem("token", responseData.token);
       localStorage.setItem("userId", responseData.userID);
@@ -116,13 +121,14 @@ export default {
       context.commit("setUser", {
         token: token,
         userId: userId,
-        role : role,
+        role: role,
       });
     }
   },
 
   // registerinstructor
   // fields in controllers , user auth
+  
   async signupInstructor(context, payload) {
     // const formData = new FormData();
     // formData.append('image', payload.image)

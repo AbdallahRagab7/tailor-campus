@@ -41,13 +41,14 @@
         :coursesNo="instructor.coursesNo"
         :instructorImage="instructor.instructorImage"
       ></instructor-card> -->
+      <!-- specialization="Web Developer" -->
 
       <instructor-card
         v-for="instructor in instructorsTwo"
         :key="instructor.id"
         :instructorId="instructor.id"
         :instructorName="instructor.Name"
-        specialization="Web Developer"
+        :specialization="instructor.instructors[0].specialization"
         studentsNo="744"
         coursesNo="9"
         :instructorImage="instructor.Image_Profile"

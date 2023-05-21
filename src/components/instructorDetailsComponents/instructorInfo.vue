@@ -37,7 +37,7 @@
       <!-- <p class="description">{{ displayedContent }}</p> -->
       <p class="description">{{ this.instructorDetails.About_Me }}</p>
 
-      <div
+      <!-- <div
         class="show-hide-btn"
         v-if="instructorInformation.aboutMe.length > 700"
       >
@@ -47,7 +47,7 @@
         <p class="show" v-else @click="collapseContent(700)">
           Show Less <i class="fa-solid fa-chevron-up chervon"></i>
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

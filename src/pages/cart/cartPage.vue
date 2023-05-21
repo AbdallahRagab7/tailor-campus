@@ -1,10 +1,10 @@
 <template>
   <section class="cart my-3">
     <h1 class="title mb-4">Shopping Cart</h1>
-    <h3 class="courses-no">{{cards.length}} Courses in Cart</h3>
+    <h3 class="courses-no">{{this.cardsTwo.length}} Courses in Cart</h3>
     <div class="shopping-total-price">
       <div class="shopping-section">
-        <added-card
+        <!-- <added-card
           v-for="course in cards"
           :key="course.courseId"
           :createdBy="course.createdBy"
@@ -17,6 +17,21 @@
           :reviews="course.reviews"
           :courseId="course.courseId"
           :instructorId="course.instructorId"
+        ></added-card> -->
+        <added-card
+          v-for="course in cardsTwo"
+          :key="course.id"
+          :createdBy="course.Instructor_name"
+          :courseTitle="course.course_name"
+          :coursePrice="course.course_price"
+          :studentsNo="course.num_student_enrolled"
+          duration="10h"
+          :lessons="course.num_lesson"
+          :rating="course.course_rate"
+          reviews="750"
+          :courseId="course.id"
+          :instructorId="course.instructorId"
+          :courseImage="course.course_image"
         ></added-card>
       </div>
 
@@ -24,7 +39,7 @@
         <h2>Total:</h2>
         <h3>
           <span class="course-price">
-            <i class="fa-solid fa-dollar-sign"></i>360</span
+            <i class="fa-solid fa-dollar-sign"></i>{{totalPrice}}</span
           >
         </h3>
         <button class="checkout-btn">Checkout</button>
@@ -80,8 +95,42 @@ export default {
           courseImage: "3awz link elcourse image",
         },
       ],
+      cardsTwo : [],
+      totalPrice : ''
     };
   },
+
+  methods : {
+    async userCart() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/cart",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        this.cardsTwo = responseData.arrayOfcourses
+        this.totalPrice = responseData.total_price
+
+        console.log(responseData);
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  created () {
+    this.userCart() 
+  }
 
 };
 </script>
