@@ -39,11 +39,7 @@ export default {
         // console.log(response);
         const responseData = await response.json();
         console.log(responseData);
-
-        // this.instructorDetails = responseData.instructorName[0];
-        // console.log(this.instructorDetails)
-        
-        // this.profileImage = responseData.instructorName[0].Image_Profile.split("images/");
+      
         this.profileImage = responseData.instructorName[0].Image_Profile.replace("images/", "");
         // const profiletwo = profileImage.split("images")
         console.log(this.profileImage);

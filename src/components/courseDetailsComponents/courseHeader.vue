@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <section>
     <div class="course-header">
       <h2 class="course-title">
@@ -25,7 +25,7 @@
               <i class="fa fa-star checked"></i>
               <i class="fa fa-star"></i>
               <span>
-                {{ courseHeader.rating }} (
+                {{ this.courseId }} (
                 {{ courseHeader.reviews }} reviews)</span
               >
             </div>
@@ -38,10 +38,53 @@
       </div>
     </div>
   </section>
+</template> -->
+
+<template>
+  <section>
+    <div class="course-header">
+      <h2 class="course-title">
+        {{ courseName }}
+      </h2>
+      <p class="summary">
+        {{ courseSummary }}
+      </p>
+
+      <div class="course-header-meta">
+        <ul class="list-info">
+          <li>
+            <div class="course-author">
+              <img src="../../assets/course-autor.png" alt="#" />
+              {{ instructor}}
+            </div>
+          </li>
+
+          <li>
+            <div class="rating">
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star"></i>
+              <span>
+                 
+                {{ courseHeader.reviews }} (reviews)</span
+              >
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-user me-2"></i
+            >{{ enrolledSudents }} enrolled students
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
+  props : ['courseId'],
   data() {
     return {
       courseHeader: {
@@ -55,8 +98,52 @@ export default {
         enrolledStudents: 11,
         instructorImage: "3awz Link img el instructor",
       },
+
+    //data from backend
+      courseName : '',
+      courseSummary : '' ,
+      courseDescription : '',
+      instructor : '',
+      enrolledSudents : '',
+
+      // var currentDate = new Date();
+  // onsole.log(currentDate);
+      // courseId : this.$route.params.courseId 
     };
   },
+
+  methods : {
+    async courseHeaderData() {
+      try {
+        const response = await fetch(
+          // "http://localhost:4000//course/" + this.courseId
+          "http://localhost:4000/course/3"
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
+        this.courseName = responseData.courseHeader[0].course_name;
+        this.courseSummary = responseData.courseHeader[0].course_summary;
+        this.courseDescription = responseData.courseHeader[0].course_description;
+        this.instructor = responseData.courseHeader[0].Instructor_name;
+        this.enrolledSudents = responseData.courseHeader[0].num_student_enrolled;
+        
+
+      
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        // console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  } ,
+
+  mounted(){
+    this.courseHeaderData();
+  }
 };
 </script>
 

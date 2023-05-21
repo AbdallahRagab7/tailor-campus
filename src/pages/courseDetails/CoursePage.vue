@@ -2,11 +2,11 @@
   <section class="page-wrapper">
     <div class="row-components">
       <div class="header-nav-column">
-        <course-header></course-header>
-        <nav-tab></nav-tab>
+        <course-header :courseId="courseId"> </course-header>
+        <nav-tab :courseId="courseId"> </nav-tab>
       </div>
-
-      <course-sidebar></course-sidebar>
+      <h1>{{ courseId }}</h1>
+      <course-sidebar :courseId="courseId"> </course-sidebar>
     </div>
   </section>
 </template>
@@ -20,6 +20,11 @@ export default {
     NavTab,
     courseHeader,
     courseSidebar,
+  },
+  data() {
+    return {
+      courseId: this.$route.params.courseId,
+    };
   },
 };
 </script>
@@ -35,5 +40,4 @@ export default {
   justify-content: space-between;
   display: wrap;
 }
-
 </style>

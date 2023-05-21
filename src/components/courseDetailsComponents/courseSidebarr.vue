@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="course-sidebar">
     <div class="course-thumb">
       <img src="../../assets/vuejs2.png" alt="course-img" />
@@ -6,9 +6,9 @@
 
     <div class="price-header">
       <h2 class="course-current-price">
-        {{ '$' + courseSideBarCard.CurrentPrice }}
+        {{ "$" + courseSideBarCard.CurrentPrice }}
         <span class="price-before-sale">{{
-          '$' + courseSideBarCard.priceBeforeSale
+          "$" + courseSideBarCard.priceBeforeSale
         }}</span>
       </h2>
       <span class="course-sale-percentage">{{
@@ -16,7 +16,6 @@
       }}</span>
     </div>
 
-    <!-- <div class="course-details"> -->
     <ul class="course-sidebar-list">
       <li>
         <span><i class="fa-solid fa-sliders"></i> Level </span>
@@ -45,12 +44,10 @@
         {{ courseSideBarCard.updatedDate }}
       </li>
     </ul>
-    <!-- </div> -->
 
-
-      <!-- <div class="buy-btn"> -->
-      <router-link to="/course/c1/i1" class="enroll-course-btn"><i class="fa-solid fa-cart-shopping"></i> Enroll Course</router-link>
-      <!-- </div> -->
+    <router-link to="/course/c1/i1" class="enroll-course-btn"
+      ><i class="fa-solid fa-cart-shopping"></i> Enroll Course</router-link
+    >
 
     <div class="course-material">
       <h4>Material Includes</h4>
@@ -61,8 +58,75 @@
         >
           <i class="fa-solid fa-arrow-right-long"></i> {{ material }}
         </li>
-        <!-- <li><i class="fa-solid fa-arrow-right-long"></i> Files For Development</li>
-                <li><i class="fa-solid fa-arrow-right-long"></i> Documentation Files</li> -->
+      </ul>
+    </div>
+  </div>
+</template> -->
+
+<template>
+  <div class="course-sidebar">
+    <div class="course-thumb">
+      <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
+      <img :src=" 'http://localhost:4000/'+courseImage" alt="course-img" />
+    </div>
+
+    <div class="price-header">
+      <h2 class="course-current-price">
+        {{ "$" + coursePrice }}
+        <span class="price-before-sale">{{
+          "$" + courseSideBarCard.priceBeforeSale
+        }}</span>
+      </h2>
+      <span class="course-sale-percentage">{{
+        courseSideBarCard.SalePercentage
+      }}</span>
+    </div>
+
+    <ul class="course-sidebar-list">
+      <li>
+        <span><i class="fa-solid fa-sliders"></i> Level </span>
+        {{ level }}
+      </li>
+
+      <li>
+        <span><i class="fas fa-play-circle"></i> Lectures</span>
+        {{ lessons }}
+      </li>
+      <li>
+        <span><i class="far fa-user"></i> Students</span>
+        {{ students }}
+      </li>
+      <li>
+        <span><i class="far fa-clock"></i> Duration</span>
+        {{ courseSideBarCard.duration }}
+      </li>
+      <li>
+        <span><i class="fa-solid fa-globe"></i> Language</span>
+        {{ language }}
+      </li>
+
+      <li>
+        <span><i class="far fa-calendar"></i> Updated</span>
+        {{ updatedAt }}
+      </li>
+    </ul>
+    <!-- </div> -->
+
+    <!-- <div class="buy-btn"> -->
+    <router-link to="/course/c1/i1" class="enroll-course-btn"
+      ><i class="fa-solid fa-cart-shopping"></i> Enroll Course</router-link
+    >
+    <!-- </div> -->
+
+    <div class="course-material">
+      <h4>Material Includes</h4>
+      <ul class="course-meterial-list">
+        <li
+          v-for="material in courseSideBarCard.materialInclude"
+          :key="material"
+        >
+          <i class="fa-solid fa-arrow-right-long"></i> {{ material }}
+        </li>
       </ul>
     </div>
   </div>
@@ -70,6 +134,7 @@
 
 <script>
 export default {
+  props: ["courseId"],
   data() {
     return {
       courseSideBarCard: {
@@ -82,7 +147,7 @@ export default {
         duration: "9h",
         language: "English",
         updatedDate: "October 15, 2022",
-        courseImage : '3awz link img el course',
+        courseImage: "3awz link img el course",
 
         materialInclude: [
           "Videos",
@@ -90,7 +155,50 @@ export default {
           "Documentation Files",
         ],
       },
+      courseImage: null,
+
+      coursePrice: "",
+      level: "",
+      students: "",
+      lessons: "",
+      language: "",
+      updatedAt: "",
+      courseRate: "",
     };
+  },
+  methods: {
+    async courseSideBar() {
+      try {
+        const response = await fetch(
+          // "http://localhost:4000//course/" + this.courseId
+          "http://localhost:4000/course/3"
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        this.coursePrice = responseData.courseHeader[0].course_price;
+        this.level = responseData.courseHeader[0].level;
+        this.students = responseData.courseHeader[0].num_student_enrolled;
+        this.lessons = responseData.courseHeader[0].num_lesson;
+        this.language = responseData.courseHeader[0].course_language;
+        this.courseRate = responseData.courseHeader[0].course_rate;
+        this.updatedAt = responseData.courseHeader[0].updatedAt;
+        this.courseImage = responseData.courseHeader[1].image.replace("images/", "");
+        console.log(coursePrice)
+        console.log(responseData);
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+        // console.log(responseData);
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+
+  mounted() {
+    this.courseSideBar();
   },
 };
 </script>
