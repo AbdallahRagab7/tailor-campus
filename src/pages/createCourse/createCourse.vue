@@ -28,7 +28,7 @@
   
         <div class="form-group">
           <label for="prerequisites">Prerequisites</label>
-          <textarea id="prerequisite" v-model="prerequisites"  rows="3"></textarea>
+          <textarea id="prerequisite" v-model="pre"  rows="3"></textarea>
         </div>
   
         <div class="form-group">
@@ -58,14 +58,17 @@
   
         <!-- end of first form  -->
         <h3 class="my-5">Upload Your Content</h3>
+        
       <div v-for="(section, sectionIndex) in sections" :key="sectionIndex" class="my-5">
         <label class="section-label">Section {{ sectionIndex + 1 }}:</label>
 
-        <input type="text" v-model="section.sectionName" placeholder="Section Name">
+        <input type="text" name="Sections" v-model="section.sectionName" placeholder="Section Name">
         <div v-for="(lesson, lectureIndex) in section.lesson" :key="lectureIndex">
           <label>Lecture {{ sectionIndex + 1 }}.{{ lectureIndex + 1 }}:</label>
 
           <input type="text" v-model="lesson.lessonName" placeholder="Lecture Name">
+          <input type="text" v-model="lesson.duration" placeholder="duration">
+          
           <input type="file" @change="handleFileChange(sectionIndex, lectureIndex)">
           <button type="button" @click="removeLecture(sectionIndex, lectureIndex)" class="remove-btn">Remove Lecture</button>
         </div>
@@ -91,7 +94,8 @@
             lesson: [
               {
                 lessonName: '',
-                video: null
+                // video: null
+                duration : null ,
               }
             ]
           }
@@ -100,6 +104,7 @@
         coursePrice: '',
         learnItems: [''],
         items : [],
+        pre : ''
       }
     },
     methods: {
@@ -109,7 +114,8 @@
           lesson: [
             {
               lessonName: '',
-              video: null
+              duration : null
+              // video: null
             }
           ]
         });
@@ -130,40 +136,41 @@
         });
       },
       removeLecture(sectionIndex, lectureIndex) {
-        this.sections[sectionIndex].lectures.splice(lectureIndex, 1);
+        this.sections[sectionIndex].lesson.splice(lectureIndex, 1);
       },
-      handleFileChange(sectionIndex, lectureIndex) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.sections[sectionIndex].lectures[lectureIndex].video = reader.result;
-        };
-        reader.readAsDataURL(file);
-      },
-      submitForm() {
-        const formData = new FormData();
-        this.sections.forEach((section, index) => {
-          formData.append(`sections[${index}][name]`, section.name);
-          section.lectures.forEach((lecture, subIndex) => {
-            formData.append(`sections[${index}][lectures][${subIndex}][name]`, lecture.name);
-            formData.append(`sections[${index}][lectures][${subIndex}][video]`, lecture.video);
-          });
-        });
-        // Send the form data to the server
-        // using Axios or another HTTP client library
-        console.log(formData);
-      },
+      // handleFileChange(sectionIndex, lectureIndex) {
+      //   const file = event.target.files[0];
+      //   const reader = new FileReader();
+      //   reader.onload = () => {
+      //     this.sections[sectionIndex].lectures[lectureIndex].video = reader.result;
+      //   };
+      //   reader.readAsDataURL(file);
+      // },
+      // submitForm() {
+      //   const formData = new FormData();
+      //   this.sections.forEach((section, index) => {
+      //     formData.append(`sections[${index}][name]`, section.name);
+      //     section.lectures.forEach((lecture, subIndex) => {
+      //       formData.append(`sections[${index}][lectures][${subIndex}][name]`, lecture.name);
+      //       formData.append(`sections[${index}][lectures][${subIndex}][video]`, lecture.video);
+      //     });
+      //   });
+      //   // Send the form data to the server
+      //   // using Axios or another HTTP client library
+      //   console.log(formData);
+      // },
       async submitTextForm() {
       const response = await fetch("http://localhost:4000/course/create_course", {
         method: "POST",
         body: JSON.stringify({
+          sections : this.sections,
           course_name: this.courseName,
           course_price: this.coursePrice,
           course_description: this.description,
           catgeory: this.category,
           level: this.level,
           skilled_learn : this.items,
-          sections : this.sections,
+          // sections : this.sections,
         }),
         headers: {
               // 'Content-Type': 'multipart/form-data',

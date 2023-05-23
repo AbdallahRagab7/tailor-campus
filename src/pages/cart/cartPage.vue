@@ -53,48 +53,48 @@ export default {
   components: { addedCard },
   data() {
     return {
-      cards: [
-        {
-          courseId: "c1",
-          instructorId: "i1",
-          createdBy: "Maximilian Schwarzmüller",
-          courseTitle:
-            "Vue - The Complete Guide (incl. Router & Composition API)",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "6.5h",
-          lessons: 30,
-          rating: 3,
-          reviews: 74,
-          courseImage: "3awz link elcourse image",
-        },
-        {
-          courseId: "c2",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "8.5h",
-          lessons: 34,
-          rating: 3,
-          reviews: 84,
-          courseImage: "3awz link elcourse image",
-        },
-        {
-          courseId: "c3",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "8.5h",
-          lessons: 34,
-          rating: 3,
-          reviews: 84,
-          courseImage: "3awz link elcourse image",
-        },
-      ],
+      // cards: [
+      //   {
+      //     courseId: "c1",
+      //     instructorId: "i1",
+      //     createdBy: "Maximilian Schwarzmüller",
+      //     courseTitle:
+      //       "Vue - The Complete Guide (incl. Router & Composition API)",
+      //     coursePrice: 120,
+      //     studentsNo: 74,
+      //     duration: "6.5h",
+      //     lessons: 30,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "3awz link elcourse image",
+      //   },
+      //   {
+      //     courseId: "c2",
+      //     instructorId: "i2",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 120,
+      //     studentsNo: 74,
+      //     duration: "8.5h",
+      //     lessons: 34,
+      //     rating: 3,
+      //     reviews: 84,
+      //     courseImage: "3awz link elcourse image",
+      //   },
+      //   {
+      //     courseId: "c3",
+      //     instructorId: "i2",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 120,
+      //     studentsNo: 74,
+      //     duration: "8.5h",
+      //     lessons: 34,
+      //     rating: 3,
+      //     reviews: 84,
+      //     courseImage: "3awz link elcourse image",
+      //   },
+      // ],
       cardsTwo : [],
       totalPrice : ''
     };
@@ -112,7 +112,6 @@ export default {
             },
           }
         );
-        // console.log(response);
         const responseData = await response.json();
         this.cardsTwo = responseData.arrayOfcourses
         this.totalPrice = responseData.total_price

@@ -6,11 +6,12 @@
     <!-- <button @click="setActivePage('courseContent')" :class="courseContent">
       Course Content
     </button> -->
-
+<!-- 
     <button @click="setActivePage('Instructor')" :class="Instructor">
       Instructor
-    </button>
-    <!-- <button @click="setActivePage('Reviews')" :class="Reviews">Reviews</button> -->
+    </button> -->
+    
+    <button @click="setActivePage('Reviews')" :class="Reviews">Reviews</button>
   </div>
   <keep-alive>
     <component :is="selectedTab"></component>
@@ -19,10 +20,11 @@
 <script>
 import Overview from "../courseDetailsComponents/navTabComponents/Overview.vue";
 import Instructor from "../courseDetailsComponents/navTabComponents/Instructor.vue";
+import Reviews from './reviews.vue'
 // import courseContent from "./courseContent.vue";
 // import Reviews from "./Reviews.vue";
 export default {
-  components: { Overview, Instructor,   },
+  components: { Overview, Instructor, Reviews  },
   data() {
     return {
       selectedTab: "Overview",

@@ -38,7 +38,7 @@
     <div class="header-navbar">
       <div class="menus">
         <div class="logo">
-          <router-link to="/home">Tailor Campus</router-link>
+          <router-link to="/home">Tailored Campus</router-link>
         </div>
 
         <div
@@ -65,6 +65,9 @@
           <router-link to="/instructors" class="primary-menu"
             >Instructors</router-link
           >
+          <router-link to="/Educational-Partners" class="primary-menu"
+            >Edu Partners</router-link
+          >
 
           <router-link to="/admin" class="primary-menu" v-if="role === 'admin'"
             >Admin</router-link
@@ -73,9 +76,14 @@
 
         <div class="loggedIn" v-if="isLoggedIn">
           <router-link to="/myLearning">My Learning</router-link>
-          <router-link to="/cart" class="cart"
-            ><i class="fa-solid fa-cart-shopping cart-icon"></i
-          ></router-link>
+
+          <div class="addtocart">
+            <router-link to="/cart" class="cart"
+              ><i class="fa-solid fa-cart-shopping cart-icon"></i
+            ></router-link>
+                <p class="numOfCards" v-if="cards.length>0">{{cards.length}}</p>
+          </div>
+
           <router-link to="/wishlist" class="wishlist mx-2"
             ><i class="fa-regular fa-heart"></i
           ></router-link>
@@ -103,6 +111,7 @@ export default {
       // isAdmin : localStorage.getItem("role"), 
       // kda lw 3mlt logut el token httms7 mn localStorage , bas htfdl mt5zna fi el variable dh 
       // msh httms7 mn el variable 8er ama a3ml
+      cards : ''
     };
   },
   computed: {
@@ -112,7 +121,7 @@ export default {
     role (){
       return this.$store.getters.role;
     }
- 
+    
   },
   methods: {
     logout() {
@@ -125,11 +134,41 @@ export default {
     hideDropdown() {
       this.isDropdownVisible = false;
     },
+    async userCart() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/cart",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        this.cards = responseData.arrayOfcourses
+        console.log(responseData);
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
   },
+
+  created () {
+    this.userCart()
+  }
+  }
+
+
 //   created (){
 //   isAdmin() 
 // }
-};
+
 </script>
 
 <style>
@@ -326,5 +365,15 @@ export default {
   font-family: "Font Awesome 5 Pro";
   height: 1.2rem;
   font-weight: 900;
+}
+.numOfCards {
+  position: absolute;
+  background: rgb(211, 19, 19);
+  border-radius: 40%;
+  padding: 3px;
+  font-weight: 700;
+  color: white;
+  font-family: sans-serif;
+  margin-top: -14px;
 }
 </style>

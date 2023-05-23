@@ -44,9 +44,9 @@ export default {
         },
 
         {
-          courseId: "c3",
+          courseId: "liveMeeting",
           courseName:
-            " The Complete 2022 Flutter & Dart Development Course",
+            " The Complete 2022 Flutter (Live Course)",
           instructorName: "Abdallah Ragab",
           instructorId: "i3",
           instructorImage: "3awz link elcourse image",

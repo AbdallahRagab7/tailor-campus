@@ -6,7 +6,7 @@
     </section>
 
     <div class="courses-container">
-      <h1 class="section-title">Most Popular Courses</h1>
+      <h1 class="section-title">Recommended for you</h1>
 
       <section class="courses">
         <course-card

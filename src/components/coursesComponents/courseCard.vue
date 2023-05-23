@@ -5,10 +5,24 @@
         <router-link :to="courseLink">
           <!-- <img :src="require(`../../assets/${image}.jpg`)" alt="course-img" />   -->
           <!-- <img :src="require(`${courseimg}`)" alt="course-img" />   -->
-          <img
+          <!-- <img
             :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
             alt=""
+          /> -->
+          <img
+            src="../../assets/vuejs.png"
+            alt="course img"
+            v-if="!courseImage"
           />
+          <img
+            :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
+            alt="course-img"
+          />
+
+          <!-- <img
+            :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
+            alt=""
+          /> -->
         </router-link>
       </div>
     </div>
@@ -45,19 +59,20 @@
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <!-- <span>{{ rating }} ({{ reviews }} reviews)</span> -->
-        <span>{{ rating }} ({{ reviews }}47 reviews)</span>
+        <span>{{ rating }} ({{ reviews }}0 reviews)</span>
       </div>
 
       <!-- <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link> -->
       <div class="cart-wishlist">
         <button class="addToCart" @click="addToCart" v-if="!isAdded">
+          <!-- <button class="addToCart" @click="addToCart" v-if="!getisAdded"> -->
           <i class="fa-solid fa-cart-shopping cart-icon"></i>
         </button>
 
         <button class="removeFromCard" @click="removeFromCard" v-if="isAdded">
+          <!-- <button class="removeFromCard" @click="removeFromCard" v-if="getisAdded"> -->
           <i class="fa-solid fa-cart-shopping cart-icon"></i>
         </button>
-
 
         <button class="addToWishlist" @click="addToWishlist">
           <i class="fa-regular fa-heart"></i>
@@ -74,8 +89,9 @@ export default {
       // courseimg : '../../assets/nodejs.jpg'
       // courseimg : 'vuejs2.png'
       image: "course3",
-      courseimg: "../../assets/vuejs2.png",
-      isAdded : false , 
+      // courseimg: "../../assets/vuejs2.png",
+      // courseimg : this.courseI,
+      isAdded: false,
     };
   },
 
@@ -105,28 +121,36 @@ export default {
     getCourseImg() {
       return "../../assets/vuejs2.png";
     },
+    getisAdded() {
+      return localStorage.getItem("isAdded");
+    },
   },
   methods: {
     async addToCart() {
-      const response = await fetch("http://localhost:4000/courses/ADDtoCart/"+ this.courseId, {
-        method: "POST",
-        body: JSON.stringify({
-          
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      if (!this.$store.getters.isAuthenticated) {
+        this.$router.push('/login')
+      }
+      const response = await fetch(
+        "http://localhost:4000/courses/ADDtoCart/" + this.courseId,
+        {
+          method: "POST",
+          body: JSON.stringify({}),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       this.isAdded = true;
-      
+
       if (!response.ok) {
         // console.log(response.ok)
         const error = new Error(responseData.message || "Failed in request.");
         throw error;
       }
-      // window.location.reload();
+      localStorage.setItem("isAdded", true);
 
+      // window.location.reload();
     },
     async removeFromCard() {
       const response = await fetch(
@@ -142,16 +166,15 @@ export default {
           },
         }
       );
-      this.isAdded = false
+      this.isAdded = false;
       // window.location.reload();
+      localStorage.setItem("isAdded", false);
     },
 
     async addToWishlist() {
       const response = await fetch("http://localhost:4000/signup", {
         method: "POST",
-        body: JSON.stringify({
-          
-        }),
+        body: JSON.stringify({}),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -163,6 +186,9 @@ export default {
         throw error;
       }
     },
+  },
+  created() {
+    localStorage.setItem("isAdded", false);
   },
 };
 </script>
@@ -300,7 +326,8 @@ export default {
   width: 90px;
 }
 .addToCart,
-.addToWishlist , .removeFromCard {
+.addToWishlist,
+.removeFromCard {
   background: transparent;
   padding: 8px 9px;
   border: none;
@@ -316,6 +343,9 @@ export default {
   height: 25px;
 }
 .fa-heart:hover {
+  color: rgb(66, 17, 25);
+}
+.removeFromCard .cart-icon {
   color: rgb(66, 17, 25);
 }
 </style>

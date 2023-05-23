@@ -2,23 +2,25 @@
   <div class="instructor-box">
     <div class="instructor-photo">
        <router-link :to="instructorLink">
-      <!-- <img src="../../../assets/instructor.jpg" alt="instructor-img" /> -->
-      <img :src=" 'http://localhost:4000/' + instructorImage" alt="instructor-img" />
+         <img :src=" 'http://localhost:4000/' + instructorImage" alt="instructor-img" v-if="instructorImage"/>
+         <!-- <img src="../../../assets/instructor.jpg" alt="instructor-img" v-if="!instructorImage" /> -->
 
       </router-link>
     </div>
 
     <div class="instructor-content">
-      <!-- <h4 class="instructor-name">
-        <router-link :to="instructorLink">{{
-          instructorDetails.instructorName
-        }}</router-link>
-      </h4> -->
-      <h4 class="instructor-name">
+      
+      <h4 class="instructor-name" v-if="instructorName">
         <router-link :to="instructorLink">{{
           instructorName
         }}</router-link>
       </h4>
+      
+      <!-- <h4 class="instructor-name" v-if="!instructorName">
+        <router-link :to="instructorLink">{{
+          instructorDetails.instructorName
+        }}</router-link>
+      </h4> -->
 
       <p class="about">
         {{ instructorDetails.aboutInstructor }} 
@@ -51,7 +53,7 @@ export default {
         instructorId: "i1",
         instructorName: "Maximilian Schwarzmüller",
         aboutInstructor:
-          "Maximilian Schwarzmüller is a frontend developer, who brings passion to everything he does. ",
+          "Iam a frontend developer, who brings passion to everything he does. ",
         instructorImage: "3awz link img el instructor",
         facebookLink: "#",
         linkedinLink: "#",

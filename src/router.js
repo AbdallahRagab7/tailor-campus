@@ -15,6 +15,8 @@ import registerInstructor from './pages/registerInstructor/registerInstructor.vu
 import admin from './pages/admin/admin.vue'
 import thanks from './pages/thanks/thanks.vue'
 
+import educationalPartner from './pages/EducationalPartner/educationalPartner.vue'
+import LiveMeeting from './pages/liveMeeting/liveMeeting.vue'
 import store from './store/index.js'
 
 
@@ -31,6 +33,10 @@ const router = createRouter({
 
         {path:'/courses' , component:coursesPage} ,
         {path:'/instructors' , component:instructorsPage} ,
+
+        {path:'/Educational-Partners' , component:educationalPartner} ,
+        {path:'/course/liveMeeting/:id' , component:LiveMeeting} ,
+
         {name: 'course', path: '/course/:courseId', component:coursePage , props:true },
         {name: 'instructor' , path: '/instructor/:instructorId' , component: instructorDeatils , props:true},
         {name: 'cart' , path: '/cart', component:cartPage},

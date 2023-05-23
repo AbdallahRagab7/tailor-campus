@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <img src="../../assets/coursescover3.jpg" alt="" />
-    <p>Tailor Campus</p>
+    <p>Tailored Campus</p>
   </div>
 
   <div class="topbar-search">

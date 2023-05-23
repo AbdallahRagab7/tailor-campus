@@ -3,7 +3,9 @@
     <div class="description">
       <h4>Description</h4>
       <!-- <p>{{ overView.description }}</p> -->
-      <p>{{ courseDescription }}</p>
+      <p v-if="courseDescription">{{ courseDescription }}</p>
+      <p v-if="!courseDescription">{{ overView.description }}</p>
+
     </div>
 
     <div class="learn">
@@ -23,7 +25,7 @@ export default {
     return {
       overView: {
         description:
-          "Knowing PHP has allowed me to make enough money to stay home and make courses like this one for students all over the world. Being a PHP developer can allow anyone to make really good money online and offline, developing dynamic applications. Knowing PHP will allow you to build web applications, websites or Content Management systems, like WordPress, Facebook, Twitter or even Google. There is no limit to what you can do with this knowledge. PHP is one of the most important web programming languages to learn, and knowing it, will give you SUPER POWERS in the web",
+          "Knowing Programming has allowed me to make enough money to stay home and make courses like this one for students all over the world. Being a  developer can allow anyone to make really good money online and offline, developing dynamic applications. Learnig this course will allow you to build web applications, websites or Content Management systems, There is no limit to what you can do with this knowledge.",
         learns: [
           "Clean up face imperfections, improve and repair photos",
           "Remove people or objects from photos",
