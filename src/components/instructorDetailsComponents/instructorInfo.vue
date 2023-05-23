@@ -60,7 +60,6 @@ export default {
       displayedContent: "",
       isExpanded: false,
       instructorId: this.$route.params.instructorId,
-
       instructorInformation: {
         instructorName: "Maximilian Schwarzmüller",
         instructorId: "i1",
@@ -77,6 +76,7 @@ export default {
 
       instructorDetails : '',
       instructorDetailsOne :'' ,
+      instructorCourses : [],
       // profileImage : null ,
     };
   },
@@ -106,6 +106,7 @@ export default {
         console.log(this.instructorDetails)
 
         this.instructorDetailsOne = responseData.instructorName[1]
+        this.instructorCourses = responseData.instructorName[2]
 
         // this.profileImage = responseData.instructorName[0].Image_Profile
         // console.log(this.profileImage)

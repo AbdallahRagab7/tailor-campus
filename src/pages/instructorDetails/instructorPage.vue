@@ -7,7 +7,7 @@
     </div>
 
     <div class="instructor-courses">
-      <h2>My courses ({{courses.length}})</h2>
+      <h2>My courses ({{ this.instructorCourses.length }})</h2>
 
       <section class="courses">
         <!-- <course-card
@@ -25,6 +25,21 @@
           :courseId="course.courseId"
           :instructorId="course.instructorId"
         ></course-card> -->
+        <course-card
+        v-for="course in instructorCourses"
+        :key="course.id"
+        :createdBy="course.Instructor_name"
+        :courseTitle="course.course_name"
+        :coursePrice="course.course_price"
+        :studentsNo="course.num_student_enrolled"
+        :lessons="course.num_lesson"
+        :rating="course.course_rate"
+        :courseId="course.id"
+        :instructorId="course.instructorId"
+        :courseImage="course.course_image"
+        duration="15h"
+      >
+      </course-card>
       </section>
     </div>
   </section>
@@ -37,21 +52,24 @@ import instructorLinks from "../../components/instructorDetailsComponents/instru
 export default {
   components: { courseCard, instructorInfo, instructorLinks },
 
-  data () {
+  data() {
     return {
-       courses: [
+      instructorId: this.$route.params.instructorId,
+      instructorCourses: '',
+      courses: [
         {
           courseId: "c1",
           instructorId: "i1",
           createdBy: "Maximilian Schwarzmüller",
-          courseTitle: "Vue - The Complete Guide (incl. Router & Composition API)",
+          courseTitle:
+            "Vue - The Complete Guide (incl. Router & Composition API)",
           coursePrice: 120,
           studentsNo: 74,
           duration: "6.5h",
           lessons: 30,
           rating: 3,
           reviews: 74,
-          courseImage : '3awz link elcourse image'
+          courseImage: "3awz link elcourse image",
         },
         {
           courseId: "c2",
@@ -64,7 +82,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
-          courseImage : '3awz link elcourse image'
+          courseImage: "3awz link elcourse image",
         },
         {
           courseId: "c3",
@@ -77,7 +95,7 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
-          courseImage : '3awz link elcourse image'
+          courseImage: "3awz link elcourse image",
         },
         {
           courseId: "c4",
@@ -90,10 +108,36 @@ export default {
           lessons: 30,
           rating: 3,
           reviews: 74,
-          courseImage : '3awz link elcourse image'
-        },]
-    }
+          courseImage: "3awz link elcourse image",
+        },
+      ],
+    };
   },
+
+  methods: {
+    async instructorInfo() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/instructorprofile/" + this.instructorId
+        );
+        // console.log(response);
+        const responseData = await response.json();
+        this.instructorCourses = responseData.instructorName[2];
+        console.log(this.instructorCourses)
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+
+  created () {
+    this.instructorInfo()
+  }
 };
 </script>
 
@@ -133,6 +177,4 @@ export default {
   margin: 0.2rem 2rem 0.2rem 0;
   /* width: 24rem; */
 }
-
-
 </style>

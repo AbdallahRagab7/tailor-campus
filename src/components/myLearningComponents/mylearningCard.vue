@@ -2,7 +2,11 @@
   <div class="card">
     <router-link :to="courseLink" >
       <div class="course-header mb-2">
-        <img src="../../assets/vuejs2.png" alt="course-image" />
+        <!-- <img src="../../assets/vuejs2.png" alt="course-image" /> -->
+        <img
+        :src="'http://localhost:4000/' + courseimg.replace('images/', '')"
+        alt="course-img"
+      />
       </div>
 
       <div class="course-content">
@@ -21,7 +25,8 @@ export default {
    "courseId",
    "courseName",
     "instructorName",
-   "instructorId"
+   "instructorId",
+   "courseimg",
    ],
    computed : {
     courseLink () {

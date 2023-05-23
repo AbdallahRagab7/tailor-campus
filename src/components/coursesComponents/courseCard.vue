@@ -141,6 +141,12 @@ export default {
           },
         }
       );
+      const responseData = await response.json();
+      console.log(responseData)
+      if(responseData.massage === 'course already in cart'){
+        this.isAdded = true;
+      }
+      
       this.isAdded = true;
 
       if (!response.ok) {
@@ -168,9 +174,15 @@ export default {
       );
       this.isAdded = false;
       // window.location.reload();
+      // this.$router.push('/courses')
+      // window.location.reload();
       localStorage.setItem("isAdded", false);
     },
 
+
+
+
+    
     async addToWishlist() {
       const response = await fetch("http://localhost:4000/signup", {
         method: "POST",
@@ -187,9 +199,9 @@ export default {
       }
     },
   },
-  created() {
-    localStorage.setItem("isAdded", false);
-  },
+  // created() {
+  //   localStorage.setItem("isAdded", false);
+  // },
 };
 </script>
 

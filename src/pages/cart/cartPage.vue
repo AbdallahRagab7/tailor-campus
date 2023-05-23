@@ -1,7 +1,7 @@
 <template>
   <section class="cart my-3">
     <h1 class="title mb-4">Shopping Cart</h1>
-    <h3 class="courses-no">{{this.cardsTwo.length}} Courses in Cart</h3>
+    <h3 class="courses-no">{{ this.cardsTwo.length }} Courses in Cart</h3>
     <div class="shopping-total-price">
       <div class="shopping-section">
         <!-- <added-card
@@ -39,10 +39,10 @@
         <h2>Total:</h2>
         <h3>
           <span class="course-price">
-            <i class="fa-solid fa-dollar-sign"></i>{{totalPrice}}</span
+            <i class="fa-solid fa-dollar-sign"></i>{{ totalPrice }}</span
           >
         </h3>
-        <button class="checkout-btn">Checkout</button>
+        <button class="checkout-btn" @click="checkout">Checkout</button>
       </div>
     </div>
   </section>
@@ -95,28 +95,25 @@ export default {
       //     courseImage: "3awz link elcourse image",
       //   },
       // ],
-      cardsTwo : [],
-      totalPrice : ''
+      cardsTwo: [],
+      totalPrice: "",
+      cartId: "",
     };
   },
 
-  methods : {
+  methods: {
     async userCart() {
       try {
-        const response = await fetch(
-          "http://localhost:4000/cart",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await fetch("http://localhost:4000/cart", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const responseData = await response.json();
-        this.cardsTwo = responseData.arrayOfcourses
-        this.totalPrice = responseData.total_price
-
-        console.log(responseData);
+        this.cardsTwo = responseData.arrayOfcourses;
+        this.totalPrice = responseData.total_price;
+        this.cartId = responseData.cartId;
 
         if (!response.ok) {
           const error = new error(responseData.message || "Failed to Fetch");
@@ -126,11 +123,27 @@ export default {
         this.error = error.message || "something wrong";
       }
     },
-  },
-  created () {
-    this.userCart() 
-  }
 
+    async checkout() {
+      const response = await fetch(
+        "http://localhost:4000/course/purchase/" + this.cartId,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const responseData = await response.json();
+      console.log(responseData);
+
+      window.location.reload();
+    },
+  },
+  created() {
+    this.userCart();
+  },
 };
 </script>
 
@@ -147,24 +160,24 @@ export default {
   font-size: 1.1rem;
 }
 .shopping-total-price {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .total-price {
-    width: 10rem;
-    margin-left: 5rem;
-    height: 10rem;
-    border-bottom: 2px solid rgb(209, 215, 220);
+  width: 10rem;
+  margin-left: 5rem;
+  height: 10rem;
+  border-bottom: 2px solid rgb(209, 215, 220);
 }
 .total-price h2 {
-    color: #6a6f73;
-    font-weight: 700;
-    font-size: 1.5rem;
+  color: #6a6f73;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 .course-price {
-    font-weight: 700;
-    font-size: 2rem;
-    font-family: var(--theme-heading-font);
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: var(--theme-heading-font);
 }
 
 .checkout-btn {

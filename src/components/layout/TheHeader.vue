@@ -369,11 +369,11 @@ export default {
 .numOfCards {
   position: absolute;
   background: rgb(211, 19, 19);
-  border-radius: 40%;
-  padding: 3px;
+  border-radius: 45%;
+  padding: 3.2px;
   font-weight: 700;
   color: white;
   font-family: sans-serif;
-  margin-top: -14px;
+  margin-top: -13px;
 }
 </style>
