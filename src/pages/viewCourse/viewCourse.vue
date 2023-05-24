@@ -4,7 +4,7 @@
       <video controls>
         <!-- <source :src="'/' + currentlesson + '.mp4'" type="video/mp4" /> -->
         
-        <source src="../../assets/l2.mp4">
+        <source src="../../assets/data.mp4">
         Your browser does not support the video tag.
       </video>
 

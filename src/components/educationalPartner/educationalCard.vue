@@ -4,7 +4,8 @@
         <!-- <router-link :to="instructorLink"> -->
         <!-- <img src="../../assets/instructor.jpg" alt="instructor-img" /> -->
         <!-- <img :src=" 'http://localhost:4000/'+ instructorImage.replace('images/', '')" alt=""> -->
-        <img src="../../assets/edu.png" alt="">
+        <!-- <img src="../../assets/edu.png" alt=""> -->
+        <img src="../../assets/new-horizion1.jpg" alt="">
         <!-- </router-link> -->
       </div>
   

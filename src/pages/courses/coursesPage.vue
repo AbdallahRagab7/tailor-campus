@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
-    <!-- <img src="../../assets/coursescover3.jpg" alt="" /> -->
-    <img src="../../assets/background.jpg" alt="" />
+    <img src="../../assets/coursescover3.jpg" alt="" />
+    <!-- <img src="../../assets/background.jpg" alt="" /> -->
     <p>Tailored Campus</p>
   </div>
 

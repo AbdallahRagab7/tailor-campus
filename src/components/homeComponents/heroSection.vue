@@ -16,7 +16,7 @@
             <router-link to="/courses" class="find-course-btn"
               >Find Courses</router-link
             >
-            <router-link to="/chatgpt" class="get-started-btn"
+            <router-link to="/register" class="get-started-btn"
               >Get Started</router-link
             >
           </div>

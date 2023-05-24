@@ -53,12 +53,12 @@
     </div>
     <div class="enroll">
       <div class="rating">
-        <i class="fa fa-star checked"></i>
-        <i class="fa fa-star checked"></i>
-        <i class="fa fa-star checked"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star "></i>
+        <i class="fa fa-star "></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
-        <span>{{ rating }} ({{ reviews }}0 reviews)</span>
+        <span>0 ({{ reviews }}0 reviews)</span>
       </div>
 
       <div class="cart-wishlist">

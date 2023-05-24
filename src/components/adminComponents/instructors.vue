@@ -1,5 +1,5 @@
 <template>
-  <h1 class="my-4">Tailor Campus Instructors</h1>
+  <h1 class="my-4">Tailored Campus Instructors</h1>
   <table class="admin-table">
     <thead>
       <tr>

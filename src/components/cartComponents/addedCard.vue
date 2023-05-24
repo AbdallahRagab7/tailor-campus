@@ -2,10 +2,12 @@
   <div class="course-card">
     <div class="course-img mx-3">
       <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
-      <img
-        :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
-        alt="course img"
-      />
+      <router-link :to="courseLink">
+        <img
+          :src="'http://localhost:4000/' + courseImage.replace('images/', '')"
+          alt="course img"
+        />
+      </router-link>
     </div>
 
     <div class="course-content">
@@ -95,6 +97,11 @@ export default {
       window.location.reload();
     },
   },
+  computed : {
+    courseLink () {
+        return "/course/" + this.courseId 
+    },
+  }
 };
 </script>
 

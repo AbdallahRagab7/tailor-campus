@@ -1,47 +1,51 @@
 <template>
-       <div class="course-card">
-        <div class="course-img mx-3">
-          <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
-          <img
+  <div class="course-card">
+    <div class="course-img mx-3">
+      <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
+      <router-link :to="courseLink">
+        <img
           :src="'http://localhost:4000/' + courseImg.replace('images/', '')"
           alt="course img"
         />
+      </router-link>
+    </div>
+
+    <div class="course-content">
+      <div class="course-title-instructor">
+        <h3 class="mb-2">
+          {{ courseTitle }}
+        </h3>
+        <p class="instructor mb-2">Created By: {{ createdBy }}</p>
+      </div>
+
+      <div class="rating-trash">
+        <div class="rating">
+          <i class="fa fa-star checked"></i>
+          <i class="fa fa-star checked"></i>
+          <i class="fa fa-star checked"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <span class="rating-numbers"
+            >{{ rating }} ({{ reviews }}reviews)</span
+          >
         </div>
 
-        <div class="course-content">
-          <div class="course-title-instructor">
-            <h3 class="mb-2">
-              {{courseTitle}}
-            </h3>
-            <p class="instructor mb-2">Created By: {{createdBy}}</p>
-          </div>
-    
-          <div class="rating-trash">
-            <div class="rating">
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <span class="rating-numbers">{{rating}} ({{reviews }}reviews)</span>
-            </div>
+        <div class="price">
+          <span class="course-price">
+            <i class="fa-solid fa-dollar-sign"></i>{{ coursePrice }}
+            <i class="fa-solid fa-tag mx-1"></i
+          ></span>
+        </div>
 
-             <div class="price">
-              <span class="course-price">
-                <i class="fa-solid fa-dollar-sign"></i>{{coursePrice}}
-                <i class="fa-solid fa-tag mx-1"></i
-              ></span>
-            </div>
+        <div class="trash">
+          <!-- <button class="trash-btn" @click="removeCard(courseId)"> -->
+          <button class="trash-btn" @click="removeFromWishlist">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
 
-            <div class="trash">
-              <!-- <button class="trash-btn" @click="removeCard(courseId)"> -->
-              <button class="trash-btn" @click="removeFromWishlist">
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- <div class="course-meta">
+      <!-- <div class="course-meta">
             <span class="duration me-3"><i class="far fa-clock"></i>1h</span>
             <span class="students me-3"
               ><i class="fa-regular fa-user"></i> {{studentsNo}} Students</span
@@ -57,15 +61,13 @@
               ></span>
             </div>
           </div> -->
-          
-        </div>
-      </div>
-
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props: [
+  props: [
     "createdBy",
     "courseTitle",
     "coursePrice",
@@ -76,15 +78,14 @@ export default {
     "reviews",
     "courseId",
     "instructorId",
-    "courseImg"
+    "courseImg",
   ],
   //   methods : {
   //   removeCard (courseId) {
   //       this.cards = this.cards.filter((card)=>card.courseId !==courseId)
   //   }
   // }
-  methods : {
- 
+  methods: {
     async removeFromWishlist() {
       const response = await fetch(
         "http://localhost:4000/wishlist/delete/" + this.courseId,
@@ -102,18 +103,20 @@ export default {
       window.location.reload();
       console.log("sdfwdfwe");
     },
-  }
-}
+  },
+  computed: {
+    courseLink() {
+      return "/course/" + this.courseId;
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 .title {
   font-weight: 700;
   font-size: 2.5rem;
 }
-
-
 
 .course-card {
   border-top: 1px solid rgb(209, 215, 220);
