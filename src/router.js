@@ -14,6 +14,8 @@ import myLearning from './pages/myLearning/mylearningPage.vue'
 import registerInstructor from './pages/registerInstructor/registerInstructor.vue'
 import admin from './pages/admin/admin.vue'
 import thanks from './pages/thanks/thanks.vue'
+import chatgpt from './pages/chatgpt/chatgpt.vue'
+
 
 import educationalPartner from './pages/EducationalPartner/educationalPartner.vue'
 import LiveMeeting from './pages/liveMeeting/liveMeeting.vue'
@@ -46,6 +48,7 @@ const router = createRouter({
         {name: 'myLearning' , path :'/myLearning', component:myLearning},
         {name: 'registerInstructor' , path :'/registerinstructor', component:registerInstructor},
         {name: 'thanks' , path :'/thanks', component:thanks},
+        {name: 'chatgpt' , path :'/chatgpt', component:chatgpt},
         
     ]
 

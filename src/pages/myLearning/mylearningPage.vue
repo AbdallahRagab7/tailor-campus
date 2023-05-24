@@ -3,29 +3,30 @@
     <h3 class="title">My Learning</h3>
 
     <div class="myLearning-cards">
-      <!-- <mylearning-card
-        class="me-4"
-        v-for="myLearning in myLearningCourses"
-        :key="myLearning.courseId"
-        :courseId="myLearning.courseId"
-        :courseName="myLearning.courseName"
-        :instructorName="myLearning.instructorName"
-        :instructorId="myLearning.instructorId"
-      >
-      </mylearning-card> -->
-
+      
       <mylearning-card
-        class="me-4"
-        v-for="myLearning in myLearningTwo"
-        :key="myLearning.id"
-        :courseId="myLearning.id"
-        :courseName="myLearning.course_name"
-        :instructorName="myLearning.Instructor_name"
-        :instructorId="myLearning.instructorId"
-        :courseimg="myLearning.course_image"
+      class="me-4"
+      v-for="myLearning in myLearningTwo"
+      :key="myLearning.id"
+      :courseId="myLearning.id"
+      :courseName="myLearning.course_name"
+      :instructorName="myLearning.Instructor_name"
+      :instructorId="myLearning.instructorId"
+      :courseimg="myLearning.course_image"
       >
-      </mylearning-card>
-
+    </mylearning-card>
+    
+    <mylearning-card
+      class="me-4"
+      v-for="myLearning in myLearningCourses"
+      :key="myLearning.courseId"
+      :courseId="myLearning.courseId"
+      :courseName="myLearning.courseName"
+      :instructorName="myLearning.instructorName"
+      :instructorId="myLearning.instructorId"
+      courseimg="images/s5affa93e-0801-4712-80ff-db8ab3590bf4-AngularTwo.jpg"
+    >
+    </mylearning-card>
 
     </div>
 
@@ -41,23 +42,23 @@ export default {
     return {
       myLearningTwo : '' ,
       myLearningCourses: [
-        {
-          courseId: "c1",
-          courseName:
-            " Vue - The Complete Guide (incl. Router Composition API)",
-          instructorName: "Abdallah Ragab",
-          instructorId: "i1",
-          instructorImage: "3awz link elcourse image",
-        },
+        // {
+        //   courseId: "c1",
+        //   courseName:
+        //     " Vue - The Complete Guide (incl. Router Composition API)",
+        //   instructorName: "Abdallah Ragab",
+        //   instructorId: "i1",
+        //   instructorImage: "3awz link elcourse image",
+        // },
 
-        {
-          courseId: "c2",
-          courseName:
-            " The Web Developer Bootcamp 2023",
-          instructorName: "Abdallah Ragab",
-          instructorId: "i2",
-          instructorImage: "3awz link elcourse image",
-        },
+        // {
+        //   courseId: "c2",
+        //   courseName:
+        //     " The Web Developer Bootcamp 2023",
+        //   instructorName: "Abdallah Ragab",
+        //   instructorId: "i2",
+        //   instructorImage: "3awz link elcourse image",
+        // },
 
         {
           courseId: "liveMeeting",

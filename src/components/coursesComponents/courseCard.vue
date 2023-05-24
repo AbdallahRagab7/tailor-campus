@@ -58,23 +58,37 @@
         <i class="fa fa-star checked"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
-        <!-- <span>{{ rating }} ({{ reviews }} reviews)</span> -->
         <span>{{ rating }} ({{ reviews }}0 reviews)</span>
       </div>
 
-      <!-- <router-link :to="courseLink" class="enroll-btn">Enroll Now </router-link> -->
       <div class="cart-wishlist">
-        <button class="addToCart" @click="addToCart" v-if="!isAdded">
+        <button class="addToCart" @click="addToCart" v-if="!isAddedCart">
           <!-- <button class="addToCart" @click="addToCart" v-if="!getisAdded"> -->
           <i class="fa-solid fa-cart-shopping cart-icon"></i>
         </button>
 
-        <button class="removeFromCard" @click="removeFromCard" v-if="isAdded">
+        <button
+          class="removeFromCard"
+          @click="removeFromCard"
+          v-if="isAddedCart"
+        >
           <!-- <button class="removeFromCard" @click="removeFromCard" v-if="getisAdded"> -->
           <i class="fa-solid fa-cart-shopping cart-icon"></i>
         </button>
 
-        <button class="addToWishlist" @click="addToWishlist">
+        <button
+          class="addToWishlist"
+          @click="addToWishlist"
+          v-if="!isAddedWishlist"
+        >
+          <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <button
+          class="removeFromWishlist"
+          @click="removeFromWishlist"
+          v-if="isAddedWishlist"
+        >
           <i class="fa-regular fa-heart"></i>
         </button>
       </div>
@@ -87,11 +101,9 @@ export default {
   data() {
     return {
       // courseimg : '../../assets/nodejs.jpg'
-      // courseimg : 'vuejs2.png'
       image: "course3",
-      // courseimg: "../../assets/vuejs2.png",
-      // courseimg : this.courseI,
-      isAdded: false,
+      isAddedCart: false,
+      isAddedWishlist: false,
     };
   },
 
@@ -122,13 +134,13 @@ export default {
       return "../../assets/vuejs2.png";
     },
     getisAdded() {
-      return localStorage.getItem("isAdded");
+      return localStorage.getItem("isAddedToCart");
     },
   },
   methods: {
     async addToCart() {
       if (!this.$store.getters.isAuthenticated) {
-        this.$router.push('/login')
+        this.$router.push("/login");
       }
       const response = await fetch(
         "http://localhost:4000/courses/ADDtoCart/" + this.courseId,
@@ -142,19 +154,18 @@ export default {
         }
       );
       const responseData = await response.json();
-      console.log(responseData)
-      if(responseData.massage === 'course already in cart'){
-        this.isAdded = true;
+      console.log(responseData);
+      if (responseData.massage === "course already in cart") {
+        this.isAddedCart = true;
       }
-      
-      this.isAdded = true;
+
+      this.isAddedCart = true;
 
       if (!response.ok) {
-        // console.log(response.ok)
         const error = new Error(responseData.message || "Failed in request.");
         throw error;
       }
-      localStorage.setItem("isAdded", true);
+      localStorage.setItem("isAddedCart", true);
 
       // window.location.reload();
     },
@@ -163,45 +174,73 @@ export default {
         "http://localhost:4000/cart/deletecoursefromcart/" + this.courseId,
         {
           method: "delete",
-          // body: JSON.stringify({
-          //   Approved: false,
-          // }),
+
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
-      this.isAdded = false;
+      this.isAddedCart = false;
       // window.location.reload();
       // this.$router.push('/courses')
       // window.location.reload();
-      localStorage.setItem("isAdded", false);
+      localStorage.setItem("isAddedCart", false);
     },
 
 
 
 
-    
+
     async addToWishlist() {
-      const response = await fetch("http://localhost:4000/signup", {
-        method: "POST",
-        body: JSON.stringify({}),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      if (!this.$store.getters.isAuthenticated) {
+        this.$router.push("/login");
+      }
+      const response = await fetch(
+        "http://localhost:4000/course/addToWishlist/" + this.courseId,
+        {
+          method: "POST",
+          body: JSON.stringify({}),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const responseData = await response.json();
+      console.log(responseData);
+      if (responseData.massage === "course already in cart") {
+      }
+
+      this.isAddedWishlist = true;
+
       if (!response.ok) {
         // console.log(response.ok)
         const error = new Error(responseData.message || "Failed in request.");
         throw error;
       }
+      localStorage.setItem("isAddedWishlist", true);
+
+      // window.location.reload();
+    },
+    async removeFromWishlist() {
+      const response = await fetch(
+        "http://localhost:4000/wishlist/delete/" + this.courseId,
+        {
+          method: "delete",
+       
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      this.isAddedWishlist  = false;
+      // window.location.reload();
+      // this.$router.push('/courses')
+      localStorage.setItem("isAddedCart", false);
     },
   },
-  // created() {
-  //   localStorage.setItem("isAdded", false);
-  // },
 };
 </script>
 
@@ -339,7 +378,8 @@ export default {
 }
 .addToCart,
 .addToWishlist,
-.removeFromCard {
+.removeFromCard ,
+.removeFromWishlist{
   background: transparent;
   padding: 8px 9px;
   border: none;
@@ -360,4 +400,13 @@ export default {
 .removeFromCard .cart-icon {
   color: rgb(66, 17, 25);
 }
+.removeFromWishlist {
+  color: rgb(66, 17, 25);
+
+}
+
+.removeFromWishlist .fa-heart {
+  color: rgb(199, 20, 50);
+}
+
 </style>

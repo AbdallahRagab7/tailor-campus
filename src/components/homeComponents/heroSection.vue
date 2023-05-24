@@ -6,7 +6,7 @@
 
         <div class="hero-content">
           <!-- should be column -->
-          <span class="subheading">Over 3000 Course Available</span>
+          <!-- <span class="subheading">Over 3000 Course Available</span> -->
           <h1>Upgrade your learning Skills & Upgrade your life</h1>
           <p class="lorem">
             A comprehensive listing of available courses, organized by categories or subjects. Each course is accompanied by a description, learning objectives, and often includes user ratings and reviews.
@@ -16,7 +16,7 @@
             <router-link to="/courses" class="find-course-btn"
               >Find Courses</router-link
             >
-            <router-link to="/home" class="get-started-btn"
+            <router-link to="/chatgpt" class="get-started-btn"
               >Get Started</router-link
             >
           </div>

@@ -1,10 +1,10 @@
 <template>
   <section class="cart my-3">
     <h1 class="title mb-4">Wishlist</h1>
-    <h3 class="courses-no">{{cards.length}} Courses in Wishlist</h3>
+    <h3 class="courses-no">{{ this.cardsTwo.length }} Courses in Wishlist</h3>
     <div class="shopping-total-price">
       <div class="shopping-section">
-        <wishlist-card
+        <!-- <wishlist-card
           v-for="course in cards"
           :key="course.courseId"
           :createdBy="course.createdBy"
@@ -17,6 +17,22 @@
           :reviews="course.reviews"
           :courseId="course.courseId"
           :instructorId="course.instructorId"
+        ></wishlist-card> -->
+        
+        <!-- :courseTitle="course.courseTitle" -->
+        <wishlist-card
+          v-for="course in cardsTwo"
+          :key="course.id"
+          :createdBy="course.Instructor_name"
+          :coursePrice="course.course_price"
+          :studentsNo="course.num_student_enrolled"
+          duration="15H"
+          :lessons="course.num_lesson"
+          :rating="course.course_rate"
+          reviews="8"
+          :courseId="course.id"
+          :instructorId="course.instructorId"
+          :courseImg="course.course_image"
         ></wishlist-card>
       </div>
 
@@ -29,50 +45,78 @@ export default {
   components: { wishlistCard },
   data() {
     return {
-      cards: [
-        {
-          courseId: "c1",
-          instructorId: "i1",
-          createdBy: "Maximilian Schwarzmüller",
-          courseTitle:
-            "Vue - The Complete Guide (incl. Router & Composition API)",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "6.5h",
-          lessons: 30,
-          rating: 3,
-          reviews: 74,
-          courseImage: "3awz link elcourse image",
-        },
-        {
-          courseId: "c2",
-          instructorId: "i2",
-          createdBy: "Abdallah Ragab",
-          courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-          coursePrice: 120,
-          studentsNo: 74,
-          duration: "8.5h",
-          lessons: 34,
-          rating: 3,
-          reviews: 84,
-          courseImage: "3awz link elcourse image",
-        },
-        // {
-        //   courseId: "c3",
-        //   instructorId: "i2",
-        //   createdBy: "Abdallah Ragab",
-        //   courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
-        //   coursePrice: 120,
-        //   studentsNo: 74,
-        //   duration: "8.5h",
-        //   lessons: 34,
-        //   rating: 3,
-        //   reviews: 84,
-        //   courseImage: "3awz link elcourse image",
-        // },
-      ],
+      cardsTwo : '',
+      // cards: [
+      //   {
+      //     courseId: "c1",
+      //     instructorId: "i1",
+      //     createdBy: "Maximilian Schwarzmüller",
+      //     courseTitle:
+      //       "Vue - The Complete Guide (incl. Router & Composition API)",
+      //     coursePrice: 120,
+      //     studentsNo: 74,
+      //     duration: "6.5h",
+      //     lessons: 30,
+      //     rating: 3,
+      //     reviews: 74,
+      //     courseImage: "3awz link elcourse image",
+      //   },
+      //   {
+      //     courseId: "c2",
+      //     instructorId: "i2",
+      //     createdBy: "Abdallah Ragab",
+      //     courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //     coursePrice: 120,
+      //     studentsNo: 74,
+      //     duration: "8.5h",
+      //     lessons: 34,
+      //     rating: 3,
+      //     reviews: 84,
+      //     courseImage: "3awz link elcourse image",
+      //   },
+      //   // {
+      //   //   courseId: "c3",
+      //   //   instructorId: "i2",
+      //   //   createdBy: "Abdallah Ragab",
+      //   //   courseTitle: "100 Days Of Code - 2023 Web Development Bootcamp",
+      //   //   coursePrice: 120,
+      //   //   studentsNo: 74,
+      //   //   duration: "8.5h",
+      //   //   lessons: 34,
+      //   //   rating: 3,
+      //   //   reviews: 84,
+      //   //   courseImage: "3awz link elcourse image",
+      //   // },
+      // ],
     };
   },
+
+  methods : {
+    async userWishlist() {
+      try {
+        const response = await fetch("http://localhost:4000/mywishlist", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const responseData = await response.json();
+        this.cardsTwo = responseData.coursearray;
+        console.log(responseData)
+    
+
+        if (!response.ok) {
+          const error = new error(responseData.message || "Failed to Fetch");
+          throw error;
+        }
+      } catch (error) {
+        this.error = error.message || "something wrong";
+      }
+    },
+  },
+  created () {
+    this.userWishlist()
+  }
 
 };
 </script>

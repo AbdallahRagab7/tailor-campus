@@ -46,8 +46,9 @@
       <h2 class="course-title">
         {{ courseName }}
       </h2>
+      
       <p class="summary">
-        {{ courseSummary }}
+        {{ courseSummary}}
       </p>
 
       <div class="course-header-meta">

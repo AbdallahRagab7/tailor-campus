@@ -1,7 +1,11 @@
 <template>
        <div class="course-card">
         <div class="course-img mx-3">
-          <img src="../../assets/vuejs2.png" alt="course-img" />
+          <!-- <img src="../../assets/vuejs2.png" alt="course-img" /> -->
+          <img
+          :src="'http://localhost:4000/' + courseImg.replace('images/', '')"
+          alt="course img"
+        />
         </div>
 
         <div class="course-content">
@@ -71,7 +75,8 @@ export default {
     "rating",
     "reviews",
     "courseId",
-    "instructorId"
+    "instructorId",
+    "courseImg"
   ],
   //   methods : {
   //   removeCard (courseId) {
@@ -79,11 +84,15 @@ export default {
   //   }
   // }
   methods : {
-    async removeFromWishlist(id) {
+ 
+    async removeFromWishlist() {
       const response = await fetch(
-        "http://localhost:4000/Admin/deleteInstructor/" + this.courseId,
+        "http://localhost:4000/wishlist/delete/" + this.courseId,
         {
           method: "delete",
+          // body: JSON.stringify({
+          //   Approved: false,
+          // }),
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -91,6 +100,7 @@ export default {
         }
       );
       window.location.reload();
+      console.log("sdfwdfwe");
     },
   }
 }

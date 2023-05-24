@@ -3,8 +3,13 @@
     <button @click="setActivePage('requests')" :class="requests">
       Requests
     </button>
+
     <button @click="setActivePage('instructors')" :class="instructors">
       Instructors
+    </button>
+
+    <button @click="setActivePage('courses')" :class="courses">
+      Courses
     </button>
 
     <!-- <button @click="setActivePage('Reviews')" :class="Reviews">Reviews</button> -->
@@ -17,9 +22,10 @@
 <script>
 import instructors from "./instructors.vue";
 import requests from "./requests.vue";
+import courses from "./courses.vue"
 
 export default {
-  components: { instructors, requests },
+  components: { instructors, requests , courses},
   data() {
     return {
       selectedTab: "instructors",
@@ -37,6 +43,9 @@ export default {
     requests() {
       return this.selectedTab === "requests" ? "btn active" : "btn";
     },
+    courses() {
+      return this.selectedTab === "courses" ? "btn active" : "btn";
+    },
   },
 };
 </script>
@@ -45,7 +54,7 @@ export default {
 .nav {
   transition: all 0.4s ease 0s;
   border-bottom: 2px solid #ddd;
-  max-width: 280px;
+  max-width: 400px;
   margin: 2rem auto 3rem auto;
 }
 .btn {

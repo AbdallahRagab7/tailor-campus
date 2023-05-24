@@ -5,7 +5,7 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-xl-8 col-lg-8 col-sm-6">
             <div class="header-contact text-center text-sm-start text-lg-start">
-              <a href="#" class=""> 1ST Elseyouf Alexandria</a>
+              <!-- <a href="#" class=""> 1ST Elseyouf Alexandria</a> -->
             </div>
           </div>
 

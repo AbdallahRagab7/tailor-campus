@@ -130,8 +130,7 @@ export default {
   // fields in controllers , user auth
   
   async signupInstructor(context, payload) {
-    // const formData = new FormData();
-    // formData.append('image', payload.image)
+
     const Data = new FormData();
     Data.append("Name", payload.Name);
     Data.append("Email", payload.Email);

@@ -1,11 +1,11 @@
 <template>
     <div class="instructor-card">
       <div class="instructor-header">
-        <router-link :to="instructorLink">
+        <!-- <router-link :to="instructorLink"> -->
         <!-- <img src="../../assets/instructor.jpg" alt="instructor-img" /> -->
         <!-- <img :src=" 'http://localhost:4000/'+ instructorImage.replace('images/', '')" alt=""> -->
         <img src="../../assets/edu.png" alt="">
-        </router-link>
+        <!-- </router-link> -->
       </div>
   
       <div class="instructor-content">
@@ -16,7 +16,8 @@
         </span>
   
         <h3 class="instructor-title">
-          <router-link :to="instructorLink">{{ instructorName }} </router-link>
+          <router-link to="/Educational-Partners">{{ instructorName }} </router-link>
+
         </h3>
         <p class="specialization">
           {{ specialization }}
