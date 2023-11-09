@@ -48,7 +48,7 @@
       </h2>
       
       <p class="summary">
-        {{ courseSummary}}
+        {{ courseDescription}}
       </p>
 
       <div class="course-header-meta">

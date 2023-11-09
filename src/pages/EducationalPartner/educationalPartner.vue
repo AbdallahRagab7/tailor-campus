@@ -73,13 +73,13 @@
         instructors: [
           {
             instructorId: "i1",
-            instructorName: "Organization Name",
+            instructorName: "New Horizons",
             specialization: "Educational Partner",
             facebookLink: "#",
             linkedinLink: "#",
             youtubeLink: "#",
-            studentsNo: 0,
-            coursesNo: 0,
+            studentsNo: 50,
+            coursesNo: 3,
             instructorImage: "3awz link elcourse image",
           },
   

@@ -10,7 +10,7 @@
             <h1>Lecture 1 Start at :</h1>
             <!-- <h4>{{new Date()}}</h4> -->
             <h4 class="my-3">Thursday May 25 2023 17:00:00</h4>
-            <a href="https://zoom.us/" class="meeting-link">Go to Zoom Meeting Link</a>
+            <a href="https://us05web.zoom.us/j/81551489814?pwd=VmxuWjlPQVJQUXM2ZVNNTktIOGQxZz09#success" class="meeting-link">Go to Zoom Meeting Link</a>
         </div>
   
         <navTabtwo class="nav-tab"></navTabtwo>

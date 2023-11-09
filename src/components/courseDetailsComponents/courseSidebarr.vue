@@ -113,9 +113,12 @@
     <!-- </div> -->
 
     <!-- <div class="buy-btn"> -->
-    <router-link to="/course/c1/i1" class="enroll-course-btn"
-      ><i class="fa-solid fa-cart-shopping"></i> Enroll Course</router-link
-    >
+    <router-link to="/cart" class="enroll-course-btn" @click="addToCart"
+      ><i class="fa-solid fa-cart-shopping"></i> Add To Cart</router-link >
+
+    <!-- <router-link to="/course/c1/i1" class="enroll-course-btn" @click="addToCart"
+      ><i class="fa-solid fa-cart-shopping"></i> Add To Cart</router-link > -->
+
     <!-- </div> -->
 
     <div class="course-material">
@@ -196,6 +199,37 @@ export default {
       } catch (error) {
         this.error = error.message || "something wrong";
       }
+    },
+    async addToCart() {
+      if (!this.$store.getters.isAuthenticated) {
+        this.$router.push("/login");
+      }
+      const response = await fetch(
+        "http://localhost:4000/courses/ADDtoCart/" + this.courseId,
+        {
+          method: "POST",
+          body: JSON.stringify({}),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const responseData = await response.json();
+      console.log(responseData);
+      if (responseData.massage === "course already in cart") {
+        this.isAddedCart = true;
+      }
+
+      this.isAddedCart = true;
+
+      if (!response.ok) {
+        const error = new Error(responseData.message || "Failed in request.");
+        throw error;
+      }
+      localStorage.setItem("isAddedCart", true);
+
+      // window.location.reload();
     },
   },
 
