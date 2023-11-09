@@ -40,12 +40,18 @@
 ### Screen video for platform: <a name = "screen-recorder"></a>
 
 <h3 align='left'>Part 1</h3>
-https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/db5f12e6-4dc0-4e32-92f2-032914fb0ba0
+
+
+https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/df3b50ea-a781-45a2-9300-35f7ae723bf0
+
 
 
 
 <h3 align='left'>Part 2</h3>
-https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/300959fc-033b-4bbd-90b7-38a9ba53a4e8
+
+
+
+https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/c80ebaef-4ef3-4c3e-ae4b-cc22a626db08
 
 
 
