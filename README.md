@@ -7,7 +7,7 @@
 3. [Project Setup](#project-setup)
 
 ## About <a name = "about"></a>
--Tailor Campus is E-Learning platform implemented by VueJs
+- Tailor Campus is an e-learning platform designed to deliver personalized learning experiences, affording users the opportunity to explore a diverse array of courses and acquire skills tailored to their specific needs. Through our platform, users can seamlessly navigate an intuitive interface to peruse an extensive course content, each accompanied by detailed descriptions, learning objectives, and prerequisites. 
 
 ### 🙍‍♂️ Users 
 
