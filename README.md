@@ -42,7 +42,10 @@
 <h3 align='left'>Part 1</h3>
 
 
-https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/df3b50ea-a781-45a2-9300-35f7ae723bf0
+
+https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/112f711c-a56a-4897-8b09-a57d777bf05e
+
+
 
 
 
@@ -51,7 +54,10 @@ https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/df3b50ea-a781-45
 
 
 
-https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/c80ebaef-4ef3-4c3e-ae4b-cc22a626db08
+
+https://github.com/AbdallahRagab7/tailor-campus/assets/91810306/dcdc7654-9c3d-4467-bfe4-22fd670fbb8c
+
+
 
 
 
